@@ -2,10 +2,12 @@
 title: "Project Overview"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
+```{r, warning=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(kableExtra)
 ```
+
+# Welcome to your projects
+
+Page will be added soon.
+

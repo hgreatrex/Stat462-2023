@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome to Stat462-2023",
+    "title": "STAT-462 Lab Book",
     "section": "",
-    "text": "Welcome to your lab book. This is your home for all your instructions, labs, tutorials and projects.\nThis entire book is actually made using R-Markdown using Quarto Websites, so by the end of the semester, your work will look as professional.\nIf you want to learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Welcome!\nThis is your home for all your instructions, labs, tutorials and projects.\nYou can find the class syllabus here: https://psu.instructure.com/courses/2243429/assignments/syllabus\nLook at the tabs to find:\n\nTutorials (constantly updated)\nYour Lab Overview & Labs\n\nProject Space\n\nThis book is made using R-Markdown and Quarto Websites. If you want to learn more, visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "about.html",
@@ -30,9 +30,9 @@
   {
     "objectID": "in_S462_Tutorial0Index.html",
     "href": "in_S462_Tutorial0Index.html",
-    "title": "Tutorial Index",
+    "title": "Tutorial index",
     "section": "",
-    "text": "Welcome to your tutorials.\nI have written all of these and will try and keep them up-to-date and not too overwhelming. Know there is a search bar!\nAlso know, THERE IS A LOT OF ADVICE OUT THERE ON THE INTERNET.\nIf you don’t find what you need here, see if you can find it on google or one of these useful sites:\n\nWonderful graphics with example code: https://r-graph-gallery.com/\nTidyverse tutorials & cheat sheets: https://www.tidyverse.org/learn/\nQuatro tutorials & cheat sheets: https://quarto.org/"
+    "text": "Your tutorials\nWelcome to your tutorials. I have written all of these and will try and keep them up-to-date and not too overwhelming.\nKnow there is a search bar!\nIf you don’t find what you need here, see if you can find it on google or one of these useful sites:\n\nWonderful graphics with example code: https://r-graph-gallery.com/\nTidyverse tutorials & cheat sheets: https://www.tidyverse.org/learn/\nQuatro tutorials & cheat sheets: https://quarto.org/"
   },
   {
     "objectID": "in_S462_Lab0Index.html",
@@ -46,6 +46,6 @@
     "href": "in_S462_Project0Index.html",
     "title": "Project Overview",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to your projects\nPage will be added soon."
   }
 ]

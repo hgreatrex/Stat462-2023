@@ -1,12 +1,17 @@
 ---
-title: "Tutorial Index"
+title: "Tutorial index"
 ---
 
-Welcome to your tutorials.
+```{r, warning=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(kableExtra)
+```
 
-I have written all of these and will try and keep them up-to-date and not too overwhelming. Know there is a search bar!
+# Your tutorials
 
-Also know, THERE IS A LOT OF ADVICE OUT THERE ON THE INTERNET.
+Welcome to your tutorials. I have written all of these and will try and keep them up-to-date and not too overwhelming. 
+
+Know there is a search bar!
 
 If you don't find what you need here, see if you can find it on google or one of these useful sites:
 

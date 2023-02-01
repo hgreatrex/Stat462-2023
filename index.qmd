@@ -1,10 +1,22 @@
 ---
-title: "Welcome to Stat462-2023"
+title: "STAT-462 Lab Book"
 author: "Dr Helen Greatrex"
+date: "1/2/2023"
 ---
 
-Welcome to your lab book. This is your home for all your instructions, labs, tutorials and projects.
+<br>
 
-This entire book is actually made using R-Markdown using Quarto Websites, so by the end of the semester, your work will look as professional.
+# Welcome!
 
-If you want to learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is your home for all your instructions, labs, tutorials and projects.
+
+You can find the class syllabus here: <https://psu.instructure.com/courses/2243429/assignments/syllabus>
+
+Look at the tabs to find:
+
+-   [Tutorials (constantly updated)](in_S462_Tutorial0Index.qmd)
+-   [Your Lab Overview & Labs](in_S462_Lab0Index.qmd)   
+-   [Project Space](in_S462_Project0Index.qmd)   
+
+
+This book is made using R-Markdown and Quarto Websites. If you want to learn more, visit <https://quarto.org/docs/websites>.
