@@ -156,7 +156,8 @@ This should include,
 
  - The number of missing values (hint, you have it already..)
  - How many penguins were from 2008 (hint, table command..)
- - A histogram of one variable of your choice (hint )
+ - A histogram of one variable of your choice (hint https://allisonhorst.github.io/palmerpenguins/articles/examples.html)
+ - A scatterplot between two variables of your choice (hint, https://allisonhorst.github.io/palmerpenguins/articles/examples.html)
  - The correlation between two variables of your choice
  - A correlation test fully written up.
  
