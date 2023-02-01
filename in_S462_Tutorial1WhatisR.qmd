@@ -1,0 +1,7 @@
+---
+title: "Tutorial 1: R Basics"
+---
+
+This tutorial covers accessing and using R / R Studio.
+
+# 

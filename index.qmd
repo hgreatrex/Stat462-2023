@@ -1,11 +1,10 @@
 ---
-title: "Stat462-2023"
+title: "Welcome to Stat462-2023"
+author: "Dr Helen Greatrex"
 ---
 
-This is a Quarto website.
+Welcome to your lab book. This is your home for all your instructions, labs, tutorials and projects.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This entire book is actually made using R-Markdown using Quarto Websites, so by the end of the semester, your work will look as professional.
 
-```{r}
-1 + 1
-```
+If you want to learn more about Quarto websites visit <https://quarto.org/docs/websites>.

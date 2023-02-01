@@ -1,20 +1,28 @@
 project:
   type: website
   output-dir: docs
-
+  
 website:
-  title: "Stat462-2023"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  title: "STAT-462 Lab Book"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Tutorials"
+        contents:
+          - in_S462_Tutorial0Index.qmd
+          - in_S462_Tutorial1WhatisR.qmd
+      - section: "Labs"
+        contents:
+          - in_S462_Lab0Index.qmd
+          - in_S462_Lab1.qmd
+      - section: "Project"
+        contents:
+          - in_S462_Project0Index.qmd
+
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-

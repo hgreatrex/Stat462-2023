@@ -1,0 +1,36 @@
+---
+title: "Lab 1: R intro"
+---
+
+```{r, warning=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(kableExtra)
+```
+
+# Welcome to Lab 1
+
+The aim of this lab is to get comfortable in R and in R-Markdown, and to practice identifying some study jargon as we practiced in class. Lab instructions will be here and how-tos will be condensed into the Tutorial
+
+The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/assignments/14748231>
+
+## Getting started
+
+### 1. Review the Lab Q&A 
+
+First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It explains
+
+-   What you need to submit
+
+-   How you are graded and where the rubric is
+
+-   The late policy
+
+-   What counts as cheating
+
+### 1. What are R and R studio?
+
+Review this tutorial to see some of the powerful things we can do in R.
+
+### 2. Access R and R-Studio
+
+It is very important that you are using the most recent version of R and R Studio.
