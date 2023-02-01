@@ -13,6 +13,9 @@ The aim of this lab is to get comfortable in R and in R-Markdown, and to practic
 
 The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/assignments/14748231>
 
+ **If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex**. We can  fix this and there are other options for "online R" that you can use. 
+ 
+
 ## Getting started
 
 ### 1. Review the Lab Q&A 
@@ -24,10 +27,153 @@ First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It ex
 -   The late policy
 -   What counts as cheating
 
-### 1. What are R and R studio?
+### 1. Follow Tutorial 1
 
-Review this tutorial to see some of the powerful things we can do in R.
+Review [**CLICK HERE**](in_S462_Tutorial1WhatisR.qmd) to see some of the powerful things we can do in R.
 
-### 2. Access R and R-Studio
+We will do this in class.
 
-It is very important that you are using the most recent version of R and R Studio.
+Your homework:
+
+
+#### 2: Make lab-Markdown {-} 
+
+Create a new **RMarkdown document** called `STAT462-Lab1-PSUID.Rmd`. e.g. for me *STAT462-Lab1-hlg5155.Rmd*.  <br>
+
+Delete all the text/code below line 11 (e.g. everything from "R Markdown onward")
+
+<br>
+
+#### 3: Adding paragraphs {-}
+
+You might find it easier to use the markdown visual text editor.  <br> Click the "A" symbol at the top right to switch (instructions here:[Tutorial 4.6](https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text))
+
+
+- In the white text area, create a level 1 heading called *"Introduction to STAT-462"*.  For a cheat sheet to help with this, move your mouse to the top of the page, click the help menu, then click Markdown Quick reference, or see [Tutorial 4.6](https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text).  
+
+ - Leave a blank line, then use the STAT-462 syllabus to describe the course late policy in your own words (e.g. you're writing about this in the white space).
+ 
+ -  Press "knit" at the top of the screen.  If you haven't made a mistake a pop up should appear with a html file and your edits.  If you have a made a mistake, stop and fix before continuing.
+
+<br>  
+
+
+#### 4: Code showcase
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("./Figures/Lab1_Basics_CodeChunk.png")
+```
+<br<
+
+Leave another blank line and add a new Level 1 heading called *"Code Showcase"*.  Add a blank line afterwards too.  Create a code chunk ().  Inside use R code to calculate the following  <br><br>
+
+  - 103^3^  (e.g `103*103*103`, or `103^3`) <br>
+  
+  _ The co-sine of your age (google is your friend, google R function for cosine) <br>
+  
+  - Use R code to work out how many characters are in [the longest town name in Wales](https://www.bbcamerica.com/anglophenia/2015/09/how-to-pronounce-the-longest-place-name-in-the-u-k) *Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch*. <br>
+     + Hint 1, remember you can copy paste this into your code. <br>
+     + Hint 2.. your tutorials and quote marks!<br>
+     + Hint 3.. you can google any R command, try gooling R command for number of characters in a word.<br><br>
+  
+ 
+Press "knit" at the top of the screen.  If you haven't made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing.
+
+<br>
+
+#### Packages
+
+Today we will be using commands from the skimr package, the ggplot2 package and the plotly package.
+
+Somewhere near the top of your script, make a new code chunk and add this code. We will probably have to install them first (see the tutorial)
+
+Remember to run the code chunk! (pressing the green arrow, or go to the run button on the top right and press Run All)
+
+```{r,warnings=FALSE, message=FALSE, eval=FALSE}
+library(tidyverse)
+library(skimr)
+library(ggplot2)
+library(plotly)
+library(ggpubr)
+library(palmerpenguins)
+```
+
+
+<br>
+
+
+#### 6: Data analysis
+
+##### 6a Load & summarise the data
+
+Leave a blank line, and create a new level 1 heading called *Penguin Analysis*.  Leave a blank line afterwards too.   We’re going to work with a table of data that’s already pre-loaded into R inside the ggplot2 package. 
+
+1. Make sure you have run the library code chunk above without error, or it won't work.   <br>
+ 
+2. Load the data using this command
+
+```{r,warnings=FALSE, message=FALSE, eval=FALSE}
+data("penguins")
+```
+ 
+ <br>
+ 
+3. Type the `?penguins` command in the console. This will bring up the help file.
+
+4. State the
+ - Object of Analysis
+ - A reasonable population you would be happy to apply this dataset to
+ - Variables and units
+
+
+<br>
+
+##### 6b Summary analysis
+
+Now look at the data itself. If you look in the environment tab, you will see a new variable called penguins Click on it's NAME to see the spreadsheet/table itself and familiarise yourself with the data.  <br> <br>
+ 
+We could have also looked at the raw data by either by typing its name into the console or a code chunk, or by using commands like `head(penguins)` to show the first few lines
+
+Let's look at the summary statistics. Leave a blank line and create a new code chunk containing the following code <br><br>
+
+```{r, eval=FALSE}
+# mpg comes from the ggplot2 package
+# skim comes from the skimr package
+skim(penguins)
+```
+
+This command compiles the summary statistics for mpg. You can also use the summary() command to achieve a similar result <br><br>
+
+
+```{r, eval=FALSE}
+summary(penguins)
+```
+
+Summarise the dataset.
+
+This should include, 
+
+ - The number of missing values (hint, you have it already..)
+ - How many penguins were from 2008 (hint, table command..)
+ - A histogram of one variable of your choice (hint )
+ - The correlation between two variables of your choice
+ - A correlation test fully written up.
+ 
+
+## Submitting your Lab
+
+Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.
+
+In that folder, double click on the html file.  This will open it in your browser. CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.
+
+If you are on R studio cloud, see Tutorial 1 for how to download your files
+
+Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.
+
+```{r, echo=FALSE}
+knitr::include_graphics("./Figures/Lab1_Basics_2022_fig1.png")
+```
+
+<br>
+
