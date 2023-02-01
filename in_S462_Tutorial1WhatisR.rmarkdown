@@ -46,6 +46,7 @@ GetRLatest <- function(Website="https://cran.r-project.org/banner.shtml"){
 
 ```
 
+
 # Basics
 
 ## What are R and R studio?
@@ -69,9 +70,11 @@ It has many useful features. For example, you can easily see help files, run cod
 
 <br>
 
+
 ```{r, Tut_Fig2, echo=FALSE, fig.cap = "*R-studio is much more sophisticated*",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig2_markdown.png')
 ```
+
 
 
 ### TO DO! Watch this {-}
@@ -80,9 +83,11 @@ Watch this 1 minute video on R-Studio: <https://www.rstudio.com/products/rstudio
 
 Or, if you prefer, this 5 minute video
 
+
 ```{r,echo=FALSE,fig.align='center'}
 embed_url("https://www.youtube.com/watch?v=SdMPh5uphO0")
 ```
+
 
 <br>
 
@@ -132,9 +137,11 @@ Once you have logged in, you will get to a dashboard like this, called the R-stu
 
 You can get here from any web-browser, You do not need a special computer.
 
+
 ```{r, Tut_Fig4, echo=FALSE, fig.cap = "*The Cloud dashboard*",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig4_clouddash.png')
 ```
+
 
 
 #### Returning to your lab project {-}
@@ -169,9 +176,11 @@ More later on those, but here is how to download them so you can submit them
 5.  REPEAT FOR THE HTML (you can do them together but it exports as a
     zip)
 
+
 ```{r, Tut_Fig5, echo=FALSE, fig.cap = "*Downloading the files*",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig5_export.png')
 ```
+
 
 
 #### Uploading files {-}
@@ -179,9 +188,11 @@ knitr::include_graphics('./Figures/Tut_Fig5_export.png')
 Simply click the upload button inside your project in the files tab and
 upload your files. You do not need subfolders.
 
+
 ```{r, Tut_Fig5b, echo=FALSE, fig.cap = "*Look near the red circles*",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig5_export.png')
 ```
+
 
 <br><br>
 
@@ -215,15 +226,19 @@ Just as English has evolved over the years, the R language is always evolving. W
 
 The version of R I am using is :
 
+
 ```{r,echo=FALSE}
 paste(R.version$version.string,R.version$nickname,sep=" ")
 ```
 
+
 As long as yours is that or above that you should be fine. The current most recent version of the language on the website is:
+
 
 ```{r, echo=FALSE}
 GetRLatest()
 ```
+
 
 
 
@@ -240,9 +255,11 @@ GetRLatest()
     -   Download this version of R (the main download R for windows
         button)
 
+
     ```{r, echo=FALSE}
     GetRLatest()
     ```
+
 
     -   Run and click next through all the options
 
@@ -265,9 +282,11 @@ GetRLatest()
     -   Go to:<https://cloud.r-project.org/bin/macosx/> ,
     -   download this version of R (the .pkg file on the left menu)
 
+
     ```{r, echo=FALSE}
     GetRLatest()
     ```
+
 
     -   Run and click next through all the options
 
@@ -290,9 +309,11 @@ GetRLatest()
 
 2.  Now everything is installed, open R-studio **(NOT R!)**.
 
+
 ```{r, Tut_Fig6, echo=FALSE, out.width="80%",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig6_startup_icons.png')
 ```
+
 
 <br>
 
@@ -308,9 +329,11 @@ knitr::include_graphics('./Figures/Tut_Fig6_startup_icons.png')
 
 6.  Finally, press `Create Project`
 
+
 ```{r, Tut_Fig8, echo=FALSE}
 knitr::include_graphics('./Figures/Tut_Fig8_project.png')
 ```
+
 
 #### How to check you are in a project {-}
 
@@ -321,9 +344,11 @@ The Files tab should have gone to your project folder. Essentially,
 R-Studio is now "looking" inside your Lab 1 folder, making it easier to
 find your data and output your results.
 
+
 ```{r, Tut_Fig9, echo=FALSE, fig.cap="How to check you are in a project"}
 knitr::include_graphics('./Figures/Tut_Fig9_projectcheck.png')
 ```
+
 
 <br>
 
@@ -335,9 +360,11 @@ If you want one, final check, try typing this into the console
 prints out the location of Lab 1 on your computer. If not, talk to an
 instructor.
 
+
 ```{r, eval=FALSE}
 getwd()
 ```
+
 
 <br>
 
@@ -363,9 +390,11 @@ It means you can also open several versions of R studio for multiple
 projects, which can be very useful in keeping labs separate and staying
 sane.
 
+
 ```{r, Tut_Fig10, echo=FALSE}
 knitr::include_graphics('./Figures/Tut_Fig10_projectopen.png')
 ```
+
 
 <br> <br>
 
@@ -387,9 +416,11 @@ You will be greeted by three panels:
 
 <br>
 
+
 ```{r, Tut_Fig11, echo=FALSE, fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig11_startup.png')
 ```
+
 
 <br>
 
@@ -411,9 +442,11 @@ change this, look at the menu at VERY TOP OF THE SCREEN.
     console to be top left and scripts to be top right, with the plots
     and environment on the bottom - but this is personal choice.
 
+
 ```{r, Tut_Fig12, echo=FALSE, fig.cap = "My preferred set up",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig12_panes.png')
 ```
+
 
 -   There should also be a menu called `Help`<br>Useful for R-studio
     version and Markdown cheatsheets.
@@ -533,9 +566,11 @@ In the console type this to install the full works of Shakespeare in the
 bardr package
 (<https://www.rdocumentation.org/packages/bardr/versions/0.0.9>)
 
+
 ```{r, eval=FALSE}
 library(bardr)
 ```
+
 
 I suggest keeping all your library() commands in a code chunk near the top of the file and 
 
@@ -549,9 +584,11 @@ For example, this is what shows up when you install the tidyverse
 package. The welcome text is indicating the sub-packages that tidyverse
 downloaded and also that some commands now have a different meaning.
 
+
 ```{r, tut3fig4bbb, echo=FALSE, fig.cap = "Tidyverse install messages",fig.align='center',out.width="100%"}
 knitr::include_graphics('./Figures/pg_Tut3_basics_fig4.png')
 ```
+
 
 **To find out if what you are seeing is a friendly message or an error,
 run the command again. If you run it a second time and there is no error
@@ -568,9 +605,11 @@ symbol
 For example, this command *forces* the computer to use the 'dplyr
 package' version of filter.
 
+
 ```{r, eval=FALSE}
 dplyr::filter(mydata)
 ```
+
 
 <br>
 
@@ -579,9 +618,11 @@ dplyr::filter(mydata)
 First watch this 5 min video above for some pointers. We will also go
 through the video more slowly below:
 
+
 ```{r,echo=FALSE,fig.align='center'}
 embed_url("https://youtu.be/SWxoJqTqo08?t=41")
 ```
+
 
 
 <br>
@@ -600,24 +641,30 @@ The console window (see Figure
 
 Let's start by the simplest command possible. Type this command into your R console and press enter to run.
 
+
 ```{r, eval=FALSE}
 1+1
 ```
 
+
 When you press enter, it should give you the answer.... 2
+
 
 ```{r}
 1+1
 ```
 
+
 <br>
 
 Type this command into your R console and press enter to run.
+
 
 ```{r, eval=FALSE}
 # Take the sine function of the number 2, like sin(2) on your calculator
 sin(2)
 ```
+
 
 Here we have a **command** `sin()` applied to the number 2. We also have
 a **comment** in green, which the computer ignores.
@@ -649,15 +696,19 @@ would have learned back in school, so use brackets to force a different
 order. For example, in either the console or a script, try running these
 two commands
 
+
 ```{r, eval=FALSE}
 3 + 5 * 2
 ```
 
+
 and
+
 
 ```{r, eval=FALSE}
 (3 + 5) * 2
 ```
+
 
 <br>
 
@@ -665,14 +716,17 @@ We can also take shortcuts with our numbers. For example `1:5` means
 take all the numbers `1 2 3 4 5` (e.g. increment the integers one - to -
 five). Try typing this command and make sure you understand the result.
 
+
 ```{r}
 (1 + 2) * 5:3
 ```
+
 
 <br>
 
 We can use this trick to make our first plot! Try entering this command
 and see what happens. It should plot these numbers against each other
+
 
 ```{r, echo=FALSE}
 print(data.frame(x=1:5,y=6:10))
@@ -681,6 +735,7 @@ print(data.frame(x=1:5,y=6:10))
 ```{r, eval=FALSE,fig.show=FALSE}
 plot(x= 1:5, y= 6:10,xlab="x-axis",ylab="y-axis")
 ```
+
 
 <br> <br>
 
@@ -691,10 +746,12 @@ FALSE (no quote marks, they are special).
 
 Here we are asking R whether 1 is equal to 1.
 
+
 ```{r}
 # note two equals signs is read as "is equal to"
 1 == 1  
 ```
+
 
 We could also have used
 
@@ -731,10 +788,12 @@ currently writing.
 
 Watch this short video to learn three important facts about functions:
 
+
 ```{r,echo=FALSE,fig.align='center'}
 embed_url("http://vimeo.com/220490105 ")
 
 ```
+
 
 The power of R lies in its many thousands of these built in commands, or
 *functions*. In fact, we have already come across one - the plot
@@ -759,6 +818,7 @@ Try typing these EXACTLY into the console.
 To understand what I mean about parentheses, try typing each of these
 commands exactly and see what happens.
 
+
 ```{r, eval=FALSE}
 # Typing this into the console will print out the underlying code
 file.choose 
@@ -770,10 +830,12 @@ file.choose()
 ?file.choose
 ```
 
+
 Sometimes we need to give the command some additional information as an
 argument. Anything we wish to tell the command should be included inside
 the inside the parentheses (separated by commas). The command literally
 only knows about the stuff inside the parentheses.
+
 
 ```{r, eval=FALSE}
 sin(1) # trigonometry functions.  Apply the sine function to the number 1. 
@@ -783,15 +845,18 @@ log(10) # natural logarithm.  Take the natural logarithm of the number 10.
 nchar("hello") # Count the letters in the word hello
 ```
 
+
 We can also add optional extra arguments. For example let's improve our
 plot. This following command will plot the number 1 to 10 against the
 numbers 12 to 20, along with some axis labels. When you run this, the
 plot will show up in the plots tab.
 
+
 ```{r}
 # plot the numbers 1 to 10 against the numbers 11 to 20
 plot(1:10,11:20,col="dark blue", xlab="x values",ylab="GEOG-364 is the best") 
 ```
+
 
 If you are feeling lost,
 <https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/> is
@@ -810,9 +875,11 @@ For example, try typing `print("Hello World")` into the console and the
 computer should just repeat it back to you.Forget about the quotes and
 this happens..
 
+
 ```{r, tut3fig3, echo=FALSE, fig.cap = "Your screen after running the project"}
 knitr::include_graphics('./Figures/pg_Tut3_basics_fig3.png')
 ```
+
 
 Your first error. The "unexpected symbol" it's talking about is the
 computer thinking that "Hello" and "world" must be two different
@@ -834,9 +901,11 @@ The symbol to store data into a variable is using the assignment arrow
 the equals sign, but it can cause complications later on. Try typing
 this command into the console:
 
+
 ```{r, eval=FALSE}
 x <- 1/50
 ```
+
 
 Notice that pressing enter did not print a value onto your screen as it
 did earlier. Instead, look down at the environment tab, you should
@@ -845,6 +914,7 @@ notice that an x has turned up, with the result next to it.
 So our variable `x` is now associated with the value 0.02, or 1/50. You
 can print a variable on screen by typing its name, no quotes, or by
 using the print command. Try printing out your variable.
+
 
 ```{r, eval=FALSE}
 x
@@ -859,8 +929,10 @@ print("x")
 
 ```
 
+
 This 'x' variable can be used in place of a number in any calculation
 that expects a number. Try typing
+
 
 ```{r, eval=FALSE}
 log(x)
@@ -868,6 +940,7 @@ log(x)
 # this is now the same as 
 log(1/50)
 ```
+
 
 The way R works is that first it looks for the commands on the right of
 the arrow. It runs all of them, calculates the result, then saves that
@@ -879,10 +952,12 @@ the number 0.02.
 Notice also that variables can be reassigned. Type this into your
 console.
 
+
 ```{r, eval=FALSE}
 x <- 100
 print(x)
 ```
+
 
 x used to contain the value 0.025 and and now it has the value 100.
 
@@ -892,10 +967,12 @@ spaces and doesn't begin with a number*.
 
 for example
 
+
 ```{r, eval=FALSE}
 vlogbrothers.DFTBA <- "Dont forget to be awesome"
 print(vlogbrothers.DFTBA)
 ```
+
 
 How you name stuff is up to you, , but be consistent. Different people
 use different conventions for long variable names, these include
@@ -906,6 +983,7 @@ use different conventions for long variable names, these include
 
 Finally, R IS CASE SENSITIVE. X and x are different variables! Try these
 and you will see both appear separately in your environment tab.
+
 
 ```{r, eval=FALSE}
 h <- 1
@@ -923,22 +1001,28 @@ print(h)
 print(H)
 ```
 
+
 To delete a variable, you can use the `rm()` command e.g.
+
 
 ```{r, eval=FALSE}
 rm(x)
 ```
 
+
 and to clear everything, type
+
 
 ```{r, eval=FALSE}
 rm(list=ls())
 ```
 
+
 ### Combining variables
 
 As I showed above, you can now use multiple variables together in more
 complex commands. For example, try these commands:
+
 
 ```{r, eval=FALSE}
 x <- 2
@@ -950,6 +1034,7 @@ y <- x + 1
 print(2*y*x)
 ```
 
+
 Now you can see that there are two variables in your environment tab, x
 and y. Where y is the sum of the contents of x plus 1.
 
@@ -960,10 +1045,12 @@ code below in a few times into the console and see what happens.
 use the up-arrow on your keyboard to cycle back through previous
 commands you have typed**
 
+
 ```{r, eval=FALSE}
 x <- x + 1 # notice how RStudio updates its description of x in the environment tab
 x          # print the contents of "x" onto the screen
 ```
+
 
 Our variables don't have to be numbers. They could refer to tables of
 data, or a spatial map, or any other complex thing. We will cover this
@@ -1000,15 +1087,19 @@ Here's how I approach it
     
   - Different websites have different ways of writing the things. For example, here are four common files you might see when looking at the mutate command which is a part of the dplyr package.
   
+
 ```{r, Tut13A, echo=FALSE, fig.cap = "COMMAND=mutate, PACKAGE=dplyr",fig.align='center',out.width="100%"}
 knitr::include_graphics('./Figures/Tut_Fig13_mutateA.png')
 ```
+
 ```{r, Tut13B, echo=FALSE, fig.cap = "COMMAND=mutate, PACKAGE=dplyr",fig.align='center',out.width="100%"}
 knitr::include_graphics('./Figures/Tut_Fig13_mutateB.png')
 ```
+
 ```{r, Tut13C, echo=FALSE, fig.cap = "COMMAND=mutate, PACKAGE=dplyr",fig.align='center',out.width="100%"}
 knitr::include_graphics('./Figures/Tut_Fig13_mutateD.png')
 ```
+
          
 <p class="comment">HINT FOR LAB 2, THE COMMAND ITSELF IS CALLED qtm...</p>
     
@@ -1053,20 +1144,25 @@ ended up in your lab instructions**
 1.  I googled 'skim r command'. This took me quickly to the R
     documentation page
 
+
 ```{r, Tut_Fig13, echo=FALSE, fig.cap = "Look for Rdocumentation, search-R-Project, or Rdrr",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig13a_HelpFile_skimrgoogle.png')
 ```
+
 
 2.  I ended up at this website:
     <https://search.r-project.org/CRAN/refmans/skimr/html/skim.html>.
     From this I saw that the `skim()` command is in the `skimr`
     package\*
 
+
 ```{r, Tut_Fig13b, echo=FALSE, fig.cap = "*The skim command is in the skimr package (red circle)*",fig.align='center'}
 knitr::include_graphics('./Figures/Tut_Fig13_HelpFile_skimr.png')
 ```
 
+
 3.  I added the `skimr` package to my library code chunk and re-ran
+
 
 ```{r, eval=FALSE}
 # LIBRARIES
@@ -1078,6 +1174,7 @@ library(plotly)
 
 library(skimr) 
 ```
+
 
 4.  In the console, I FIRST typed `> ?skimr` to read about the package
     itself (e.g. ?PACKAGENAME). This doesn't work if you didn't run the
@@ -1101,6 +1198,7 @@ library(skimr)
     I can apply to a table (in their case the iris table). And that's
     how it ended up here..
 
+
 ```{r}
  skim(iris)
  
@@ -1109,6 +1207,7 @@ library(skimr)
  skim(iris, starts_with("Sepal"))
  skim(iris, where(is.numeric))
 ```
+
 
 <br>
 
@@ -1173,9 +1272,11 @@ short commands.
 Read more here: <https://rmarkdown.rstudio.com> or watch this short
 video
 
+
 ```{r,echo=FALSE,fig.align='center'}
 embed_url("https://vimeo.com/178485416?embedded=true&source=video_title&owner=22717988")
 ```
+
 
 <br> <br>
 
@@ -1184,9 +1285,11 @@ embed_url("https://vimeo.com/178485416?embedded=true&source=video_title&owner=22
 Your file contains some friendly text to explain what is going on, which
 I have annotated here. Read the file and see what it says.
 
+
 ```{r, tut4fig3, echo=FALSE,fig.align='center'}
 knitr::include_graphics('./Figures/pg_Tut4_markdown_fig3.png')
 ```
+
 
 
 ## Creating a markdown document 
@@ -1199,17 +1302,21 @@ to download some packages to be able to do this. Say yes.
 
 Eventually a window will open up:
 
+
 ```{r, tut4fig1b, echo=FALSE,fig.align='center',out.width="80%"}
 knitr::include_graphics('./Figures/pg_Tut4_markdown_fig1.png')
 ```
+
 
 It will ask you to name and save your file. Give it a relevant name. A
 new file should appear on your screen. At the top of that window (by the
 knit button, there is a "knit button". Click that and it should make a website and autosave it for you.  Make sure your email ID is somewhere in there.
 
+
 ```{r, tut4fig2c, echo=FALSE,fig.align='center',fig.cap="Yours will say GEOG-364 not GEOG-364.."}
 knitr::include_graphics('./Figures/pg_Tut4_markdown_fig2.png')
 ```
+
 
 The new file on your screen is your first markdown script. Essentially,
 we have some space for text, some space for code, and a space at the top
@@ -1232,10 +1339,13 @@ an output as a website. The html should also be saved into your project
 folder. For example, from my other class, here is a file with markdown
 and knitted output.
 
+
 ```{r, tut4fig4, echo=FALSE,fig.align='center'}
 knitr::include_graphics('./Figures/pg_Tut4_markdown_fig4.png')
 ```
 
+
 <br> <br>
+
 
 
