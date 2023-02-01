@@ -58,6 +58,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -102,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in_S462_Tutorial0Index.html" class="sidebar-item-text sidebar-link">Tutorial Index</a>
+  <a href="./in_S462_Tutorial0Index.html" class="sidebar-item-text sidebar-link">Tutorial index</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -156,7 +157,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
+  <ul class="collapse">
+  <li><a href="#what-are-r-and-r-studio" id="toc-what-are-r-and-r-studio" class="nav-link" data-scroll-target="#what-are-r-and-r-studio">What are R and R studio?</a>
+  <ul class="collapse">
+  <li><a href="#r-is-a-language" id="toc-r-is-a-language" class="nav-link" data-scroll-target="#r-is-a-language">R is a LANGUAGE</a></li>
+  <li><a href="#r-studio-is-a-software-environment" id="toc-r-studio-is-a-software-environment" class="nav-link" data-scroll-target="#r-studio-is-a-software-environment">R-STUDIO is a Software Environment</a></li>
+  <li><a href="#to-do-watch-this" id="toc-to-do-watch-this" class="nav-link" data-scroll-target="#to-do-watch-this">TO DO! Watch this</a></li>
+  <li><a href="#r-projects" id="toc-r-projects" class="nav-link" data-scroll-target="#r-projects">R-Projects</a></li>
+  </ul></li>
+  <li><a href="#accessing-r" id="toc-accessing-r" class="nav-link" data-scroll-target="#accessing-r">Accessing R</a>
+  <ul class="collapse">
+  <li><a href="#r-studio-cloud" id="toc-r-studio-cloud" class="nav-link" data-scroll-target="#r-studio-cloud">R studio Cloud</a></li>
+  <li><a href="#r-desktop" id="toc-r-desktop" class="nav-link" data-scroll-target="#r-desktop">R Desktop</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -180,11 +195,169 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This tutorial covers accessing and using R / R Studio.</p>
-<section id="section" class="level1">
-<h1></h1>
+<section id="basics" class="level1">
+<h1>Basics</h1>
+<section id="what-are-r-and-r-studio" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-r-and-r-studio">What are R and R studio?</h2>
+<section id="r-is-a-language" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="r-is-a-language">R is a LANGUAGE</h3>
+<p><strong>R</strong> is a free, open source statistical programming language. It contains millions of commands that are useful for data cleaning, analysis, and visualization.</p>
+<p>By a “programming language”, I mean it is a collection of commands that you can type into the computer in order to analyse and visualise data.</p>
+<p>The easiest way I find to think about R is that it is literally a language, like Spanish or Hindi, that is spoken by your computer. Learning R means learning vocabulary and grammar in order to communicate. It also means it will get easier with experience and practice..</p>
+<p><br></p>
+</section>
+<section id="r-studio-is-a-software-environment" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="r-studio-is-a-software-environment">R-STUDIO is a Software Environment</h3>
+<p><strong>R-studio</strong> is a <em>software environment</em>, e.g a programmed designed to make it easy to write code in “R”.</p>
+<p>It has many useful features. For example, you can easily see help files, run code, see your output and create outputs like this lab book! R-Studio also allows us to make interactive documents called R-Markdown files.</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/Tut_Fig2_markdown.png" class="img-fluid figure-img" width="1424"></p>
+<p></p><figcaption class="figure-caption"><em>R-studio is much more sophisticated</em></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="to-do-watch-this" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="to-do-watch-this">TO DO! Watch this</h3>
+<p>Watch this 1 minute video on R-Studio: <a href="https://www.rstudio.com/products/rstudio/" class="uri">https://www.rstudio.com/products/rstudio/</a></p>
+<p>Or, if you prefer, this 5 minute video</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="vembedr">
+<div>
+<iframe src="https://www.youtube.com/embed/SdMPh5uphO0" width="533" height="300" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="r-projects" class="level3">
+<h3 class="anchored" data-anchor-id="r-projects">R-Projects</h3>
+<p>An R-project is a folder that will store everything to do with each lab in one place on your computer. On the website, each lab will be its own project.</p>
+<p>This is incredibly useful - it means that if you switch from R-Cloud, to the lab computers, to your laptop, all you have to do is to move the folder and everything will just work. Equally, its easy to compare labs.</p>
+<p>Learn more here. You will have a project for each Lab and I may share projects with example code.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.linkedin.com/learning/learning-the-r-tidyverse/why-should-you-use-projects-in-rstudio?u=76811570"><img src="./Figures/Tut_Fig7_ProjectVideo.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Rproject</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="accessing-r" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-r">Accessing R</h2>
+<p>There are two ways to do the labs, on your own computer or on the R studio Cloud website.</p>
+<ul>
+<li>DESKTOP: Means do this if you are using your own computer or laptop</li>
+<li>CLOUD: Means do this if you are using the website</li>
+</ul>
+<section id="r-studio-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="r-studio-cloud">R studio Cloud</h3>
+<p>The easiest way to get R-studio is to simply to use the R-Studio Cloud website</p>
+<p>Here you can log into an online version of R. and I believe is free for the first 25hrs each month. Like Jupyter Notebook, you can also programme in other langauges. If you need more time, you can make a new account, or pay for one month, or move to your desktop.</p>
+<ul>
+<li>Advantages:
+<ul>
+<li>Super Easy. You will never have to worry about versions or updating.</li>
+<li>Projects are incredibly easy and I can debug things fast</li>
+<li>You can do your labs anywhere you have access to a webpage <br><br></li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>It’s not as powerful, you won’t be able to play will millions of data points</li>
+<li>You have to be online; bad internet connections make it harder</li>
+</ul></li>
+</ul>
+<p>To sign up, make an account at <a href="https://rstudio.cloud/plans/free" class="uri">https://rstudio.cloud/plans/free</a>, then click the tabs here to look around. Sadly there is no student pricing right now.</p>
+<p><br></p>
+<section id="getting-started-on-the-cloud" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="getting-started-on-the-cloud">Getting started on the cloud</h4>
+<p>Once you have logged in, you will get to a dashboard like this, called the R-studio workspace. You make a new project by clicking the button on the top right. You can open different projects in different tabs on your browser. You can also go back to the work-space at any time.</p>
+<p>You can get here from any web-browser, You do not need a special computer.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/Tut_Fig4_clouddash.png" class="img-fluid figure-img" width="1003"></p>
+<p></p><figcaption class="figure-caption"><em>The Cloud dashboard</em></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="returning-to-your-lab-project" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="returning-to-your-lab-project">Returning to your lab project</h4>
+<p>On the cloud this is very easy, just go back to <a href="https://rstudio.cloud/content/yours" class="uri">https://rstudio.cloud/content/yours</a></p>
+<p><br> <br></p>
+</section>
+<section id="downloading-files" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="downloading-files">Downloading files</h4>
+<p>Ignore this until later on and you need to submit your lab.</p>
+<p>You will need to submit two files for each lab, an “.Rmd” and a “.html”. More later on those, but here is how to download them so you can submit them</p>
+<ol type="1">
+<li><p>On the R-Studio Cloud website; inside your project, go to the files tab (next to Projects/Help in one quadrant. You will see a list of files, one with the file type .Rmd (your code) and one with .html(the website you made when you pressed knit). Look at the red circle in the pic below</p></li>
+<li><p>Click the checkbox to the left the .RmD</p></li>
+<li><p>Look just above at the Files quadrant settings menu. Click the blue “more” cogwheel icon. (see diagram)</p></li>
+<li><p>Now click export. This will download the file and export it to Canvas s</p></li>
+<li><p>REPEAT FOR THE HTML (you can do them together but it exports as a zip)</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/Tut_Fig5_export.png" class="img-fluid figure-img" width="1363"></p>
+<p></p><figcaption class="figure-caption"><em>Downloading the files</em></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uploading-files" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="uploading-files">Uploading files</h4>
+<p>Simply click the upload button inside your project in the files tab and upload your files. You do not need subfolders.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/Tut_Fig5_export.png" class="img-fluid figure-img" width="1363"></p>
+<p></p><figcaption class="figure-caption"><em>Look near the red circles</em></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br><br></p>
+<hr>
+</section>
+</section>
+<section id="r-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="r-desktop">R Desktop</h3>
+<section id="installingupdating-r.-the-version-of-r-you-use-is-important" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="installingupdating-r.-the-version-of-r-you-use-is-important">Installing/updating R. The “VERSION” of R you use is important!</h4>
+<p>Just like English has evolved over the years, the R language is always evolving. We keep track using Versions.</p>
+<p><em>To make sure we are all on the same page, you need the most up-to-date version of the R commands.</em></p>
+<p>The version of R I am using is :</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "R version 4.2.2 (2022-10-31) Innocent and Trusting"</code></pre>
+</div>
+</div>
+<p>As long as yours is that or above that you should be fine. The current most recent version of the language on the website is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The latest release (2022-10-31, Innocent and Trusting)"</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

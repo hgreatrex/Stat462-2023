@@ -2,6 +2,210 @@
 title: "Tutorial 1: R Basics"
 ---
 
-This tutorial covers accessing and using R / R Studio.
+```{r setup, include=FALSE}
+# OPTIONS -----------------------------------------------
+knitr::opts_chunk$set(echo = TRUE, 
+                      warning=FALSE, 
+                      message = FALSE)
+```
 
-# 
+```{r, include=FALSE}
+
+# PACKAGES-----------------------------------------------
+# Tutorial packages
+library(vembedr)
+library(skimr)
+library(yarrr)
+library(RColorBrewer)
+library(GGally) 
+library(tidyverse)
+library(plotly)
+library(readxl)
+library(rvest)
+library(biscale)
+library(tidycensus)
+library(cowplot)
+library(units)
+
+
+# FUNCTIONS -----------------------------------------------
+# Get R version
+GetRLatest <- function(Website="https://cran.r-project.org/banner.shtml"){
+   require(rvest)
+   
+   #scrape the text from the website
+   RWebsite <- read_html("https://cran.r-project.org/banner.shtml") %>%
+            html_nodes("li") %>%
+            html_text()
+   
+   # get the line that includes latest release and get rid of the stuff after
+   RLatest <- base::strsplit(RWebsite[grep("latest release",
+                                     tolower(RWebsite))],"\n")[[1]][1]
+   return(RLatest)
+}
+
+```
+
+# Basics
+
+## What are R and R studio?
+
+### R is a LANGUAGE {-}
+
+**R** is a free, open source statistical programming language. It contains millions of commands that are useful for data cleaning, analysis, and visualization.
+
+By a "programming language", I mean it is a collection of commands that you can type into the computer in order to analyse and visualise data.
+
+The easiest way I find to think about R is that it is literally a language, like Spanish or Hindi, that is spoken by your computer. Learning R means learning vocabulary and grammar in order to communicate. It also means it will get easier with experience and practice..
+
+<br>
+
+
+### R-STUDIO is a Software Environment {-}
+
+**R-studio** is a *software environment*, e.g a programmed designed to make it easy to write code in "R". 
+
+It has many useful features. For example, you can easily see help files, run code, see your output and create outputs like this lab book! R-Studio also allows us to make interactive documents called R-Markdown files.
+
+<br>
+
+```{r, Tut_Fig2, echo=FALSE, fig.cap = "*R-studio is much more sophisticated*",fig.align='center'}
+knitr::include_graphics('./Figures/Tut_Fig2_markdown.png')
+```
+
+
+### TO DO! Watch this {-}
+
+Watch this 1 minute video on R-Studio: <https://www.rstudio.com/products/rstudio/>
+
+Or, if you prefer, this 5 minute video
+
+```{r,echo=FALSE,fig.align='center'}
+embed_url("https://www.youtube.com/watch?v=SdMPh5uphO0")
+```
+
+<br>
+
+### R-Projects
+ 
+An R-project is a folder that will store everything to do with each lab in one place on your computer. On the website, each lab will be its own project.
+
+This is incredibly useful - it means that if you switch from R-Cloud, to the lab computers, to your laptop, all you have to do is to move the folder and everything will just work.  Equally, its easy to compare labs.
+
+Learn more here.  You will have a project for each Lab and I may share projects with example code.
+
+[![Rproject](./Figures/Tut_Fig7_ProjectVideo.png)](https://www.linkedin.com/learning/learning-the-r-tidyverse/why-should-you-use-projects-in-rstudio?u=76811570)
+
+
+
+## Accessing R
+
+There are two ways to do the labs, on your own computer or on the R studio Cloud website.
+
+-   DESKTOP: Means do this if you are using your own computer or laptop
+-   CLOUD: Means do this if you are using the website
+
+
+### R studio Cloud
+
+The easiest way to get R-studio is to simply to use the R-Studio Cloud website
+
+Here you can log into an online version of R. and I believe is free for the first 25hrs each month. Like Jupyter Notebook, you can also programme in other langauges.  If you need more time, you can make a new account, or pay for one month, or move to your desktop.
+
+-   Advantages:
+    -   Super Easy. You will never have to worry about versions or updating.
+    -   Projects are incredibly easy and I can debug things fast
+    -   You can do your labs anywhere you have access to a webpage
+        <br><br>
+-   Disadvantages:
+    -   It's not as powerful, you won't be able to play will millions of data points
+    -   You have to be online; bad internet connections make it harder
+
+
+To sign up, make an account at <https://rstudio.cloud/plans/free>, then click the tabs here to look around. Sadly there is no student pricing right now.
+
+<br>
+
+#### Getting started on the cloud {-}
+
+Once you have logged in, you will get to a dashboard like this, called the R-studio workspace. You make a new project by clicking the button on the top right. You can open different projects in different tabs on your browser. You can also go back to the work-space at any time.
+
+You can get here from any web-browser, You do not need a special computer.
+
+```{r, Tut_Fig4, echo=FALSE, fig.cap = "*The Cloud dashboard*",fig.align='center'}
+knitr::include_graphics('./Figures/Tut_Fig4_clouddash.png')
+```
+
+
+#### Returning to your lab project {-}
+
+On the cloud this is very easy, just go back to
+<https://rstudio.cloud/content/yours>
+
+<br>
+<br>
+
+#### Downloading files {-}
+
+Ignore this until later on and you need to submit your lab.
+
+You will need to submit two files for each lab, an ".Rmd" and a ".html".
+More later on those, but here is how to download them so you can submit them
+
+1.  On the R-Studio Cloud website; inside your project, go to the files
+    tab (next to Projects/Help in one quadrant. You will see a list of
+    files, one with the file type .Rmd (your code) and one with
+    .html(the website you made when you pressed knit). Look at the red
+    circle in the pic below
+
+2.  Click the checkbox to the left the .RmD
+
+3.  Look just above at the Files quadrant settings menu. Click the blue
+    "more" cogwheel icon. (see diagram)
+
+4.  Now click export. This will download the file and export it to
+    Canvas s
+
+5.  REPEAT FOR THE HTML (you can do them together but it exports as a
+    zip)
+
+```{r, Tut_Fig5, echo=FALSE, fig.cap = "*Downloading the files*",fig.align='center'}
+knitr::include_graphics('./Figures/Tut_Fig5_export.png')
+```
+
+
+#### Uploading files {-}
+
+Simply click the upload button inside your project in the files tab and
+upload your files. You do not need subfolders.
+
+```{r, Tut_Fig5b, echo=FALSE, fig.cap = "*Look near the red circles*",fig.align='center'}
+knitr::include_graphics('./Figures/Tut_Fig5_export.png')
+```
+
+<br><br>
+
+------------------------------------------------------------------------
+
+
+### R Desktop
+
+#### Installing/updating R. The "VERSION" of R you use is important! {.unnumbered}
+
+Just like English has evolved over the years, the R language is always evolving. We keep track using Versions. 
+
+*To make sure we are all on the same page, you need the most up-to-date version of the R commands.*
+
+The version of R I am using is :
+
+```{r,echo=FALSE}
+paste(R.version$version.string,R.version$nickname,sep=" ")
+```
+
+As long as yours is that or above that you should be fine. The current most recent version of the language on the website is:
+
+```{r, echo=FALSE}
+GetRLatest()
+```
+
+

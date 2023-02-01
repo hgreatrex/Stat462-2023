@@ -20,11 +20,8 @@ The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/as
 First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It explains
 
 -   What you need to submit
-
 -   How you are graded and where the rubric is
-
 -   The late policy
-
 -   What counts as cheating
 
 ### 1. What are R and R studio?
