@@ -167,8 +167,8 @@ Summarise the dataset.
     -   \*Hint 2, for a description, [see this Khan page](https://www.khanacademy.org/math/ap-statistics/bivariate-data-ap/scatterplots-correlation/a/describing-scatterplots-form-direction-strength-outliers)\
 5.  The correlation between two variables of your choice
     -   *Hint, [the cor command](https://www.statology.org/r-cor-function/)* \*\
-6.  A correlation test fully written up in a way that a non expert would understand
-    -   \*Hint, [the cor.test command](http://www.sthda.com/english/wiki/wiki.php?id_contents=7314) and see the Canvas correlation page for interpretations.\
+6.  A correlation test fully written up in a way that a non expert would understand. For example you include the H0,the H1 the test statistic, the p value and your interpretation. I will let you choose your own significance threshold. You should also show the code output.
+    -   \*Hint, [the cor.test command](http://www.sthda.com/english/wiki/wiki.php?id_contents=7314) and see the [Canvas correlation page for interpretations.](https://psu.instructure.com/courses/2243429/pages/ch-3-describing-relationships-correlation?module_item_id=38030361)\
 
 *\*In step 3 and 4 you are allowed to copy the code. There are two reasons for this. The first is that many of you are new to R, it's lab 1 and I want you to get more exposure to what R looks like (and this is how I learn new coding techniques). The second is that we can spend weeks learning how to make a basic histogram, but now there are all of these amazing professional plots that can be made with a little more code, so I would prefer you spent your time learning them :)*
 
