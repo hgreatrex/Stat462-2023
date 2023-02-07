@@ -13,12 +13,12 @@ The aim of this lab is to get comfortable in R and in R-Markdown, and to practic
 
 The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/assignments/14748231>
 
- **If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex**. We can  fix this and there are other options for "online R" that you can use. 
- 
+**If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex**.\
+We can fix this and there are other options for "online R" that you can use.
 
 ## Getting started
 
-### 1. Review the Lab Q&A 
+### 1a. Review the Lab Q&A
 
 First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It explains
 
@@ -27,7 +27,7 @@ First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It ex
 -   The late policy
 -   What counts as cheating
 
-### 1. Follow Tutorial 1
+### 1b. Follow Tutorial 1
 
 Review [**CLICK HERE**](in_S462_Tutorial1WhatisR.qmd) to see some of the powerful things we can do in R.
 
@@ -35,60 +35,56 @@ We will do this in class.
 
 Your homework:
 
+## 2. Make lab-Markdown {.unnumbered}
 
-#### 2: Make lab-Markdown {-} 
+Create a new **RMarkdown document** called `STAT462-Lab1-PSUID.Rmd`. e.g. for me *STAT462-Lab1-hlg5155.Rmd*. <br>
 
-Create a new **RMarkdown document** called `STAT462-Lab1-PSUID.Rmd`. e.g. for me *STAT462-Lab1-hlg5155.Rmd*.  <br>
-
-Delete all the text/code below line 11 (e.g. everything from "R Markdown onward")
+Delete any friendly welcome text so you have a blank space.
 
 <br>
 
-#### 3: Adding paragraphs {-}
+### 2a: Adding paragraphs & course late policy {.unnumbered}
 
-You might find it easier to use the markdown visual text editor.  <br> Click the "A" symbol at the top right to switch (instructions here:[Tutorial 4.6](https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text))
+You might find it easier to use the markdown visual text editor. <br> [Click the "Visual" symbol at the top left of the document to switch.](https://quarto.org/docs/get-started/hello/images/rstudio-source-visual.png)
 
+-   In the white text area, create a level 1 Header called *"Introduction to STAT-462"*.
 
-- In the white text area, create a level 1 heading called *"Introduction to STAT-462"*.  For a cheat sheet to help with this, move your mouse to the top of the page, click the help menu, then click Markdown Quick reference, or see [Tutorial 4.6](https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text).  
+-   Leave a blank line, then use the STAT-462 syllabus to describe the course late policy in your own words (e.g. you're writing about this in the white space).
 
- - Leave a blank line, then use the STAT-462 syllabus to describe the course late policy in your own words (e.g. you're writing about this in the white space).
- 
- -  Press "knit" at the top of the screen.  If you haven't made a mistake a pop up should appear with a html file and your edits.  If you have a made a mistake, stop and fix before continuing.
+-   Press "knit" at the top of the screen. If you haven't made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing or talk to a teacher.
 
-<br>  
+<br>
 
-
-#### 4: Code showcase
-
+## 3: Code showcase
 
 ```{r, echo=FALSE}
 knitr::include_graphics("./Figures/Lab1_Basics_CodeChunk.png")
 ```
-<br<
 
-Leave another blank line and add a new Level 1 heading called *"Code Showcase"*.  Add a blank line afterwards too.  Create a code chunk ().  Inside use R code to calculate the following  <br><br>
+\<br\<
 
-  - 103^3^  (e.g `103*103*103`, or `103^3`) <br>
-  
-  _ The co-sine of your age (google is your friend, google R function for cosine) <br>
-  
-  - Use R code to work out how many characters are in [the longest town name in Wales](https://www.bbcamerica.com/anglophenia/2015/09/how-to-pronounce-the-longest-place-name-in-the-u-k) *Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch*. <br>
-     + Hint 1, remember you can copy paste this into your code. <br>
-     + Hint 2.. your tutorials and quote marks!<br>
-     + Hint 3.. you can google any R command, try gooling R command for number of characters in a word.<br><br>
-  
- 
-Press "knit" at the top of the screen.  If you haven't made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing.
+Leave another blank line and add a new Level 1 Header called *"Code Showcase"*. Add a blank line afterwards too - the reason for all the blank lines is that R formatting often gets messed up with not enough blank lines, but it will ignore excess ones.
+
+Create a code chunk. Inside **use R code** to calculate the following. You HAVE to show the code! <br><br>
+
+-   103^3^ (e.g `103*103*103`, or `103^3`) <br>
+
+\_ The co-sine of your age (google is your friend, google R function for cosine) <br>
+
+-   Use R code to work out how many characters are in [the longest town name in Wales](https://www.bbcamerica.com/anglophenia/2015/09/how-to-pronounce-the-longest-place-name-in-the-u-k) *Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch*. <br>\
+    -   Hint 1, remember you can copy paste this into your code. <br>
+    -   Hint 2.. your tutorials and quote marks!<br>
+    -   Hint 3.. you can google any R command, try googling the *"R command for number of characters in a word"*.<br><br>
+
+Press "knit" at the top of the screen. If you haven't made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing.
 
 <br>
 
-#### Packages
+## 4. Packages
 
-Today we will be using commands from the skimr package, the ggplot2 package and the plotly package.
+Today we will be using commands from several packages. Somewhere near the top of your script, make a new code chunk and add this code. We will probably have to install them first (see the tutorial)
 
-Somewhere near the top of your script, make a new code chunk and add this code. We will probably have to install them first (see the tutorial)
-
-Remember to run the code chunk! (pressing the green arrow, or go to the run button on the top right and press Run All)
+Remember to run the code chunk! [(pressing the green arrow, or go to the run button on the top right and press Run All](https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/gifs/run-chunk.gif))
 
 ```{r,warnings=FALSE, message=FALSE, eval=FALSE}
 library(tidyverse)
@@ -99,41 +95,43 @@ library(ggpubr)
 library(palmerpenguins)
 ```
 
-
 <br>
 
+## 5: Data analysis
 
-#### 6: Data analysis
+### 5a Load & summarise the data
 
-##### 6a Load & summarise the data
+Leave a blank line, and create a new level 1 heading called *Penguin Analysis*. Leave a blank line afterwards too. We're going to work with a table of data that's already pre-loaded into R inside the ggplot2 package.
 
-Leave a blank line, and create a new level 1 heading called *Penguin Analysis*.  Leave a blank line afterwards too.   We’re going to work with a table of data that’s already pre-loaded into R inside the ggplot2 package. 
+1.  Make sure you have run the library code chunk above without error, or it won't work. <br>
 
-1. Make sure you have run the library code chunk above without error, or it won't work.   <br>
- 
-2. Load the data using this command
+2.  Load the data using this command. You can ignore the raw penguin data
 
 ```{r,warnings=FALSE, message=FALSE, eval=FALSE}
 data("penguins")
 ```
- 
- <br>
- 
-3. Type the `?penguins` command in the console. This will bring up the help file.
-
-4. State the
- - Object of Analysis
- - A reasonable population you would be happy to apply this dataset to
- - Variables and units
-
 
 <br>
 
-##### 6b Summary analysis
+3.  Type the `?penguins` command in the console. This will bring up the help file.
 
-Now look at the data itself. If you look in the environment tab, you will see a new variable called penguins Click on it's NAME to see the spreadsheet/table itself and familiarise yourself with the data.  <br> <br>
- 
-We could have also looked at the raw data by either by typing its name into the console or a code chunk, or by using commands like `head(penguins)` to show the first few lines
+4.  State the
+
+-   Object of Analysis
+-   A [*reasonable*]{.underline} population you would be happy to apply this dataset to\*
+-   Variables and units - you are allowed to copy these names/units from the help file
+
+*\*Imagine you are giving this analysis to a newspaper editor. What population do you think this sample could represent?*
+
+<br>
+
+### 5b Look at the data
+
+Now look at the data itself. If you look in the environment tab, you will see a new variable called penguins Click on it's NAME to see the spreadsheet/table itself and familiarise yourself with the data. <br> <br>
+
+We could have also looked at the data by either by typing its name into the console, the command `View(penguins)` or a code chunk, or by using commands like `head(penguins)` to show the first few lines
+
+### 5c. Summary analysis
 
 Let's look at the summary statistics. Leave a blank line and create a new code chunk containing the following code <br><br>
 
@@ -143,8 +141,7 @@ Let's look at the summary statistics. Leave a blank line and create a new code c
 skim(penguins)
 ```
 
-This command compiles the summary statistics for mpg. You can also use the summary() command to achieve a similar result <br><br>
-
+This command compiles the summary statistics for the penguin dataset - sometimes its easier to view this if you press the knit button and look at the html pop-up. You can also use the summary() command to achieve a similar result <br><br>
 
 ```{r, eval=FALSE}
 summary(penguins)
@@ -152,21 +149,35 @@ summary(penguins)
 
 Summarise the dataset.
 
-This should include, 
+**This should include:**
 
- - The number of missing values (hint, you have it already..)
- - How many penguins were from 2008 (hint, table command..)
- - A histogram of one variable of your choice (hint https://allisonhorst.github.io/palmerpenguins/articles/examples.html)
- - A scatterplot between two variables of your choice (hint, https://allisonhorst.github.io/palmerpenguins/articles/examples.html)
- - The correlation between two variables of your choice
- - A correlation test fully written up.
- 
+1.  A short description of any missing data. For example, are there entire rows missing? Certain columns? Imagine you are using this dataset for modelling, are there rows that will need removing? etc etc? Try \`View(penguins)\` to look at the penguin dataset itself\
+2.  How many penguins were from 2008?
+    -   *Hint, [the table command](https://www.statology.org/table-function-in-r/)..*
 
-## Submitting your Lab
+    -   *Hint 2, to choose a column use the \$ sign e.g. tablename\$columnname*
+
+    -   *Hint 3, R IS CASE SENSITIVE!*\
+3.  A histogram of one variable of your choice and a description of the variable.\
+    E.g. unimodal? skewed? Any outliers?
+    -   \*Hint <https://allisonhorst.github.io/palmerpenguins/articles/examples.html> \*\
+4.  A scatterplot between two variables of your choice and a description of the scatterplot
+    -   *Hint <https://allisonhorst.github.io/palmerpenguins/articles/examples.html> \**
+
+    -   \*Hint 2, for a description, [see this Khan page](https://www.khanacademy.org/math/ap-statistics/bivariate-data-ap/scatterplots-correlation/a/describing-scatterplots-form-direction-strength-outliers)\
+5.  The correlation between two variables of your choice
+    -   *Hint, [the cor command](https://www.statology.org/r-cor-function/)* \*\
+6.  A correlation test fully written up in a way that a non expert would understand
+    -   \*Hint, [the cor.test command](http://www.sthda.com/english/wiki/wiki.php?id_contents=7314) and see the Canvas correlation page for interpretations.\
+
+*\*In step 3 and 4 you are allowed to copy the code. There are two reasons for this. The first is that many of you are new to R, it's lab 1 and I want you to get more exposure to what R looks like (and this is how I learn new coding techniques). The second is that we can spend weeks learning how to make a basic histogram, but now there are all of these amazing professional plots that can be made with a little more code, so I would prefer you spent your time learning them :)*
+
+## 6. Submitting your Lab
 
 Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.
 
-In that folder, double click on the html file.  This will open it in your browser. CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.
+In that folder, double click on the html file. This will open it in your web-browser.\
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.
 
 If you are on R studio cloud, see Tutorial 1 for how to download your files
 
@@ -177,4 +188,3 @@ knitr::include_graphics("./Figures/Lab1_Basics_2022_fig1.png")
 ```
 
 <br>
-

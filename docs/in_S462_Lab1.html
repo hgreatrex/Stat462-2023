@@ -223,10 +223,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
-  <li><a href="#review-the-lab-qa" id="toc-review-the-lab-qa" class="nav-link" data-scroll-target="#review-the-lab-qa">1. Review the Lab Q&amp;A</a></li>
-  <li><a href="#follow-tutorial-1" id="toc-follow-tutorial-1" class="nav-link" data-scroll-target="#follow-tutorial-1">1. Follow Tutorial 1</a></li>
+  <li><a href="#a.-review-the-lab-qa" id="toc-a.-review-the-lab-qa" class="nav-link" data-scroll-target="#a.-review-the-lab-qa">1a. Review the Lab Q&amp;A</a></li>
+  <li><a href="#b.-follow-tutorial-1" id="toc-b.-follow-tutorial-1" class="nav-link" data-scroll-target="#b.-follow-tutorial-1">1b. Follow Tutorial 1</a></li>
   </ul></li>
-  <li><a href="#submitting-your-lab" id="toc-submitting-your-lab" class="nav-link" data-scroll-target="#submitting-your-lab">Submitting your Lab</a></li>
+  <li><a href="#make-lab-markdown" id="toc-make-lab-markdown" class="nav-link" data-scroll-target="#make-lab-markdown">2. Make lab-Markdown</a>
+  <ul class="collapse">
+  <li><a href="#a-adding-paragraphs-course-late-policy" id="toc-a-adding-paragraphs-course-late-policy" class="nav-link" data-scroll-target="#a-adding-paragraphs-course-late-policy">2a: Adding paragraphs &amp; course late policy</a></li>
+  </ul></li>
+  <li><a href="#code-showcase" id="toc-code-showcase" class="nav-link" data-scroll-target="#code-showcase">3: Code showcase</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">4. Packages</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">5: Data analysis</a>
+  <ul class="collapse">
+  <li><a href="#a-load-summarise-the-data" id="toc-a-load-summarise-the-data" class="nav-link" data-scroll-target="#a-load-summarise-the-data">5a Load &amp; summarise the data</a></li>
+  <li><a href="#b-look-at-the-data" id="toc-b-look-at-the-data" class="nav-link" data-scroll-target="#b-look-at-the-data">5b Look at the data</a></li>
+  <li><a href="#c.-summary-analysis" id="toc-c.-summary-analysis" class="nav-link" data-scroll-target="#c.-summary-analysis">5c. Summary analysis</a></li>
+  </ul></li>
+  <li><a href="#submitting-your-lab" id="toc-submitting-your-lab" class="nav-link" data-scroll-target="#submitting-your-lab">6. Submitting your Lab</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -255,11 +267,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Welcome to Lab 1</h1>
 <p>The aim of this lab is to get comfortable in R and in R-Markdown, and to practice identifying some study jargon as we practiced in class. Lab instructions will be here and how-tos will be condensed into the Tutorial</p>
 <p>The Canvas page for this lab is: <a href="https://psu.instructure.com/courses/2243429/assignments/14748231" class="uri">https://psu.instructure.com/courses/2243429/assignments/14748231</a></p>
-<p><strong>If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex</strong>. We can fix this and there are other options for “online R” that you can use.</p>
+<p><strong>If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex</strong>.<br>
+We can fix this and there are other options for “online R” that you can use.</p>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<section id="review-the-lab-qa" class="level3">
-<h3 class="anchored" data-anchor-id="review-the-lab-qa">1. Review the Lab Q&amp;A</h3>
+<section id="a.-review-the-lab-qa" class="level3">
+<h3 class="anchored" data-anchor-id="a.-review-the-lab-qa">1a. Review the Lab Q&amp;A</h3>
 <p>First, please review the lab Q&amp;A: <a href="./in_S462_Lab0Index.html"><strong>CLICK HERE</strong></a>. It explains</p>
 <ul>
 <li>What you need to submit</li>
@@ -268,56 +281,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>What counts as cheating</li>
 </ul>
 </section>
-<section id="follow-tutorial-1" class="level3">
-<h3 class="anchored" data-anchor-id="follow-tutorial-1">1. Follow Tutorial 1</h3>
+<section id="b.-follow-tutorial-1" class="level3">
+<h3 class="anchored" data-anchor-id="b.-follow-tutorial-1">1b. Follow Tutorial 1</h3>
 <p>Review <a href="./in_S462_Tutorial1WhatisR.html"><strong>CLICK HERE</strong></a> to see some of the powerful things we can do in R.</p>
 <p>We will do this in class.</p>
 <p>Your homework:</p>
-<section id="make-lab-markdown" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="make-lab-markdown">2: Make lab-Markdown</h4>
-<p>Create a new <strong>RMarkdown document</strong> called <code>STAT462-Lab1-PSUID.Rmd</code>. e.g.&nbsp;for me <em>STAT462-Lab1-hlg5155.Rmd</em>. <br></p>
-<p>Delete all the text/code below line 11 (e.g.&nbsp;everything from “R Markdown onward”)</p>
-<p><br></p>
 </section>
-<section id="adding-paragraphs" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="adding-paragraphs">3: Adding paragraphs</h4>
-<p>You might find it easier to use the markdown visual text editor. <br> Click the “A” symbol at the top right to switch (instructions here:<a href="https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text">Tutorial 4.6</a>)</p>
+</section>
+<section id="make-lab-markdown" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="make-lab-markdown">2. Make lab-Markdown</h2>
+<p>Create a new <strong>RMarkdown document</strong> called <code>STAT462-Lab1-PSUID.Rmd</code>. e.g.&nbsp;for me <em>STAT462-Lab1-hlg5155.Rmd</em>. <br></p>
+<p>Delete any friendly welcome text so you have a blank space.</p>
+<p><br></p>
+<section id="a-adding-paragraphs-course-late-policy" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a-adding-paragraphs-course-late-policy">2a: Adding paragraphs &amp; course late policy</h3>
+<p>You might find it easier to use the markdown visual text editor. <br> <a href="https://quarto.org/docs/get-started/hello/images/rstudio-source-visual.png">Click the “Visual” symbol at the top left of the document to switch.</a></p>
 <ul>
-<li><p>In the white text area, create a level 1 heading called <em>“Introduction to STAT-462”</em>. For a cheat sheet to help with this, move your mouse to the top of the page, click the help menu, then click Markdown Quick reference, or see <a href="https://psu-spatial.github.io/stat462-2022/T1_R_Basics.html#46_Formatting_text">Tutorial 4.6</a>.</p></li>
+<li><p>In the white text area, create a level 1 Header called <em>“Introduction to STAT-462”</em>.</p></li>
 <li><p>Leave a blank line, then use the STAT-462 syllabus to describe the course late policy in your own words (e.g.&nbsp;you’re writing about this in the white space).</p></li>
-<li><p>Press “knit” at the top of the screen. If you haven’t made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing.</p></li>
+<li><p>Press “knit” at the top of the screen. If you haven’t made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing or talk to a teacher.</p></li>
 </ul>
 <p><br></p>
 </section>
-<section id="code-showcase" class="level4">
-<h4 class="anchored" data-anchor-id="code-showcase">4: Code showcase</h4>
+</section>
+<section id="code-showcase" class="level2">
+<h2 class="anchored" data-anchor-id="code-showcase">3: Code showcase</h2>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./Figures/Lab1_Basics_CodeChunk.png" class="img-fluid" width="954"></p>
 </div>
 </div>
 <p>&lt;br&lt;</p>
-<p>Leave another blank line and add a new Level 1 heading called <em>“Code Showcase”</em>. Add a blank line afterwards too. Create a code chunk (). Inside use R code to calculate the following <br><br></p>
+<p>Leave another blank line and add a new Level 1 Header called <em>“Code Showcase”</em>. Add a blank line afterwards too - the reason for all the blank lines is that R formatting often gets messed up with not enough blank lines, but it will ignore excess ones.</p>
+<p>Create a code chunk. Inside <strong>use R code</strong> to calculate the following. You HAVE to show the code! <br><br></p>
 <ul>
 <li>103<sup>3</sup> (e.g <code>103*103*103</code>, or <code>103^3</code>) <br></li>
 </ul>
 <p>_ The co-sine of your age (google is your friend, google R function for cosine) <br></p>
 <ul>
-<li>Use R code to work out how many characters are in <a href="https://www.bbcamerica.com/anglophenia/2015/09/how-to-pronounce-the-longest-place-name-in-the-u-k">the longest town name in Wales</a> <em>Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch</em>. <br>
+<li>Use R code to work out how many characters are in <a href="https://www.bbcamerica.com/anglophenia/2015/09/how-to-pronounce-the-longest-place-name-in-the-u-k">the longest town name in Wales</a> <em>Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch</em>. <br><br>
+
 <ul>
 <li>Hint 1, remember you can copy paste this into your code. <br></li>
 <li>Hint 2.. your tutorials and quote marks!<br></li>
-<li>Hint 3.. you can google any R command, try gooling R command for number of characters in a word.<br><br></li>
+<li>Hint 3.. you can google any R command, try googling the <em>“R command for number of characters in a word”</em>.<br><br></li>
 </ul></li>
 </ul>
 <p>Press “knit” at the top of the screen. If you haven’t made a mistake a pop up should appear with a html file and your edits. If you have a made a mistake, stop and fix before continuing.</p>
 <p><br></p>
 </section>
-<section id="packages" class="level4">
-<h4 class="anchored" data-anchor-id="packages">Packages</h4>
-<p>Today we will be using commands from the skimr package, the ggplot2 package and the plotly package.</p>
-<p>Somewhere near the top of your script, make a new code chunk and add this code. We will probably have to install them first (see the tutorial)</p>
-<p>Remember to run the code chunk! (pressing the green arrow, or go to the run button on the top right and press Run All)</p>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">4. Packages</h2>
+<p>Today we will be using commands from several packages. Somewhere near the top of your script, make a new code chunk and add this code. We will probably have to install them first (see the tutorial)</p>
+<p>Remember to run the code chunk! <a href="https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/gifs/run-chunk.gif">(pressing the green arrow, or go to the run button on the top right and press Run All</a>)</p>
 <div class="cell" data-warnings="false">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
@@ -328,14 +344,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><br></p>
 </section>
-<section id="data-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="data-analysis">6: Data analysis</h4>
-<section id="a-load-summarise-the-data" class="level5">
-<h5 class="anchored" data-anchor-id="a-load-summarise-the-data">6a Load &amp; summarise the data</h5>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">5: Data analysis</h2>
+<section id="a-load-summarise-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="a-load-summarise-the-data">5a Load &amp; summarise the data</h3>
 <p>Leave a blank line, and create a new level 1 heading called <em>Penguin Analysis</em>. Leave a blank line afterwards too. We’re going to work with a table of data that’s already pre-loaded into R inside the ggplot2 package.</p>
 <ol type="1">
 <li><p>Make sure you have run the library code chunk above without error, or it won’t work. <br></p></li>
-<li><p>Load the data using this command</p></li>
+<li><p>Load the data using this command. You can ignore the raw penguin data</p></li>
 </ol>
 <div class="cell" data-warnings="false">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,43 +363,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <ul>
 <li>Object of Analysis</li>
-<li>A reasonable population you would be happy to apply this dataset to</li>
-<li>Variables and units</li>
+<li>A <u><em>reasonable</em></u> population you would be happy to apply this dataset to*</li>
+<li>Variables and units - you are allowed to copy these names/units from the help file</li>
 </ul>
+<p><em>*Imagine you are giving this analysis to a newspaper editor. What population do you think this sample could represent?</em></p>
 <p><br></p>
 </section>
-<section id="b-summary-analysis" class="level5">
-<h5 class="anchored" data-anchor-id="b-summary-analysis">6b Summary analysis</h5>
+<section id="b-look-at-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="b-look-at-the-data">5b Look at the data</h3>
 <p>Now look at the data itself. If you look in the environment tab, you will see a new variable called penguins Click on it’s NAME to see the spreadsheet/table itself and familiarise yourself with the data. <br> <br></p>
-<p>We could have also looked at the raw data by either by typing its name into the console or a code chunk, or by using commands like <code>head(penguins)</code> to show the first few lines</p>
+<p>We could have also looked at the data by either by typing its name into the console, the command <code>View(penguins)</code> or a code chunk, or by using commands like <code>head(penguins)</code> to show the first few lines</p>
+</section>
+<section id="c.-summary-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="c.-summary-analysis">5c. Summary analysis</h3>
 <p>Let’s look at the summary statistics. Leave a blank line and create a new code chunk containing the following code <br><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mpg comes from the ggplot2 package</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># skim comes from the skimr package</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This command compiles the summary statistics for mpg. You can also use the summary() command to achieve a similar result <br><br></p>
+<p>This command compiles the summary statistics for the penguin dataset - sometimes its easier to view this if you press the knit button and look at the html pop-up. You can also use the summary() command to achieve a similar result <br><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Summarise the dataset.</p>
-<p>This should include,</p>
+<p><strong>This should include:</strong></p>
+<ol type="1">
+<li>A short description of any missing data. For example, are there entire rows missing? Certain columns? Imagine you are using this dataset for modelling, are there rows that will need removing? etc etc? Try `View(penguins)` to look at the penguin dataset itself<br>
+</li>
+<li>How many penguins were from 2008?
 <ul>
-<li>The number of missing values (hint, you have it already..)</li>
-<li>How many penguins were from 2008 (hint, table command..)</li>
-<li>A histogram of one variable of your choice (hint https://allisonhorst.github.io/palmerpenguins/articles/examples.html)</li>
-<li>A scatterplot between two variables of your choice (hint, https://allisonhorst.github.io/palmerpenguins/articles/examples.html)</li>
-<li>The correlation between two variables of your choice</li>
-<li>A correlation test fully written up.</li>
-</ul>
-</section>
-</section>
+<li><p><em>Hint, <a href="https://www.statology.org/table-function-in-r/">the table command</a>..</em></p></li>
+<li><p><em>Hint 2, to choose a column use the $ sign e.g.&nbsp;tablename$columnname</em></p></li>
+<li><p><em>Hint 3, R IS CASE SENSITIVE!</em><br>
+</p></li>
+</ul></li>
+<li>A histogram of one variable of your choice and a description of the variable.<br>
+E.g. unimodal? skewed? Any outliers?
+<ul>
+<li>*Hint <a href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html" class="uri">https://allisonhorst.github.io/palmerpenguins/articles/examples.html</a> *<br>
+</li>
+</ul></li>
+<li>A scatterplot between two variables of your choice and a description of the scatterplot
+<ul>
+<li><p><em>Hint <a href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html" class="uri">https://allisonhorst.github.io/palmerpenguins/articles/examples.html</a> *</em></p></li>
+<li><p>*Hint 2, for a description, <a href="https://www.khanacademy.org/math/ap-statistics/bivariate-data-ap/scatterplots-correlation/a/describing-scatterplots-form-direction-strength-outliers">see this Khan page</a><br>
+</p></li>
+</ul></li>
+<li>The correlation between two variables of your choice
+<ul>
+<li><em>Hint, <a href="https://www.statology.org/r-cor-function/">the cor command</a></em> *<br>
+</li>
+</ul></li>
+<li>A correlation test fully written up in a way that a non expert would understand
+<ul>
+<li>*Hint, <a href="http://www.sthda.com/english/wiki/wiki.php?id_contents=7314">the cor.test command</a> and see the Canvas correlation page for interpretations.<br>
+</li>
+</ul></li>
+</ol>
+<p><em>*In step 3 and 4 you are allowed to copy the code. There are two reasons for this. The first is that many of you are new to R, it’s lab 1 and I want you to get more exposure to what R looks like (and this is how I learn new coding techniques). The second is that we can spend weeks learning how to make a basic histogram, but now there are all of these amazing professional plots that can be made with a little more code, so I would prefer you spent your time learning them :)</em></p>
 </section>
 </section>
 <section id="submitting-your-lab" class="level2">
-<h2 class="anchored" data-anchor-id="submitting-your-lab">Submitting your Lab</h2>
+<h2 class="anchored" data-anchor-id="submitting-your-lab">6. Submitting your Lab</h2>
 <p>Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.</p>
-<p>In that folder, double click on the html file. This will open it in your browser. CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.</p>
+<p>In that folder, double click on the html file. This will open it in your web-browser.<br>
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.</p>
 <p>If you are on R studio cloud, see Tutorial 1 for how to download your files</p>
 <p>Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.</p>
 <div class="cell">
