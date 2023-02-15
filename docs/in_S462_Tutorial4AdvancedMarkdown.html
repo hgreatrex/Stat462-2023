@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STAT-462 Lab Book - About</title>
+<title>STAT-462 Lab Book - Tutorial 4: Advanced Markdown</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">About</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 4: Advanced Markdown</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in_S462_Tutorial4AdvancedMarkdown.html" class="sidebar-item-text sidebar-link">Tutorial 4: Advanced Markdown</a>
+  <a href="./in_S462_Tutorial4AdvancedMarkdown.html" class="sidebar-item-text sidebar-link active">Tutorial 4: Advanced Markdown</a>
   </div>
 </li>
       </ul>
@@ -230,14 +230,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#Tut4H_photo" id="toc-Tut4H_photo" class="nav-link active" data-scroll-target="#Tut4H_photo">Adding photos</a>
+  <ul class="collapse">
+  <li><a href="#adding-videos" id="toc-adding-videos" class="nav-link" data-scroll-target="#adding-videos">Adding videos</a></li>
+  </ul></li>
+  <li><a href="#yaml-code" id="toc-yaml-code" class="nav-link" data-scroll-target="#yaml-code">YAML Code</a>
+  <ul class="collapse">
+  <li><a href="#troubleshooting-yaml-code" id="toc-troubleshooting-yaml-code" class="nav-link" data-scroll-target="#troubleshooting-yaml-code">Troubleshooting YAML code</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">About</h1>
+<h1 class="title d-none d-lg-block">Tutorial 4: Advanced Markdown</h1>
 </div>
 
 
@@ -252,15 +265,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>About this site</p>
+<section id="Tut4H_photo" class="level1">
+<h1>Adding photos</h1>
+<p>There are many ways to do this, with a FANTASTIC tutorial here if you get stuck:</p>
+<p>http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/</p>
+<p><br></p>
+<p><strong>Step 1:</strong></p>
+<p>Go find your picture. If it’s on the internet the easiest way is to right click on it and press “save as”, then save the jpeg or png directly into your project folder with an easy filename.</p>
+<p><br></p>
+<p><strong>Step 2:</strong></p>
+<p>Place your picture/photo into your project folder (e.g.&nbsp;your Lab 3 project folder).</p>
+<p><br></p>
+<p><strong>Step 3:</strong></p>
+<p>Make a new code chunk.<br> REMEMER TO ADD BLANK LINES ABOVE AND BELOW THE CODE CHUNK.</p>
+<p><br></p>
+<p><strong>Step 4</strong></p>
+<p>Inside the code chunk, use the <code>knitr::include_graphics()</code> command from the knitr package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="cell-output-display">
+<p><img src="./Figures/pg_Tut4_markdown_fig10.png" class="img-fluid" width="836"></p>
 </div>
 </div>
+<p>You’ll see I also added some code chunk options:</p>
+<ul>
+<li>echo=FALSE : don’t show the code</li>
+<li>fig.align - ‘center’ : Centre align the photo when you press knit</li>
+<li>out.width - ‘60%’ : Make your photo smaller or larger on the page</li>
+<li>fig.cap - “your caption” : Add a caption (IN QUOTES). I used * to make mine italic.</li>
+</ul>
+<p>If you run the code chunk by pressing the green arrow, you will see the picture, but not things like the caption.</p>
+<p>Now press knit and you should see the picture, caption and options, but not the code (if echo=FALSE is included)</p>
+<p><br></p>
+<p><strong>Example</strong></p>
+<p>For example, here’s an example on chipmunks. The <code>chipmunk.webp</code> file is inside my project folder. (note, the file type doesn’t matter but you have to type it)</p>
+<p>Here’s how it looks in my .Rmd file.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="./Figures/pg_Tut4_markdown_fig11.png" class="img-fluid" width="831"></p>
+</div>
+</div>
+<p>and in the actual report:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chipmunk.webp" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption"><em>Chipmunks are cool, image from: https://mymodernmet.com/chris-mcveigh-chipmunk-adventures</em></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>For more options see the tutorial: http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/ </strong></p>
+<section id="adding-videos" class="level2">
+<h2 class="anchored" data-anchor-id="adding-videos">Adding videos</h2>
+<p>If you wish to add a video from youtube, you will need to install a new package called vembedr. Follow Tutorial 2 to install this package and add it to your library code chunk and run that code chunk.</p>
+<p>Now make a code chunk and use the embed_url command to embed a video of your choice from youtube/vimeo etc in your report. If you have issues, see teams.</p>
+</section>
+</section>
+<section id="yaml-code" class="level1">
+<h1>YAML Code</h1>
+<p>Your YAML code is the code at the top of your file in between the — lines in the figure above. Let’s zoom in</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/pg_Tut4_markdown_fig5.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Your YAML code controls how your final output looks and which type of output it becomes. For example, this could be a website (as for ours), a pdf, a presentation or app.. The basic version is very simple with a title, an author, a self entered date and that we just want a website.</p>
+<p>Let’s add in more options.</p>
+<p>YAML code is annoying to edit, because here, <em>EXACT SPACES/SPELLINGS MATTER</em>. Everything has to be perfect or it won’t knit.</p>
+<p>Here is an example of what you could do, some of these might not work for your template</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"STAT-462 TEMPLATE"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"hlg5155"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">"`r Sys.Date()`"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  html_document<span class="sc">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    toc_depth<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    toc_float<span class="sc">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      collapsed<span class="sc">:</span> no</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    number_sections<span class="sc">:</span> yes</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> lumen</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    df_print<span class="sc">:</span> paged</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The elements we just added are:</p>
+<ul>
+<li>The title</li>
+<li>The author (note,use your ID not your name)</li>
+<li>Automatically created today’s date</li>
+<li>A floating table of contents</li>
+<li>Numbered sections (this won’t appear until you start typing section headings)</li>
+<li>The document is now in the lumen theme. (you might have a different theme)</li>
+</ul>
+<p><br></p>
+<section id="troubleshooting-yaml-code" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting-yaml-code">Troubleshooting YAML code</h2>
+<ul>
+<li>Note, if you copy/paste this and it doesn’t work, sometimes the quote marks copy weirdly from the internet - try deleting and retyping the quotes.<br>
+</li>
+<li>If it still doesn’t work.. this might be because a space is missing (especially if you typed it out).
+<ul>
+<li>Editing YAML code can be a pain. It is very case and space sensitive.<br>For example, the spaces at the start of some lines are important and are created using the TAB KEY, not the space bar. There is one TAB key before html_notebook (which is now on a new line). There are two TAB KEYS before toc, toc_float, number_sections and theme.</li>
+</ul></li>
+</ul>
+<p>Also try looking at the theme’s website e.g.&nbsp;google rmdformats add table of contents or similar.</p>
+<p><em>Don’t continue until you can make and view your html when you press knit. If it doesn’t work, ask for help before moving on</em></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

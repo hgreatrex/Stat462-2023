@@ -1,0 +1,81 @@
+---
+title: "Lab 1: R intro"
+---
+
+```{r, warning=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(kableExtra)
+```
+
+# Welcome to Lab 2
+
+The aim of this lab is to continue to get comfortable in R and to practice the mix of word processing and report editing
+
+The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/assignments/14748231>
+
+**If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex and REMEMBER YOU CAN ALWAYS USE RSTUDIO CLOUD**.\
+
+## Getting started
+
+### 1. Review the Lab Q&A
+
+First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It explains
+
+-   What you need to submit
+-   How you are graded and where the rubric is
+-   The late policy
+-   What counts as cheating
+
+### 2. Make a new project and markdown file {.unnumbered}
+
+IMPORTANT! The tutorials are MUCH BETTER - follow and work through Tutorial 2.
+
+You should now have a new project and a new RMarkdown file that knits.
+
+Create a code chunk near the top and load these packages. You may need to install them first using tutorial 2.
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+library(skimr)
+library(ggplot2)
+library(plotly)
+library(ISLR)
+library(equatiomatic)
+library(olsrr)
+library(Stat2Data)
+library(readxl)
+library(tmap)
+```
+
+## 3: Code showcase
+
+### 3A. Adding images
+
+As well as code, I also want you to be able to embed images or videos into your report.
+
+**Q1: Follow Tutorial 4b to add images to add an image or video of your choice into your report. (note, non-english characters in file names or huge photos will break R)**
+
+**Q2. Use a bullet point list (see tutorial 2 visual mode or google) to explain why you chose those photos/images.**
+
+### 3B. Changing the YAML Code
+
+Finally, to make your code look neat, we can edit the "YAML" code at the top. Look at Tutorial
+
+## 6. Submitting your Lab
+
+Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.
+
+In that folder, double click on the html file. This will open it in your web-browser.\
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.
+
+If you are on R studio cloud, see Tutorial 1 for how to download your files
+
+Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.
+
+```{r, echo=FALSE}
+knitr::include_graphics("./Figures/Lab1_Basics_2022_fig1.png")
+```
+
+<br>

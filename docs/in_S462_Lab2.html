@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STAT-462 Lab Book - About</title>
+<title>STAT-462 Lab Book - Lab 1: R intro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -132,7 +69,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">About</h1>
+      <h1 class="quarto-secondary-nav-title">Lab 1: R intro</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -205,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link">Lab 1: R intro</a>
+  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link active">Lab 1: R intro</a>
   </div>
 </li>
       </ul>
@@ -230,14 +167,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welcome-to-lab-2" id="toc-welcome-to-lab-2" class="nav-link active" data-scroll-target="#welcome-to-lab-2">Welcome to Lab 2</a>
+  <ul class="collapse">
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <ul class="collapse">
+  <li><a href="#review-the-lab-qa" id="toc-review-the-lab-qa" class="nav-link" data-scroll-target="#review-the-lab-qa">1. Review the Lab Q&amp;A</a></li>
+  <li><a href="#make-a-new-project-and-markdown-file" id="toc-make-a-new-project-and-markdown-file" class="nav-link" data-scroll-target="#make-a-new-project-and-markdown-file">2. Make a new project and markdown file</a></li>
+  </ul></li>
+  <li><a href="#code-showcase" id="toc-code-showcase" class="nav-link" data-scroll-target="#code-showcase">3: Code showcase</a>
+  <ul class="collapse">
+  <li><a href="#a.-adding-images" id="toc-a.-adding-images" class="nav-link" data-scroll-target="#a.-adding-images">3A. Adding images</a></li>
+  <li><a href="#b.-changing-the-yaml-code" id="toc-b.-changing-the-yaml-code" class="nav-link" data-scroll-target="#b.-changing-the-yaml-code">3B. Changing the YAML Code</a></li>
+  </ul></li>
+  <li><a href="#submitting-your-lab" id="toc-submitting-your-lab" class="nav-link" data-scroll-target="#submitting-your-lab">6. Submitting your Lab</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">About</h1>
+<h1 class="title d-none d-lg-block">Lab 1: R intro</h1>
 </div>
 
 
@@ -252,15 +208,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>About this site</p>
+<section id="welcome-to-lab-2" class="level1">
+<h1>Welcome to Lab 2</h1>
+<p>The aim of this lab is to continue to get comfortable in R and to practice the mix of word processing and report editing</p>
+<p>The Canvas page for this lab is: <a href="https://psu.instructure.com/courses/2243429/assignments/14748231" class="uri">https://psu.instructure.com/courses/2243429/assignments/14748231</a></p>
+<p><strong>If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex and REMEMBER YOU CAN ALWAYS USE RSTUDIO CLOUD</strong>.<br>
+</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<section id="review-the-lab-qa" class="level3">
+<h3 class="anchored" data-anchor-id="review-the-lab-qa">1. Review the Lab Q&amp;A</h3>
+<p>First, please review the lab Q&amp;A: <a href="./in_S462_Lab0Index.html"><strong>CLICK HERE</strong></a>. It explains</p>
+<ul>
+<li>What you need to submit</li>
+<li>How you are graded and where the rubric is</li>
+<li>The late policy</li>
+<li>What counts as cheating</li>
+</ul>
+</section>
+<section id="make-a-new-project-and-markdown-file" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="make-a-new-project-and-markdown-file">2. Make a new project and markdown file</h3>
+<p>IMPORTANT! The tutorials are MUCH BETTER - follow and work through Tutorial 2.</p>
+<p>You should now have a new project and a new RMarkdown file that knits.</p>
+<p>Create a code chunk near the</p>
+</section>
+</section>
+<section id="code-showcase" class="level2">
+<h2 class="anchored" data-anchor-id="code-showcase">3: Code showcase</h2>
+<section id="a.-adding-images" class="level3">
+<h3 class="anchored" data-anchor-id="a.-adding-images">3A. Adding images</h3>
+<p>As well as code, I also want you to be able to embed images or videos into your report.</p>
+<p><strong>Q1: Follow Tutorial 4b to add images to add an image or video of your choice into your report. (note, non-english characters in file names or huge photos will break R)</strong></p>
+<p><strong>Q2. Use a bullet point list (see tutorial 2 visual mode or google) to explain why you chose those photos/images.</strong></p>
+</section>
+<section id="b.-changing-the-yaml-code" class="level3">
+<h3 class="anchored" data-anchor-id="b.-changing-the-yaml-code">3B. Changing the YAML Code</h3>
+<p>Finally, to make your code look neat, we can edit the “YAML” code at the top. Look at Tutorial</p>
+</section>
+</section>
+<section id="submitting-your-lab" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-your-lab">6. Submitting your Lab</h2>
+<p>Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.</p>
+<p>In that folder, double click on the html file. This will open it in your web-browser.<br>
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.</p>
+<p>If you are on R studio cloud, see Tutorial 1 for how to download your files</p>
+<p>Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="cell-output-display">
+<p><img src="./Figures/Lab1_Basics_2022_fig1.png" class="img-fluid" width="1673"></p>
 </div>
 </div>
+<p><br></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

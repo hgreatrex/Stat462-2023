@@ -9,7 +9,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE)
 ```
 
-
 ```{r, include=FALSE}
 
 # PACKAGES-----------------------------------------------
@@ -84,13 +83,13 @@ In this class, we will be using R-Projects. An R-project is a folder that will s
 
 This is incredibly useful - it means that if you switch from R-Cloud, to the lab computers, to your laptop, all you have to do is to move the folder and everything will just work. Equally, its easy to compare labs.
 
+-   [CLICK HERE to learn how to create/return to and use projects on R studio cloud.](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial1WhatisR.html#before-each-lab-making-a-project)
+
+-   [CLICK HERE to learn how to create/return to and use projects on R-Desktop.](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial1WhatisR.html#before-each-lab-making-a-project-1)
+
 Learn more here. You will have a project for each Lab and I may share projects with example code.
 
-[![Rproject](./Figures/Tut_Fig7_ProjectVideo.png)](https://www.linkedin.com/learning/learning-the-r-tidyverse/why-should-you-use-projects-in-rstudio?u=76811570)
-
--   You can see how to create/return to and use projects on R studio cloud here:
-
--   You can see how to create/return to and use projects on your own computer here
+[![](./Figures/Tut_Fig7_ProjectVideo.png)](https://www.linkedin.com/learning/learning-the-r-tidyverse/why-should-you-use-projects-in-rstudio?u=76811570)
 
 ------------------------------------------------------------------------
 

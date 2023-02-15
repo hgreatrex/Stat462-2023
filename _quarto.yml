@@ -10,12 +10,15 @@ website:
     contents:
       - section: "Tutorials"
         contents:
-          - in_S462_Tutorial0Index.qmd
           - in_S462_Tutorial1WhatisR.qmd
+          - in_S462_Tutorial2BeforeEachLab.qmd
+          - in_S462_Tutorial3RBasics.qmd
+          - in_S462_Tutorial4AdvancedMarkdown.qmd
       - section: "Labs"
         contents:
           - in_S462_Lab0Index.qmd
           - in_S462_Lab1.qmd
+          - in_S462_Lab2.qmd
       - section: "Project"
         contents:
           - in_S462_Project0Index.qmd
