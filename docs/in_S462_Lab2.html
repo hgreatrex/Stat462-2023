@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STAT-462 Lab Book - Lab 1: R intro</title>
+<title>STAT-462 Lab Book - Lab 2: Scatterplots</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lab 1: R intro</h1>
+      <h1 class="quarto-secondary-nav-title">Lab 2: Scatterplots</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -183,6 +183,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./in_S462_Tutorial4AdvancedMarkdown.html" class="sidebar-item-text sidebar-link">Tutorial 4: Advanced Markdown</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial5LoadingData.html" class="sidebar-item-text sidebar-link">Tutorial 5: Loading Data</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -205,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link active">Lab 1: R intro</a>
+  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link active">Lab 2: Scatterplots</a>
   </div>
 </li>
       </ul>
@@ -257,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lab 1: R intro</h1>
+<h1 class="title d-none d-lg-block">Lab 2: Scatterplots</h1>
 </div>
 
 
@@ -359,6 +364,88 @@ Attaching package: 'olsrr'</code></pre>
 </section>
 <section id="taiwan-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="taiwan-analysis">4: Taiwan analysis</h2>
+<p>Create a new Level 1 heading called <code>House Prices</code>.</p>
+<p>Next month, your friend is moving to Sindian Dist., in New Taipei City, Taiwan. They want to buy a house and have asked you to figure out what most impacts house price.</p>
+<ol type="1">
+<li>Download the “Lab03_house.xlsx” dataset from the Lab page on canvas and put it into your Lab 3 folder. Use the read_excel() command to read it in and save it to a variable called house:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This only works if you are running your project</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If it can't find the file, use file.choose() to locate it, as described in homework 3</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then add in the full location rather than just the file name.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>house <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Lab03_house.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Explore the dataset (using summaries etc (lab 1 &amp; 2), and by reading more about the data here: https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set). Describe the dataset to your friend. What columns does the dataset contains and how much data there is? Are there any limitations using this data?</li>
+</ol>
+<p>IMPORTANT - WHAT ARE THE UNITS OF THE VARIABLES? WHAT IS THE OBJECT OF ANALYSIS? (Remember to write these in your summary)</p>
+<ol start="3" type="1">
+<li><p>Use R to explore the summary statistics and distribution of the House.Price column. What range of costs are “most” of the prices between? (say 68% or the interquartile range..) Is the house price data normally distributed?</p></li>
+<li><p>You have a been told that houses might be more expensive in the North.</p>
+<p>_ Choose your response and your predictor</p>
+<ul>
+<li>Create a scatterplot to assess this (hint: Latitude is the North/South coordinate).<br>
+</li>
+<li>Describe the scatterplot fully as discussed in Lecture 7.</li>
+<li>Create a Simple Linear Regression model to assess the issue</li>
+<li>Plot the abline, line of best fit onto a new scatterplot</li>
+</ul></li>
+<li><p>Why might this be misleading as an analysis? or why might this model be flawed? What confounding variable could there be? To help you answer this question, try running this code to further explore the data on a map.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Command from the sf library</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a spatial version of the data using the Longitide and Latitude columns</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>house.spatial <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(house,<span class="at">coords=</span><span class="fu">c</span>(<span class="st">"Longitude"</span>,<span class="st">"Latitude"</span>),<span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># make interactive, for static set as "plot"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"view"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Command from the tmap library</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and plot</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_basemap</span>(<span class="st">"Esri.WorldTopoMap"</span>) <span class="sc">+</span> </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>     <span class="fu">qtm</span>(house.spatial, <span class="co"># data</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">symbols.col=</span><span class="st">"House.Price"</span>, <span class="co"># which column for the symbols</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">symbols.alpha=</span><span class="fl">0.9</span>, <span class="co"># transparency</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">symbols.size=</span>.<span class="dv">2</span>, <span class="co"># how big</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">symbols.palette=</span><span class="st">"Spectral"</span>, <span class="co">#colors from https://colorbrewer2.org</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">symbols.style=</span><span class="st">"fisher"</span>) <span class="co"># color breaks</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" type="1">
+<li>What other confounding variables are there? Is there a variable that is more important than latitude in predicting house prices? Provide evidence to justify your answer. To help you answer this data and answer this question, some useful code includes:</li>
+</ol>
+<ul>
+<li>[A] corrplot(). A quick look at the correlation coefficient between all the variables. We will discuss it more next week.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(house),<span class="at">method=</span><span class="st">"number"</span>,<span class="at">type=</span><span class="st">"lower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>[B] If you then want to look at three variables together, you can use an interactive plot e.g you can use this code and change the response, y (currently house price), the predictor x (currently latitude) and the colour (currently distance from the metro station). Have a play and see what variables stand out.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a plot</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> house <span class="sc">%&gt;%</span>                  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(Latitude,House.Price, <span class="at">col=</span> House.Age)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low=</span><span class="st">"blue"</span>, <span class="at">high=</span><span class="st">"red"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># and actually plot it</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>You can also use standard scatterplots and regression models if that is easier. Or even excel and screenshots embedded in your report if it is all going wrong!</li>
+</ul>
+<ol start="7" type="1">
+<li><p>Your friend forgot to tell you that they <em>love</em> shopping. They only want to live in a house that is close to at least 7 shops, but are worried that they might end up paying too much.</p>
+<ul>
+<li>Filter the data so that it only includes 7 or more nearby shops e.g you’re subsetting by the number of shops column (Tutorial 2C, section 1.8.6). Save the output to a new variable called <code>house.gt7shop</code>.<br>
+</li>
+<li>Run a t.test to find out if your house.gt7shop data has a mean that is significantly higher than the mean of the house prices over the whole region (Tutorial 2D, 1.9.2). Remember to write up your hypotheses, the results and the conclusion in plain English that your friend would understand.</li>
+</ul></li>
+<li><p>[OPTIONAL BONUS 2%] How much does the house price go up for every 1 KILOMETER that you travel away from a metro station? Hint(remember the lm command..)</p></li>
+</ol>
 </section>
 <section id="submitting-your-lab" class="level2">
 <h2 class="anchored" data-anchor-id="submitting-your-lab">6. Submitting your Lab</h2>

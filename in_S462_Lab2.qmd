@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: R intro"
+title: "Lab 2: Scatterplots"
 ---
 
 ```{r, warning=FALSE, include=FALSE, message=FALSE}
@@ -64,6 +64,87 @@ As well as code, I also want you to be able to embed images or videos into your 
 Finally, to make your code look neat, we can edit the "YAML" code at the top. Look at Tutorial 3B - and add a title, author, today's date (copy/paste the command) and a table of contents if your template does not have one already and allows it.
 
 ## 4: Taiwan analysis
+
+Create a new Level 1 heading called `House Prices`.
+
+Next month, your friend is moving to Sindian Dist., in New Taipei City, Taiwan. They want to buy a house and have asked you to figure out what most impacts house price.
+
+1.  Download the "Lab03_house.xlsx" dataset from the Lab page on canvas and put it into your Lab 2 folder. Use the read_excel() command to read it in and save it to a variable called house:
+
+```{r}
+# This only works if you are running your project
+# If it can't find the file, use file.choose() to locate it,
+# Then add in the full location rather than just the file name.
+house <- read_excel("Lab03_house.xlsx")
+```
+
+2.  Explore the dataset (using summaries etc, and by reading more about the data here: https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set). Describe the dataset to your friend. What columns does the dataset contains and how much data there is? Are there any limitations using this data?
+
+IMPORTANT - WHAT ARE THE UNITS OF THE VARIABLES? WHAT IS THE OBJECT OF ANALYSIS? (Remember to write these in your summary)
+
+3.  Use R to explore the summary statistics and distribution of the House.Price column. What range of costs are "most" of the prices between? (say 68% or the interquartile range..) Is the house price data normally distributed?
+
+4.  You have a been told that houses might be more expensive in the North.
+
+    \_ Choose your response and your predictor
+
+    -   Create a scatterplot to assess this (hint: Latitude is the North/South coordinate).\
+    -   Describe the scatterplot fully as discussed in Lecture 7.
+    -   Create a Simple Linear Regression model to assess the issue
+    -   Plot the abline, line of best fit onto a new scatterplot
+
+5.  Why might this be misleading as an analysis? or why might this model be flawed? What confounding variable could there be? To help you answer this question, try running this code to further explore the data on a map.
+
+```{r,eval=FALSE}
+# Command from the sf library
+# Make a spatial version of the data using the Longitide and Latitude columns
+house.spatial <- st_as_sf(house,coords=c("Longitude","Latitude"),crs = 4326)
+
+# make interactive, for static set as "plot"
+tmap_mode("view")
+
+
+# Command from the tmap library
+# and plot
+tm_basemap("Esri.WorldTopoMap") + 
+     qtm(house.spatial, # data
+         symbols.col="House.Price", # which column for the symbols
+         symbols.alpha=0.9, # transparency
+         symbols.size=.2, # how big
+         symbols.palette="Spectral", #colors from https://colorbrewer2.org
+         symbols.style="fisher") # color breaks
+```
+
+6.  What other confounding variables are there? Is there a variable that is more important than latitude in predicting house prices? Provide evidence to justify your answer. To help you answer this data and answer this question, some useful code includes:
+
+-   \[A\] corrplot(). A quick look at the correlation coefficient between all the variables. We will discuss it more next week.
+
+```{r,eval=FALSE}
+corrplot(cor(house),method="number",type="lower")
+```
+
+-   \[B\] If you then want to look at three variables together, you can use an interactive plot e.g you can use this code and change the response, y (currently house price), the predictor x (currently latitude) and the colour (currently distance from the metro station). Have a play and see what variables stand out.
+
+```{r, eval=FALSE}
+# Create a plot
+p <- house %>%                  
+  ggplot( aes(Latitude,House.Price, col= House.Age)) +
+  geom_point() +
+  theme_classic()+
+  scale_color_gradient(low="blue", high="red")
+
+# and actually plot it
+ggplotly(p)
+```
+
+-   You can also use standard scatterplots and regression models if that is easier. Or even excel and screenshots embedded in your report if it is all going wrong!
+
+7.  Your friend forgot to tell you that they *love* shopping. They only want to live in a house that is close to at least 7 shops, but are worried that they might end up paying too much.
+
+    -   Filter the data so that it only includes 7 or more nearby shops e.g you're subsetting by the number of shops column (Tutorial 2C, section 1.8.6). Save the output to a new variable called `house.gt7shop`.\
+    -   Run a t.test to find out if your house.gt7shop data has a mean that is significantly higher than the mean of the house prices over the whole region (Tutorial 2D, 1.9.2). Remember to write up your hypotheses, the results and the conclusion in plain English that your friend would understand.
+
+8.  \[OPTIONAL BONUS 2%\] How much does the house price go up for every 1 KILOMETER that you travel away from a metro station? Hint(remember the lm command..)
 
 ## 6. Submitting your Lab
 

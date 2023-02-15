@@ -14,6 +14,7 @@ website:
           - in_S462_Tutorial2BeforeEachLab.qmd
           - in_S462_Tutorial3RBasics.qmd
           - in_S462_Tutorial4AdvancedMarkdown.qmd
+          - in_S462_Tutorial5LoadingData.qmd
       - section: "Labs"
         contents:
           - in_S462_Lab0Index.qmd

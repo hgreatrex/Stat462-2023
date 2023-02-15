@@ -94,7 +94,9 @@ Eventually a window will open up:
 knitr::include_graphics('./Figures/pg_Tut4_markdown_fig1.png')
 ```
 
-Click "From Template" and select a template of your choice. Click here to see what different templates look like: https://juba.github.io/rmdformats/
+Click "From Template" and **select a template of your choice**. Click here to see what different templates look like:
+
+<https://juba.github.io/rmdformats/>
 
 It will ask you to name your file. Give it a relevant name including your email ID, like Lab-2_hlg5155. A new file should appear on your screen.
 
