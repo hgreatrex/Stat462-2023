@@ -65,6 +65,8 @@ Finally, to make your code look neat, we can edit the "YAML" code at the top. Lo
 
 ## 4: Taiwan analysis
 
+THIS USED TO BE IN LAB 3 - Ignore any lab 3 references
+
 Create a new Level 1 heading called `House Prices`.
 
 Next month, your friend is moving to Sindian Dist., in New Taipei City, Taiwan. They want to buy a house and have asked you to figure out what most impacts house price.
