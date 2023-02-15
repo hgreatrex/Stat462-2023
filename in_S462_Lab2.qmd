@@ -61,7 +61,9 @@ As well as code, I also want you to be able to embed images or videos into your 
 
 ### 3B. Changing the YAML Code
 
-Finally, to make your code look neat, we can edit the "YAML" code at the top. Look at Tutorial
+Finally, to make your code look neat, we can edit the "YAML" code at the top. Look at Tutorial 3B - and add a title, author, today's date (copy/paste the command) and a table of contents if your template does not have one already and allows it.
+
+## 4: Taiwan analysis
 
 ## 6. Submitting your Lab
 
