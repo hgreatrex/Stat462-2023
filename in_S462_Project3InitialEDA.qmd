@@ -101,15 +101,49 @@ names(DataIn)
 
 Now, there are several challenges that you can split as a group depending on your strengths.
 
--   Describing the data and the meta data. This means
+-   **Describing the data and the meta data. This means**
+
     -   Explaining the unit of analysis, the population and the varioables
 
     -   Researching and writing up why they have been "transformed" into UTM (hint: [CLICK HERE)](https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11a_basics)
 
     -   Researching and writing about each of the predictor variables (e.g. a few sentences about what it is etc, google and the links above should help, or ask me questions on Teams)\
--   Making summary statistics and plots of the `DataIn` table. For example
+
+-   **Making summary statistics and plots of the `DataIn` table. For example**
+
     -   How many sensors are there (hint, table command)
 
     -   Any missing data?
 
-    -   Filtering the data to just one station (hint
+    -   Filtering the data to just one station (hint, this will really help: <https://crd150.github.io/lab2.html#Data_Wrangling>) and making a plot of the temperature over time
+
+    -   Filtering the data in other ways and making exploratory plots and histograms.\
+
+-   **Quality controlling the data. For example,**
+
+    -   Can you trust all the readings at all times of day? Can you see examples of where there are issues.
+
+    -   What about over all dates? Anything weird happening?
+
+    -   If you find things, decide whether you should keep or remove them AND WRITE DOWN WHAT YOU DID/CHANGED.\
+
+-   **Using** **`DataIn.sf`** Make some initial maps, especially of static variables that don't change over time.
+
+-   You could use QTM from the previous lab, for example
+
+```{r}
+tmap_mode("view")
+
+qtm(DataIn.sf,
+            dots.col="NCLD_Percent_Tree_Cover")+
+           tm_layout(legend.outside = TRUE)
+
+```
+
+-   Or better still.. follow these instructions (<https://psu-spatial.github.io/Geog364-2021/364Data_TutorialWranglePoint.html>) or <https://r-tmap.github.io/tmap-book/nutshell.html> to make prettier ones.\
+-   Explore the data.\
+-   Finally, choose one different predictor variable each - and make a scatterplot to look at the impact on temperatures and a basic linear model.\
+-   Critique your model so far, especially seeing if it visually fits the LINE assumptions. \
+    How can we do better? Feel free to try other options and Lab 3 will help..
+
+## Combine your work into an exploratory data analysis part of your report.
