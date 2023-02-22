@@ -48,6 +48,7 @@ library(sf)      # spatial
 library(sp)      # spatial
 library(raster)  # spatial
 library(terra)   # spatial
+library(tidyverse) # ALL
 library(tmap)    # mapping
 ```
 
@@ -79,7 +80,7 @@ names(DataIn)
 
     -   Aspect_1m : [The aspect of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490)., from the same USGS DEM
 
-    -   Aspect_1m : [The roughness of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490), from the same USGS DEM
+    -   Roughness_1m : [The roughness of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490), from the same USGS DEM
 
     -   LandCover_Code: The NCLD landcover code for that location
 
