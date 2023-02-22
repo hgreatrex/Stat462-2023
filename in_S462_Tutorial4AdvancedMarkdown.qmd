@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 4: Advanced Markdown"
+title: "T4: Advanced Markdown"
 editor: visual
 ---
 
@@ -7,7 +7,7 @@ editor: visual
 
 There are many ways to do this, with a FANTASTIC tutorial here if you get stuck:
 
-http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/
+<http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/>
 
 <br>
 
@@ -132,7 +132,3 @@ The elements we just added are:
 Also try looking at the theme's website e.g. google rmdformats add table of contents or similar.
 
 *Don't continue until you can make and view your html when you press knit. If it doesn't work, ask for help before moving on*
-
-
-
-

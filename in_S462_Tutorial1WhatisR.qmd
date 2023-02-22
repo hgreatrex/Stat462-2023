@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 1: R Basics"
+title: "T1: R Basics"
 ---
 
 ```{r setup, include=FALSE}

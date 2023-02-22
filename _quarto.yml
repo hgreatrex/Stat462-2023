@@ -5,16 +5,9 @@ project:
 website:
   title: "STAT-462 Lab Book"
   sidebar:
-    style: "docked"
+    style: "floating"
     search: true
     contents:
-      - section: "Tutorials"
-        contents:
-          - in_S462_Tutorial1WhatisR.qmd
-          - in_S462_Tutorial2BeforeEachLab.qmd
-          - in_S462_Tutorial3RBasics.qmd
-          - in_S462_Tutorial4AdvancedMarkdown.qmd
-          - in_S462_Tutorial5LoadingData.qmd
       - section: "Labs"
         contents:
           - in_S462_Lab0Index.qmd
@@ -23,10 +16,26 @@ website:
       - section: "Project"
         contents:
           - in_S462_Project0Index.qmd
-
-
+          - in_S462_Project1MakingGroups.qmd
+          - in_S462_Project2Setup.qmd
+          - in_S462_Project3InitialEDA.qmd
+      - section: "Tutorials"
+        contents:
+          - in_S462_Tutorial1WhatisR.qmd
+          - in_S462_Tutorial2BeforeEachLab.qmd
+          - in_S462_Tutorial3RBasics.qmd
+          - in_S462_Tutorial4AdvancedMarkdown.qmd
+          - in_S462_Tutorial5LoadingData.qmd
+          - in_S462_Tutorial6Wrangling.qmd
+          - in_S462_Tutorial7Distributions.qmd
+          - in_S462_Tutorial8Plots.qmd
+          - in_S462_Tutorial9Correlation.qmd          
 format:
   html:
-    theme: cosmo
     css: styles.css
     toc: true
+    theme:
+       light: flatly
+       dark: darkly
+    fontsize: 0.95em
+    linestretch: 1.7

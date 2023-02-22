@@ -34,7 +34,7 @@ You should now have a new project and a new RMarkdown file that knits.
 
 Create a code chunk near the top and load these packages. You may need to install them first using tutorial 2.
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 library(tidyverse)
 library(dplyr)
 library(ggpubr)
@@ -80,22 +80,24 @@ Next month, your friend is moving to Sindian Dist., in New Taipei City, Taiwan. 
 house <- read_excel("Lab03_house.xlsx")
 ```
 
-2.  Explore the dataset (using summaries etc, and by reading more about the data here: https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set). Describe the dataset to your friend. What columns does the dataset contains and how much data there is? Are there any limitations using this data?
+2.  Explore the dataset (using summaries etc, and by reading more about the data here: <https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set>). Describe the dataset to your friend. What columns does the dataset contains and how much data there is? Are there any limitations using this data?
 
 IMPORTANT - WHAT ARE THE UNITS OF THE VARIABLES? WHAT IS THE OBJECT OF ANALYSIS? (Remember to write these in your summary)
 
-3.  Use R to explore the summary statistics and distribution of the House.Price column. What range of costs are "most" of the prices between? (say 68% or the interquartile range..) Is the house price data normally distributed?
+3.  Use R to explore the summary statistics and distribution of the House.Price column. What range of costs are "most" of the prices between? (say 68% or the interquartile range..) Is the house price data normally distributed? See the [distributions tutorial](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial5LoadingData.html#S.Tutorial.2D)
 
 4.  You have a been told that houses might be more expensive in the North.
 
     \_ Choose your response and your predictor
 
-    -   Create a scatterplot to assess this (hint: Latitude is the North/South coordinate).\
-    -   Describe the scatterplot fully as discussed in Lecture 7.
-    -   Create a Simple Linear Regression model to assess the issue
+    -   Create a scatterplot to assess this (hint: Latitude is the North/South coordinate).
+    -   Describe the scatterplot and describe it as in lectures
+    -   Create a Simple Linear Regression model to assess the issue - [See this Tutorial](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial5LoadingData.html#regression-models)
     -   Plot the abline, line of best fit onto a new scatterplot
 
 5.  Why might this be misleading as an analysis? or why might this model be flawed? What confounding variable could there be? To help you answer this question, try running this code to further explore the data on a map.
+
+    You might have to first install the sf package and add library(sf) to your library code chunk (and re-run)
 
 ```{r,eval=FALSE}
 # Command from the sf library
@@ -148,7 +150,7 @@ ggplotly(p)
 
 8.  \[OPTIONAL BONUS 2%\] How much does the house price go up for every 1 KILOMETER that you travel away from a metro station? Hint(remember the lm command..)
 
-## 6. Submitting your Lab
+## 5. Submitting your Lab
 
 Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.
 

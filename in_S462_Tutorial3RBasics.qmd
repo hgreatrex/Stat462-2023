@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 3: R-Basics"
+title: "T3: Console-Basics and help"
 ---
 
 ```{r setup, include=FALSE}

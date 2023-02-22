@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 2. Before Each Lab"
+title: "T2. Before Each Lab"
 editor: visual
 ---
 
