@@ -183,6 +183,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link">Lab 2: Scatterplots</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab3.html" class="sidebar-item-text sidebar-link active">Lab 3: Simple Linear Regression (THIS WEEK)</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -446,7 +451,16 @@ You lose marks for things like no theme, poor headings etc.</p>
 <ol start="2" type="1">
 <li>Click on this link: <a href="AdvertisingPlant2023.xlsx">AdvertisingPlant2023.xlsx</a></li>
 </ol>
-<p>Read in the data and explore it.</p>
+<p>Read in the data and explore it. You will find that you have to remove some poor-quality data. There are a few ways to do this:</p>
+<ol type="a">
+<li>Go and remove it from the excel file, make a note of what it was and re-ru</li>
+</ol>
+<p>Use the filter command to exclude it. For example, lets say there was a value of -999 in the temperature column of <code>testtable</code>, you could use this command to exclude it</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>newtable <span class="ot">&lt;-</span> testtable[<span class="fu">which</span>(testtable<span class="sc">$</span>temperature) <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">90</span> , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(or see <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial06Wrangling.html#filtering-rows-and-columns">Tutorial 6 Filter, link checked</a>)</p>
+<p>Double check you didn’t just accidentally delete the whole dataset!</p>
 </section>
 <section id="step-4.2" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.2">Step 4.2</h4>
@@ -455,9 +469,10 @@ You lose marks for things like no theme, poor headings etc.</p>
 <ul>
 <li><p>The object of analysis</p></li>
 <li><p>A reasonable population this sample dataset is representative of. Could she use this for say 2023 sales? 2040 sales in a new country?</p></li>
+<li><p>Your response variable.</p></li>
 <li><p>The variables available for analysis along with their units.</p></li>
-<li><p>One or two things from your summary analysis, for example, maybe you could talk about the average sales, show a histogram or <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots">violin plot</a> or something and explain what your findings in a few sentences below the text..<br>
-Essentially, summarise/explain what the dataset shows to Ms Blank. You are allowed to move any code from section 4.1 to here to make your report flow.</p></li>
+<li><p>One or two things from your summary analysis, for example, maybe you could talk about the average sales, mention the data you removed or show a histogram / <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots">violin plot</a> etc and explain your findings in a few sentences<br>
+Essentially, summarise/explain what the dataset shows to The Sill. You are allowed to move any code from section 4.1 to here to make your report flow.</p></li>
 </ul>
 <p><em><strong>Want an A/A*?</strong> Make sure to explain any results in clear English about the actual topic after any statistical output or plots, and to explain any jargon.</em></p>
 <ul>

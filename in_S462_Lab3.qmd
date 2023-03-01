@@ -150,7 +150,19 @@ download.file("https://github.com/psu-spatial/Stat462.data-2021/blob/main/Advert
 
 2.  Click on this link: [AdvertisingPlant2023.xlsx](AdvertisingPlant2023.xlsx)
 
-Read in the data and explore it.
+Read in the data and explore it. You will find that you have to remove some poor-quality data. There are a few ways to do this:
+
+a)  Go and remove it from the excel file, make a note of what it was and re-ru
+
+Use the filter command to exclude it. For example, lets say there was a value of -999 in the temperature column of `testtable`, you could use this command to exclude it
+
+```{r,eval=FALSE}
+newtable <- testtable[which(testtable$temperature) > -90 , ]
+```
+
+(or see [Tutorial 6 Filter, link checked](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial06Wrangling.html#filtering-rows-and-columns))
+
+Double check you didn't just accidentally delete the whole dataset!
 
 #### Step 4.2
 
@@ -162,16 +174,27 @@ You are writing up your analysis for the CEO of The Sill, [Eliza Blank](https://
 
 -   A reasonable population this sample dataset is representative of. Could she use this for say 2023 sales? 2040 sales in a new country?
 
+-   Your response variable.
+
 -   The variables available for analysis along with their units.
 
--   One or two things from your summary analysis, for example, maybe you could talk about the average sales, show a histogram or [violin plot](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots) or something and explain what your findings in a few sentences below the text.. \
-    Essentially, summarise/explain what the dataset shows to Ms Blank. You are allowed to move any code from section 4.1 to here to make your report flow.
+-   One or two things from your summary analysis, for example, maybe you could talk about the average sales, mention the data you removed or show a histogram / [violin plot](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots) etc and explain your findings in a few sentences\
+    Essentially, summarise/explain what the dataset shows to The Sill. You are allowed to move any code from section 4.1 to here to make your report flow.
 
 ***Want an A/A\*?** Make sure to explain any results in clear English about the actual topic after any statistical output or plots, and to explain any jargon.*
 
 -   *For example, after a statement like "reject the null hypothesis", you could write a sentence like "In terms of whether you should reject TV advertising, this means...". Or for your introductory plots, you could write a few sentences comparing the average sales or pointing out features. THESE SECTIONS DON'T HAVE TO BE LONG, but they do have to show me you understand what is going on. [Commit to the Bit](https://www.youtube.com/watch?v=suipiqewpzc), pretend you really are delivering the report to The Sill and I promise it will be easier to get through..*
 
 #### Step 4.3 Model analysis
+
+```{r, echo=FALSE,include=FALSE,eval=FALSE}
+datain <- read_excel("AdvertisingPlant2023.xlsx")
+datain <- datain[which(datain$Instagram > -90),]
+plot(datain$Instagram , datain$Sales)
+plot(datain$Mail, datain$Sales)
+
+
+```
 
 Your client wishes to know which advertising campaign is the most effective out of.
 
