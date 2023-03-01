@@ -1,0 +1,119 @@
+---
+title: "2. Causal Chains"
+author: "Dr Greatrex"
+date: "`r Sys.Date()`"
+---
+
+# Overview
+
+Some of you will become future topic experts, for example rainfall or forest or finance specialists who get to design experiments and surveys. But many of you might become "general data scientists" so it's important to be able to sensibly set up a study even on a topic you know little about with training data you didn't get to collect.
+
+With this in mind, I have chosen a topic I know a lot about and most of you are newer to, temperature measurements.
+
+You need to have a "good rule of thumb" about what are confounding variables and what might be spurious correlations. Or whether you should worry about a strange result or accept it.
+
+To do this we will be setting up our reports and making causal chain diagrams.
+
+### Step 1. Introductions
+
+1.  Introduce yourselves and create a name for your group \[5 mins\]
+
+2.  Decide (for today) who will take each of these four roles.
+
+    -   You will each be doing a mix of these things and you will get to switch in the future, but this will allow you to move forwards quickly.
+
+        -   **#Coordinator \|** Getting a project up and running, keeping track of everything. Whoever kept you on time for this first five minutes..
+
+        -   **#TopicExpert \|** Enjoy building statistical models & thinking about temperatures
+
+        -   **#VisualisationExpert**/Words making things look good.
+
+        -   **#Modeller \|** Getting to grips with R & R Studio
+
+    -   If you do not have 4 members actively participating in your team, Dr G will take this into account.
+
+### Step 2. Set up
+
+[**Each do this in parallel (15mins)**]{.underline}
+
+-   **#Modeller \|** We are going to be co-editing R-Studio cloud.
+
+    1.  Go to <https://login.rstudio.cloud/> and log into posit cloud
+
+    2.  On the top left, click NEW SPACE. If you are a heavy R studio cloud user, maybe nominate someone else so we can use their free allocation
+
+    3.  Name the space STAT-462 Group: *Name*, where *Name* is the name of your group.
+
+    4.  Go to the members button at the top. Invite your group, plus [hlg5155\@psu.edu](mailto:hlg5155@psu.edu) (me) as admin
+
+    5.  Work with the #coordinator to make sure everyone can access this and that there is a link on the teams page.
+
+    6.  If you are done early, follow the topic expert instructions
+
+-   **#Coordinator \|**
+
+    1.  Go to Canvas and click the temperature project new menu item. This will take you to Teams.
+
+    2.  You can either use Teams via a web-browser or [download it on your phone/computer](https://mobile.psu.edu/project/teams/).
+
+    3.  Go to your team's space, and add the team name and each person with their role.
+
+    4.  Work with the #Modeller to make sure that everyone can access both Teams and R-Studio Cloud
+
+    5.  Make sure everyone can communicate with each other outside class.
+
+    6.  If you are done early, follow the topic expert instructions
+
+-   **#TopicExpert \|** Your job is to refresh your knowledge on temperature data\
+    expand for more details
+
+    1.  Go here, <https://psu.instructure.com/courses/2243429/discussion_topics/15168928> and start reading. Use this as a starting point to think about what might cause cold temperatures across town.
+
+    2.  Google things that look interesting, put relevant links/references/REFERENCED graphics in the teams chats
+
+    3.  If the others join you, assign them a one or two sub-topics to look at or any questions you haven't got to.
+
+-   **#VisualisationExpert \|** Your job is to be prepared for the second half of the lab
+
+    1.  We need to think hard about causation vs correlation, and spurious vs confounding variables.
+
+    2.  Briefly refresh your memory on what they are. This is a favourite site of mine, but there are many on google if this doesn't work for you\
+        <https://statisticsbyjim.com/regression/confounding-variables-bias/>
+
+### Step 3. Causal chain diagrams
+
+In your report, you will need to include a causal diagram of what you EXPECT will impact temperature measurements across State College.
+
+For example elevation doesn't "cause" the number the thermometer reads to be different, there must be some steps in between\...
+
+Given this diagram and looking at a google map of the state college township area, where do you expect the coldest spot to be? And what will be the main predictors we can use to assess temperature
+
+Decide on the structure of your final diagram and how to present it in your report. You could make a beautiful hand drawn plot, a graphic using powerpoint, a jamboard <https://jamboard.google.com/?pli=1> , something using R (no idea how to do that)
+
+Some good resources:
+
+1.  <https://iwlearn.net/manuals/tda-sap-methodology/development-of-the-tda/causal-chain-analysis/what-is-causal-chain-analysis>
+
+2.  <https://www.juran.com/blog/the-ultimate-guide-to-cause-and-effect-diagrams/>
+
+3.  <https://www.burgehugheswalsh.co.uk/Uploaded/1/Documents/Multiple-Cause-Diagram-Tool-Draft.pdf>
+
+4.  <https://www.researchgate.net/figure/Themes-and-feedback-loops-in-the-synthesized-causal-loop-diagram-initiated-around-the_fig1_333100721>
+
+There are MANY ways you can approach this. The end goal is to convince Mr Northridge that you now know enough about temperatures that you can sensibly undertake the study. And to think hard about what to expect.
+
+### Step 4. Write up
+
+A group report in RMarkdown. This should look good. Feel free to play with choosing a theme/template but don't make it your whole life. Some ones I like are: <https://github.com/juba/rmdformats> and <https://prettydoc.statr.me/themes.html> - install instructions on the website.
+
+Describe your assessment of the causes of spatial temperature change in State College at a level of detail suitable for me to the State College town council (lots of very clever people who know nothing about meteorology).
+
+Note, to include photos in Markdown see here <https://poldham.github.io/minute_website/images.html> - REMEMBER TO CITE/REFERENCE ANYTHING THAT'S NOT YOURS, formal citations encouraged, plagarism strictly banned)
+
+You also need to include a causal loop diagram of what you EXPECT will impact temperature measurements across State College. Referring to this diagram and looking at a google map of the state college township area, where do you predict the coldest spot will be? And what will be the main predictors we should use to assess temperature?
+
+Submission on Canvas
+
+How is this graded?
+
+-   Given the time delays on my side, generously!

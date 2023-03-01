@@ -15,21 +15,22 @@ website:
           - in_S462_Lab2.qmd
       - section: "Project"
         contents:
-          - in_S462_Project0Index.qmd
-          - in_S462_Project1MakingGroups.qmd
-          - in_S462_Project2Setup.qmd
-          - in_S462_Project3InitialEDA.qmd
+          - in_S462_Project00Index.qmd
+          - in_S462_Project01MakingGroups.qmd
+          - in_S462_Project02Setup.qmd
+          - in_S462_Project03InitialEDA.qmd
       - section: "Tutorials"
         contents:
-          - in_S462_Tutorial1WhatisR.qmd
-          - in_S462_Tutorial2BeforeEachLab.qmd
-          - in_S462_Tutorial3RBasics.qmd
-          - in_S462_Tutorial4AdvancedMarkdown.qmd
-          - in_S462_Tutorial5LoadingData.qmd
-          - in_S462_Tutorial6Wrangling.qmd
-          - in_S462_Tutorial7Distributions.qmd
-          - in_S462_Tutorial8Plots.qmd
-          - in_S462_Tutorial9Correlation.qmd          
+          - in_S462_Tutorial01WhatisR.qmd
+          - in_S462_Tutorial02BeforeEachLab.qmd
+          - in_S462_Tutorial03RBasics.qmd
+          - in_S462_Tutorial04AdvancedMarkdown.qmd
+          - in_S462_Tutorial05LoadingData.qmd
+          - in_S462_Tutorial06Wrangling.qmd
+          - in_S462_Tutorial07Distributions.qmd
+          - in_S462_Tutorial08Plots.qmd
+          - in_S462_Tutorial09Correlation.qmd          
+          - in_S462_Tutorial10Regression.qmd          
 format:
   html:
     css: styles.css

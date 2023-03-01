@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Greatrex">
+<meta name="dcterms.date" content="2023-03-01">
+
+<title>STAT-462 Lab Book - 2. Causal Chains</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">2. Causal Chains</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">STAT-462 Lab Book</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Labs</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab0Index.html" class="sidebar-item-text sidebar-link">Lab Q&amp;A</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab1.html" class="sidebar-item-text sidebar-link">Lab 1: R intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link">Lab 2: Scatterplots</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Project</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project00Index.html" class="sidebar-item-text sidebar-link">Project Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project01MakingGroups.html" class="sidebar-item-text sidebar-link">1. Making teams</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project02Setup.html" class="sidebar-item-text sidebar-link active">2. Causal Chains</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project03InitialEDA.html" class="sidebar-item-text sidebar-link">3. Initial EDA (this week)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial01WhatisR.html" class="sidebar-item-text sidebar-link">T1: R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial02BeforeEachLab.html" class="sidebar-item-text sidebar-link">T2. Before Each Lab</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial03RBasics.html" class="sidebar-item-text sidebar-link">T3: Console-Basics and help</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial04AdvancedMarkdown.html" class="sidebar-item-text sidebar-link">T4: Advanced Markdown</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial05LoadingData.html" class="sidebar-item-text sidebar-link">T5: Loading Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial06Wrangling.html" class="sidebar-item-text sidebar-link">T6: Summaries filtering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial07Distributions.html" class="sidebar-item-text sidebar-link">T7: Normal, T Distributions and tests</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial08Plots.html" class="sidebar-item-text sidebar-link">T8: Making plots</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial09Correlation.html" class="sidebar-item-text sidebar-link">T9: Correlation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial10Regression.html" class="sidebar-item-text sidebar-link">T10: Regression</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-introductions" id="toc-step-1.-introductions" class="nav-link" data-scroll-target="#step-1.-introductions">Step 1. Introductions</a></li>
+  <li><a href="#step-2.-set-up" id="toc-step-2.-set-up" class="nav-link" data-scroll-target="#step-2.-set-up">Step 2. Set up</a></li>
+  <li><a href="#step-3.-causal-chain-diagrams" id="toc-step-3.-causal-chain-diagrams" class="nav-link" data-scroll-target="#step-3.-causal-chain-diagrams">Step 3. Causal chain diagrams</a></li>
+  <li><a href="#step-4.-write-up" id="toc-step-4.-write-up" class="nav-link" data-scroll-target="#step-4.-write-up">Step 4. Write up</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">2. Causal Chains</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Greatrex </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 1, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>Some of you will become future topic experts, for example rainfall or forest or finance specialists who get to design experiments and surveys. But many of you might become “general data scientists” so it’s important to be able to sensibly set up a study even on a topic you know little about with training data you didn’t get to collect.</p>
+<p>With this in mind, I have chosen a topic I know a lot about and most of you are newer to, temperature measurements.</p>
+<p>You need to have a “good rule of thumb” about what are confounding variables and what might be spurious correlations. Or whether you should worry about a strange result or accept it.</p>
+<p>To do this we will be setting up our reports and making causal chain diagrams.</p>
+<section id="step-1.-introductions" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.-introductions">Step 1. Introductions</h3>
+<ol type="1">
+<li><p>Introduce yourselves and create a name for your group [5 mins]</p></li>
+<li><p>Decide (for today) who will take each of these four roles.</p>
+<ul>
+<li><p>You will each be doing a mix of these things and you will get to switch in the future, but this will allow you to move forwards quickly.</p>
+<ul>
+<li><p><strong>#Coordinator |</strong> Getting a project up and running, keeping track of everything. Whoever kept you on time for this first five minutes..</p></li>
+<li><p><strong>#TopicExpert |</strong> Enjoy building statistical models &amp; thinking about temperatures</p></li>
+<li><p><strong>#VisualisationExpert</strong>/Words making things look good.</p></li>
+<li><p><strong>#Modeller |</strong> Getting to grips with R &amp; R Studio</p></li>
+</ul></li>
+<li><p>If you do not have 4 members actively participating in your team, Dr G will take this into account.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="step-2.-set-up" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.-set-up">Step 2. Set up</h3>
+<p><u><strong>Each do this in parallel (15mins)</strong></u></p>
+<ul>
+<li><p><strong>#Modeller |</strong> We are going to be co-editing R-Studio cloud.</p>
+<ol type="1">
+<li><p>Go to <a href="https://login.rstudio.cloud/" class="uri">https://login.rstudio.cloud/</a> and log into posit cloud</p></li>
+<li><p>On the top left, click NEW SPACE. If you are a heavy R studio cloud user, maybe nominate someone else so we can use their free allocation</p></li>
+<li><p>Name the space STAT-462 Group: <em>Name</em>, where <em>Name</em> is the name of your group.</p></li>
+<li><p>Go to the members button at the top. Invite your group, plus <a href="mailto:hlg5155@psu.edu">hlg5155@psu.edu</a> (me) as admin</p></li>
+<li><p>Work with the #coordinator to make sure everyone can access this and that there is a link on the teams page.</p></li>
+<li><p>If you are done early, follow the topic expert instructions</p></li>
+</ol></li>
+<li><p><strong>#Coordinator |</strong></p>
+<ol type="1">
+<li><p>Go to Canvas and click the temperature project new menu item. This will take you to Teams.</p></li>
+<li><p>You can either use Teams via a web-browser or <a href="https://mobile.psu.edu/project/teams/">download it on your phone/computer</a>.</p></li>
+<li><p>Go to your team’s space, and add the team name and each person with their role.</p></li>
+<li><p>Work with the #Modeller to make sure that everyone can access both Teams and R-Studio Cloud</p></li>
+<li><p>Make sure everyone can communicate with each other outside class.</p></li>
+<li><p>If you are done early, follow the topic expert instructions</p></li>
+</ol></li>
+<li><p><strong>#TopicExpert |</strong> Your job is to refresh your knowledge on temperature data<br>
+expand for more details</p>
+<ol type="1">
+<li><p>Go here, <a href="https://psu.instructure.com/courses/2243429/discussion_topics/15168928" class="uri">https://psu.instructure.com/courses/2243429/discussion_topics/15168928</a> and start reading. Use this as a starting point to think about what might cause cold temperatures across town.</p></li>
+<li><p>Google things that look interesting, put relevant links/references/REFERENCED graphics in the teams chats</p></li>
+<li><p>If the others join you, assign them a one or two sub-topics to look at or any questions you haven’t got to.</p></li>
+</ol></li>
+<li><p><strong>#VisualisationExpert |</strong> Your job is to be prepared for the second half of the lab</p>
+<ol type="1">
+<li><p>We need to think hard about causation vs correlation, and spurious vs confounding variables.</p></li>
+<li><p>Briefly refresh your memory on what they are. This is a favourite site of mine, but there are many on google if this doesn’t work for you<br>
+<a href="https://statisticsbyjim.com/regression/confounding-variables-bias/" class="uri">https://statisticsbyjim.com/regression/confounding-variables-bias/</a></p></li>
+</ol></li>
+</ul>
+</section>
+<section id="step-3.-causal-chain-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.-causal-chain-diagrams">Step 3. Causal chain diagrams</h3>
+<p>In your report, you will need to include a causal diagram of what you EXPECT will impact temperature measurements across State College.</p>
+<p>For example elevation doesn’t “cause” the number the thermometer reads to be different, there must be some steps in between...</p>
+<p>Given this diagram and looking at a google map of the state college township area, where do you expect the coldest spot to be? And what will be the main predictors we can use to assess temperature</p>
+<p>Decide on the structure of your final diagram and how to present it in your report. You could make a beautiful hand drawn plot, a graphic using powerpoint, a jamboard <a href="https://jamboard.google.com/?pli=1" class="uri">https://jamboard.google.com/?pli=1</a> , something using R (no idea how to do that)</p>
+<p>Some good resources:</p>
+<ol type="1">
+<li><p><a href="https://iwlearn.net/manuals/tda-sap-methodology/development-of-the-tda/causal-chain-analysis/what-is-causal-chain-analysis" class="uri">https://iwlearn.net/manuals/tda-sap-methodology/development-of-the-tda/causal-chain-analysis/what-is-causal-chain-analysis</a></p></li>
+<li><p><a href="https://www.juran.com/blog/the-ultimate-guide-to-cause-and-effect-diagrams/" class="uri">https://www.juran.com/blog/the-ultimate-guide-to-cause-and-effect-diagrams/</a></p></li>
+<li><p><a href="https://www.burgehugheswalsh.co.uk/Uploaded/1/Documents/Multiple-Cause-Diagram-Tool-Draft.pdf" class="uri">https://www.burgehugheswalsh.co.uk/Uploaded/1/Documents/Multiple-Cause-Diagram-Tool-Draft.pdf</a></p></li>
+<li><p><a href="https://www.researchgate.net/figure/Themes-and-feedback-loops-in-the-synthesized-causal-loop-diagram-initiated-around-the_fig1_333100721" class="uri">https://www.researchgate.net/figure/Themes-and-feedback-loops-in-the-synthesized-causal-loop-diagram-initiated-around-the_fig1_333100721</a></p></li>
+</ol>
+<p>There are MANY ways you can approach this. The end goal is to convince Mr Northridge that you now know enough about temperatures that you can sensibly undertake the study. And to think hard about what to expect.</p>
+</section>
+<section id="step-4.-write-up" class="level3">
+<h3 class="anchored" data-anchor-id="step-4.-write-up">Step 4. Write up</h3>
+<p>A group report in RMarkdown. This should look good. Feel free to play with choosing a theme/template but don’t make it your whole life. Some ones I like are: <a href="https://github.com/juba/rmdformats" class="uri">https://github.com/juba/rmdformats</a> and <a href="https://prettydoc.statr.me/themes.html" class="uri">https://prettydoc.statr.me/themes.html</a> - install instructions on the website.</p>
+<p>Describe your assessment of the causes of spatial temperature change in State College at a level of detail suitable for me to the State College town council (lots of very clever people who know nothing about meteorology).</p>
+<p>Note, to include photos in Markdown see here <a href="https://poldham.github.io/minute_website/images.html" class="uri">https://poldham.github.io/minute_website/images.html</a> - REMEMBER TO CITE/REFERENCE ANYTHING THAT’S NOT YOURS, formal citations encouraged, plagarism strictly banned)</p>
+<p>You also need to include a causal loop diagram of what you EXPECT will impact temperature measurements across State College. Referring to this diagram and looking at a google map of the state college township area, where do you predict the coldest spot will be? And what will be the main predictors we should use to assess temperature?</p>
+<p>Submission on Canvas</p>
+<p>How is this graded?</p>
+<ul>
+<li>Given the time delays on my side, generously!</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

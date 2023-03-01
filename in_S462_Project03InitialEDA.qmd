@@ -1,0 +1,150 @@
+---
+title: "3. Initial EDA (this week)"
+author: "Dr Greatrex"
+date: "`r Sys.Date()`"
+format:
+  html: 
+    theme: Flatly
+    fontsize: 0.9em
+    linestretch: 1.7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
+library(knitr)
+```
+
+We have data! Now is the time to explore it and to make some initial models.
+
+# Instructions
+
+## Set-up
+
+You can choose whether to use your RStudio cloud account or your own computers for this task (For RStudioCloud it seems that only one person can use a project effectively, so you're welcome to use your shared space, but set up individual projects).
+
+You can always copy/paste your final results together.
+
+### EVERYONE (individually)
+
+#### Set up a project and get the data
+
+1.  Use [Tutorial 2](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial2BeforeEachLab.html) to create a new project (or use a sensible existing project). If you are using the shared cloud space, work in individual projects. Keep following the tutorial to create a new .RmD file.
+
+2.  At the very top, either create or edit a code chunk that looks like this. This will stop the annoying library packages loading when you knit. Here's the text to copy/paste:
+
+    -   {r setup, include=FALSE}
+
+    -   knitr::opts_chunk\$set(echo = TRUE, message=FALSE,warning=FALSE)
+
+```{r, echo=FALSE}
+include_graphics("./Figures/pg_Project3_topCodeChunk.png")
+```
+
+3.  Below that, create a new code chunk to load these libraries. You might need to install some using [Tutorial 2.2](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial2BeforeEachLab.html#downloading-a-new-package).
+
+```{r,message=FALSE,warning=FALSE}
+library(readxl)  # read in data
+library(sf)      # spatial
+library(sp)      # spatial
+library(raster)  # spatial
+library(terra)   # spatial
+library(tidyverse) # ALL
+library(tmap)    # mapping
+```
+
+4.  [Go to visual mode](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial2BeforeEachLab.html#visual-mode). Create a new header 1 called Exploratory Analysis\
+5.  Click this link to download the data: [CLICK HERE.](https://github.com/hgreatrex/Stat462-TemperatureDATA/blob/main/STAT462_TrainingData.xlsx?raw=true) and put it in your project file. Use these commands to read it into R. The first one will create a data.frame (table) of your data. The second will create a "spatial version" that is easy to map. Press knit and check all is well.
+
+```{r}
+
+DataIn <- read_excel("STAT462_TrainingData.xlsx")
+DataIn <- na.omit(DataIn)
+DataIn.sf <- st_as_sf(DataIn,coords=c( "X","Y"),crs="EPSG:32617")
+```
+
+```{r}
+names(DataIn)
+```
+
+6.  Open the data and take a look at it. (click on its name or put `View(DataIn)` [**IN THE CONSOLE\
+    \
+    **]{.underline}You should see the following columns
+
+    -   Serial: the serial number of the item
+
+    -   X and Y. The location of the item in X and Y metre coordinates (Long/Lat coordinates are poor over small areas, so I'm using the WGS84 17N / Pennsylvania North map projection (https://epsg.io/32617))
+
+    -   Elevation_1m : The elevation of the sensor to the closest metre from the [USGS 1 meter Digital Elevation Model](https://portal.opentopography.org/raster?opentopoID=OTNED.012021.4269.3)
+
+    -   Slope_1m : [The slope of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490), from the same USGS DEM
+
+    -   Aspect_1m : [The aspect of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490)., from the same USGS DEM
+
+    -   Roughness_1m : [The roughness of the location where the sensor was placed](https://www.e-education.psu.edu/geog480/node/490), from the same USGS DEM
+
+    -   LandCover_Code: The NCLD landcover code for that location
+
+    -   NCLD_Percent_Tree_Cover: The percent tree cover for that location
+
+    -   NCLD_Percent_Concrete : The percent concrete at that location
+
+    -   Date: Date of the measurement
+
+    -   Hour: Hour of the measurement
+
+    -   Temp_F: The temperature measurement
+
+    -   Light_Lux: The Light measurement
+
+    -   Notes: Placement Notes
+
+### GROUP challenges
+
+Now, there are several challenges that you can split as a group depending on your strengths.
+
+-   **Describing the data and the meta data. This means**
+
+    -   Explaining the unit of analysis, the population and the variable
+
+    -   Researching and writing up why they have been "transformed" into UTM (hint: [CLICK HERE)](https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11a_basics)
+
+    -   Researching and writing about each of the predictor variables (e.g. a few sentences about what it is etc, google and the links above should help, or ask me questions on Teams)\
+
+-   **Making summary statistics and plots of the `DataIn` table. For example**
+
+    -   How many sensors are there (hint, table command)
+
+    -   Any missing data?
+
+    -   Filtering the data to just one sensor, or one time of day (hint, this will really help: <https://crd150.github.io/lab2.html#Data_Wrangling>) and making a plot of the temperature over time, or say a histogram of the temps on a single day.
+
+    -   Filtering the data in other ways and making exploratory plots and histograms.\
+
+-   **Quality controlling the data. For example,**
+
+    -   Can you trust all the readings at all times of day? Can you see examples of where there are issues.
+
+    -   What about over all dates? Anything weird happening?
+
+    -   If you find things, decide whether you should keep or remove them AND WRITE DOWN WHAT YOU DID/CHANGED.\
+
+-   **Using** **`DataIn.sf`** Make some initial maps, especially of static variables that don't change over time.
+
+-   You could use QTM from the previous lab, for example
+
+```{r}
+tmap_mode("view")
+
+qtm(DataIn.sf,
+            dots.col="NCLD_Percent_Tree_Cover")+
+           tm_layout(legend.outside = TRUE)
+
+```
+
+-   Or better still.. follow these instructions (<https://psu-spatial.github.io/Geog364-2021/364Data_TutorialWranglePoint.html>) or <https://r-tmap.github.io/tmap-book/nutshell.html> to make prettier ones.\
+-   Explore the data.\
+-   Finally, choose one different predictor variable each - and make a scatterplot to look at the impact on temperatures and a basic linear model.\
+-   Critique your model so far, especially seeing if it visually fits the LINE assumptions. \
+    How can we do better? Feel free to try other options and Lab 3 will help..
+
+## Combine your work into an exploratory data analysis part of your report.
