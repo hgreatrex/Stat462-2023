@@ -102,7 +102,7 @@ If you want a different way of seeing the same output, you can use the `ols_regr
 
 ```{r}
 library(olsrr)
-Model1.lm.ols <- ols_regress(Price ~ Lot,data=HousesNY)
+Model1.lm.ols <- ols_regress(Model1.lm)
 Model1.lm.ols
 ```
 

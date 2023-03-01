@@ -1,0 +1,229 @@
+---
+title: "Lab 3: Simple Linear Regression (THIS WEEK)"
+---
+
+```{r, warning=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+library(skimr)
+library(ggplot2)
+library(ggstatsplot)
+library(plotly)
+library(ISLR)
+library(equatiomatic)
+library(olsrr)
+library(Stat2Data)
+library(readxl)
+```
+
+# Welcome to Lab 3
+
+The aim of this lab is to continue to get used to simple linear regression in R.
+
+The Canvas page for this lab is: <https://psu.instructure.com/courses/2243429/assignments/14748231>
+
+**If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex and REMEMBER YOU CAN ALWAYS USE RSTUDIO CLOUD**.\
+
+## Getting started
+
+### 1. Review the Lab Q&A
+
+First, please review the lab Q&A: [**CLICK HERE**](in_S462_Lab0Index.qmd). It explains
+
+-   What you need to submit, how you are graded and where the rubric is
+-   The late policy and what counts as cheating
+
+### 2. Make a new project and markdown file {.unnumbered}
+
+Follow [Tutorial 2 (link working)](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial02BeforeEachLab.html) to create a new project and a new RMarkdown file that knits.
+
+You should now have a new project and a new RMarkdown file that knits.
+
+Create a code chunk near the top and load these packages. You may need to install them first using [Tutorial 2.3 (Link working)](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial02BeforeEachLab.html#add-the-r-packages-you-need).
+
+```{r,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+library(skimr)
+library(ggplot2)
+library(ggstatsplot)
+library(plotly)
+library(ISLR)
+library(equatiomatic)
+library(olsrr)
+library(Stat2Data)
+library(readxl)
+```
+
+## 3. Code showcase
+
+IF YOU IGNORED STEPS 1 AND 2 ABOVE GO BACK AND DO THEM!\
+You lose marks for things like no theme, poor headings etc.
+
+#### 3.0 Bonus marks
+
+-   This lab is graded out of 70, BUT, there are some bonus marks available (I will cap the lab at 100%). Go to the canvas page here https://psu.instructure.com/courses/2243429/assignments/14842785# and explain what you would have to do in order to get them.
+
+#### 3.1 LINE Assumptions
+
+-   Create a new section called Code Showcase. In your own words, explain the four LINE assumptions (hint See [Module 4.1](https://psu.instructure.com/courses/2243429/pages/4-dot-1-simple-linear-regression-what-is-it?module_item_id=38073189) in Canvas)
+
+#### 3.2 Create your data
+
+-   Go here: <http://robertgrantstats.co.uk/drawmydata.html>.
+
+-   Click on the map to create your own dataset which does not break any of the LINE assumptions (you hope!). It should have AT LEAST 30 data points.
+
+-   Save it to your computer and place it into your Project 3 folder.
+
+#### 3.3 Read the data into R
+
+-   Read your csv file into R (hint,[Tutorial 5, link working](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial05LoadingData.html#Tut6b_csv))
+
+-   Use the `nrow()` command to prove that your dataset has more than 30 observations/points.
+
+#### 3.3 Read the data into R
+
+-   Create a quick scatterplot between X and Y, making sure that the response variable is on the vertical axis (hint, [GGScatterStats](https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/ggscatterstats.html) or [Tutorial 8](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#scatterplots), or [R-Graph-Gallery](https://r-graph-gallery.com/scatterplot.html)).
+
+-   Create a linear model between X and Y using the lm command (see [Tutorial 10, link working](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial10Regression.html), or this [tutorial](https://towardsdatascience.com/back-to-basics-linear-regression-in-r-3ffe4900482b)) and save it to a variable called model1
+
+-   Look at the model summary using `summary(model1)`, and `ols_regress(model1)`.
+
+-   In the text below your summaries, copy in this list and fill in the answers for your particular model.
+
+    -   The Intercept is:
+
+    -   The Gradient/Slope is:
+
+    -   Assume you are looking at the full population. The model equation in symbols is:
+
+        -   (hint, bonus marks for writing this in equation form)
+
+    -   Assume you are looking at the full population. The model equation, filling in the numbers is
+
+        -   (hint, bonus marks for writing this in equation form)
+
+    -   The mean squared error is:
+
+    -   The total sum of squares is:
+
+    -   The percentage of variability "explained" by the model is:
+
+## 4. Houseplant sales \[FAKE DATA\]
+
+```{r, eqn, echo=FALSE,fig.cap="Social media influencers like WelcomeToTheJungleHome and PlantKween are changing plant sales"}
+knitr::include_graphics('./Figures/pg_Lab3_influencers.png')
+
+```
+
+Houseplants are a big deal, especially with the rise of influencers like [Phoebe Cheong](https://www.instagram.com/welcometothejunglehome/) and [PlantKween, Christopher Griffin](https://www.instagram.com/p/Cn9WTlJASxf/). But.. unusually, "old fashioned" methods of sales such as mailing leaflets still appear to be popular with many demographics.
+
+You have been hired by a NYC house-plant company, "[The Sill](https://www.thesill.com/pages/plants-for-delivery-nyc)" to understand how different marketing campaigns impact sales.
+
+**Note, I am only using a real company name so that you can get a better sense of interpreting results.** **This is all artificial/simulated/fake data from an unrelated maths problem!**
+
+Let's [***pretend***]{.underline} that The Sill has run 200 marketing campaigns over the last few years from 2015-2022, each for a specific plant. For each campaign, they recorded
+
+1.  How much they spent (in units of thousands of dollars) on TV adverts, Social media campaigns and physical mail/leaflets,
+
+2.  How many houseplants were sold (in thousands of plants).
+
+3.  The "X-Factor" of how popular that plant was at the time (percentage popularity)
+
+4.  Typically how tall that type plant was in inches.
+
+#### Step 4.1
+
+Download the dataset and put it in your Lab 3 folder. There are two ways you can get the dataset:
+
+1.  Download it directly. Copy/paste this code into R. Note, if you get a weird error, DELETE AND RETYPE EVERY " QUOTE MARK. Sometimes they copy across wrong.
+
+```{r, eval=FALSE}
+download.file("https://github.com/psu-spatial/Stat462.data-2021/blob/main/AdvertisingPlant2023.xlsx?raw=true",
+              destfile="AdvertisingPlant2023.xlsx")
+```
+
+2.  Click on this link: [AdvertisingPlant2023.xlsx](AdvertisingPlant2023.xlsx)
+
+Read in the data and explore it.
+
+#### Step 4.2
+
+Create a new heading in your report called Houseplant Sales Analysis.
+
+You are writing up your analysis for the CEO of The Sill, [Eliza Blank](https://www.thesill.com/blog/reflections-from-our-founder). Using sub-headings, bullet points etc, write a short introductory section which includes:
+
+-   The object of analysis
+
+-   A reasonable population this sample dataset is representative of. Could she use this for say 2023 sales? 2040 sales in a new country?
+
+-   The variables available for analysis along with their units.
+
+-   One or two things from your summary analysis, for example, maybe you could talk about the average sales, show a histogram or [violin plot](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots) or something and explain what your findings in a few sentences below the text.. \
+    Essentially, summarise/explain what the dataset shows to Ms Blank. You are allowed to move any code from section 4.1 to here to make your report flow.
+
+***Want an A/A\*?** Make sure to explain any results in clear English about the actual topic after any statistical output or plots, and to explain any jargon.*
+
+-   *For example, after a statement like "reject the null hypothesis", you could write a sentence like "In terms of whether you should reject TV advertising, this means...". Or for your introductory plots, you could write a few sentences comparing the average sales or pointing out features. THESE SECTIONS DON'T HAVE TO BE LONG, but they do have to show me you understand what is going on. [Commit to the Bit](https://www.youtube.com/watch?v=suipiqewpzc), pretend you really are delivering the report to The Sill and I promise it will be easier to get through..*
+
+#### Step 4.3 Model analysis
+
+Your client wishes to know which advertising campaign is the most effective out of.
+
+-   Model1 - Plant Sales vs Mail
+
+-   Model2 - Plant Sales vs Instagram
+
+For EACH model,
+
+-   Create a sub-heading
+
+-   Make a professional scatterplot (see the many tutorials above)
+
+-   Describe each scatterplot in words (e.g. strength, association, outliers etc).
+
+-   Create a linear model and show the model summary
+
+-   Use equatiomatic or any other method to formally write out the equation and coefficients.
+
+#### Step 4.4 Questions
+
+1.  Explain if you see evidence that the plot might break any of the LINE assumptions
+
+    -   *You can't just say yes/no, you need to explain your reasons*
+
+2.  Out of model 1 and model 2, where do you see the greatest increase in sales if you increase the advertising budget?
+
+    -   *Provide evidence to justify your answer (thinking about uncertainties on your estimate), including the relevant statistics/numbers for each model.*
+
+3.  Which model explains the most variability in the sales data?
+
+    -   *Provide evidence to justify your answer, including the relevant statistic/numbers for each model.*
+
+4.  In your own words, use the model output and your answers to the questions above to explain to Ms Blank, the pros and cons of using Mail vs Instagram for plant sales.
+
+5.  If instagram-spending doubles, what is your best guess of what would happen to average plant sales?
+
+6.  What is the model estimate of plant-sales when no money is spent on instagram? From what we have learned so far, how could you guess the uncertainty on this estimate (e.g. the range of values).
+
+## 5. Submitting your Lab
+
+Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.
+
+In that folder, double click on the html file. This will open it in your web-browser.\
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.
+
+If you are on R studio cloud, see Tutorial 1 for how to download your files
+
+Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.
+
+```{r, echo=FALSE}
+knitr::include_graphics("./Figures/Lab1_Basics_2022_fig1.png")
+```
+
+<br>

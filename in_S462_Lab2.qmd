@@ -92,8 +92,8 @@ IMPORTANT - WHAT ARE THE UNITS OF THE VARIABLES? WHAT IS THE OBJECT OF ANALYSIS?
 
     -   Create a scatterplot to assess this (hint: Latitude is the North/South coordinate).
     -   Describe the scatterplot and describe it as in lectures
-    -   Create a Simple Linear Regression model to assess the issue - [See this Tutorial](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial5LoadingData.html#regression-models)
-    -   Plot the abline, line of best fit onto a new scatterplot
+    -   Create a Simple Linear Regression model to assess the issue -[TUTORIAL 10 (link updated)](https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial10Regression.html)
+    -   Plot the abline, or line of best fit onto a new scatterplot (Tutorial 10 again)
 
 5.  Why might this be misleading as an analysis? or why might this model be flawed? What confounding variable could there be? To help you answer this question, try running this code to further explore the data on a map.
 
