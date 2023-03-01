@@ -66,7 +66,7 @@ You lose marks for things like no theme, poor headings etc.
 
 #### 3.0 Bonus marks
 
--   This lab is graded out of 70, BUT, there are some bonus marks available (I will cap the lab at 100%). Go to the canvas page here https://psu.instructure.com/courses/2243429/assignments/14842785# and explain what you would have to do in order to get them.
+-   This lab is graded out of 70, BUT, there are some bonus marks available (I will cap the lab at 100%). Go to the canvas page here, look at the rubric <https://psu.instructure.com/courses/2243429/assignments/14842785#> and explain what you would have to do in order to get them.
 
 #### 3.1 LINE Assumptions
 
