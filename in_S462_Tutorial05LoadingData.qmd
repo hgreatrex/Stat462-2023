@@ -85,7 +85,7 @@ Or you can put the full file path in the read_excel command
 ```{r}
 # Read in the frost.xlsx file in my project folder and assign it to a variable called frost
 library(readxl)
-frost    <- read_excel("/Users/hlg5155/Documents/GitHub/Teaching/Stat462-2023/Data_frostdata.xlsx")
+frost    <- read_excel("Data_frostdata.xlsx")
 names(frost)
 ```
 

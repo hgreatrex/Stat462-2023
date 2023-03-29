@@ -14,6 +14,7 @@ website:
           - in_S462_Lab1.qmd
           - in_S462_Lab2.qmd
           - in_S462_Lab3.qmd
+          - in_S462_Lab4.qmd
       - section: "Project"
         contents:
           - in_S462_Project00Index.qmd
