@@ -289,7 +289,8 @@ Should they eat the fish? Explain your answer and show your evidence for how you
 
 The Florida Health Advisory level for Mercury levels in Fish is 1 $\mu g$ of Mercury. The Governor has accepted your model and is requiring state-wide alkalinity tests.
 
-Using your new model, is your safety cut-off value of alkalinity for new lakes? You would like to be 95% sure that you aren't just seeing this result by chance. Provide evidence/code showing how you got to your answer
+Using your new model, what is your recommended "safety cut-off" value of alkalinity for new lakes? You would like to be 95% sure that you aren't just seeing this result by chance. 
+Provide evidence/code showing how you got to your answer
 
 <br>
 
