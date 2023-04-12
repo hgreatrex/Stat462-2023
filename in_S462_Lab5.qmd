@@ -106,7 +106,8 @@ movies <- read.csv("Lab5_HollywoodMovies2011.csv")
 
 ## 2.2 Exploratory Analysis
 
-1.  In the text, identify the object/unit of observation, the response variable and re-create the table above to show the predictors. (Hint, you can click table on 'visual mode')\
+1.  In the text, identify the object/unit of observation, the response variable and re-create the table above to show the predictors. (Hint, you can click table on 'visual mode')
+
 2.  Use the corrplot command to fit a correlation matrix
 
 ```{r,eval=FALSE}
@@ -128,9 +129,11 @@ ols_regress(FullModel) # or summary(FullModel), whichever you prefer
 
 Using the results above, write out the answers to these questions in FULL SENTENCES and your own words.
 
-1.  Either using equatiometric or alone, write out the full mathematical equation for this sample. \
+1. Identify how much data there is in the sample (n) and the number of predictors (k)
 
-2.  Use this code to look at LINE and outliers. In the text, summarise if you think the model meets the LINE assumptions and if there are any influential outliers. Don\'t worry about changing anything if it doesn\'t, just comment on your findings. Are you comfortable using this model for:
+2.  Either using equatiometric or alone, write out the full mathematical equation for this sample. \
+
+3.  Use this code to look at LINE and outliers. In the text, summarise if you think the model meets the LINE assumptions and if there are any influential outliers. Don\'t worry about changing anything if it doesn\'t, just comment on your findings. Are you comfortable using this model for:
 
     -   Assessing the average profitability?
     -   Predicting the profitability of a new movie?
@@ -151,9 +154,9 @@ Using the results above, write out the answers to these questions in FULL SENTEN
 
     ```
 
-3.  Which predictor has the large [effect]{.underline} on Profitability (not taking into account significance). Reflect on how that corresponds to your assessment from correlation matrix.\
+4.  Which predictor has the large [effect]{.underline} on Profitability (not taking into account significance). Reflect on how that corresponds to your assessment from correlation matrix.\
 
-4.  Using the model summary and a T-Test at a 10% level (otherwise called "partial slopes), identify which variables you would like to drop from the full model. Provide reasons for your choices. You do not have to write down hypothesis testing steps here.
+5.  Using the model summary and a T-Test at a 10% level (otherwise called "partial slopes), identify which variables you would like to drop from the full model. Provide reasons for your choices. You do not have to write down hypothesis testing steps here.
 
 ## 2.4 Fit a reduced model
 
