@@ -436,7 +436,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Download the two files from Canvas which contain the data. Use the read_csv command to read it into R and save it as a variable called movies.</p>
+<p>Download the file from Canvas which contain the data. Use the read_csv command to read it into R and save it as a variable called movies.</p>
 </section>
 <section id="exploratory-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-analysis">2.2 Exploratory Analysis</h2>
@@ -458,40 +458,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                               DomesticGross, <span class="at">data =</span> movies) </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_regress</span>(FullModel) <span class="co"># or summary(FullModel), whichever you prefer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                        Model Summary                          
---------------------------------------------------------------
-R                       0.653       RMSE                1.645 
-R-Squared               0.426       Coef. Var          59.442 
-Adj. R-Squared          0.400       MSE                 2.706 
-Pred R-Squared          0.333       MAE                 1.236 
---------------------------------------------------------------
- RMSE: Root Mean Square Error 
- MSE: Mean Square Error 
- MAE: Mean Absolute Error 
-
-                               ANOVA                                 
---------------------------------------------------------------------
-               Sum of                                               
-              Squares         DF    Mean Square      F         Sig. 
---------------------------------------------------------------------
-Regression    220.957          5         44.191    16.331    0.0000 
-Residual      297.651        110          2.706                     
-Total         518.608        115                                    
---------------------------------------------------------------------
-
-                                     Parameter Estimates                                      
----------------------------------------------------------------------------------------------
-            model      Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
----------------------------------------------------------------------------------------------
-      (Intercept)     2.551         1.007                  2.533    0.013     0.556    4.547 
-   RottenTomatoes     0.023         0.010        0.292     2.217    0.029     0.002    0.044 
-    AudienceScore    -0.025         0.018       -0.197    -1.394    0.166    -0.060    0.010 
- TheatersOpenWeek     0.000         0.000       -0.143    -1.359    0.177    -0.001    0.000 
-BOAverageOpenWeek     0.000         0.000       -0.117    -1.283    0.202     0.000    0.000 
-    DomesticGross     0.023         0.004        0.767     6.110    0.000     0.016    0.030 
----------------------------------------------------------------------------------------------</code></pre>
-</div>
 </div>
 <p>Using the results above, write out the answers to these questions in FULL SENTENCES and your own words.</p>
 <ol type="1">
@@ -502,48 +468,23 @@ BOAverageOpenWeek     0.000         0.000       -0.117    -1.283    0.202     0.
 <ul>
 <li>Assessing the average profitability?</li>
 <li>Predicting the profitability of a new movie?</li>
-</ul>
+</ul></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check linearity and equal variance</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the residuals</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_fit</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check linearity and equal variance</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot the residuals</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_fit</span>(FullModel)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_stud</span>(FullModel)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_stand</span>(FullModel)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Check normality</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_hist</span>(FullModel)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_test_normality</span>(FullModel)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_qq</span>(FullModel)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Check for influential outliers</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ols_plot_resid_lev</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_stud</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_stand</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check normality</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_hist</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_test_normality</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>-----------------------------------------------
-       Test             Statistic       pvalue  
------------------------------------------------
-Shapiro-Wilk              0.929          0.0000 
-Kolmogorov-Smirnov        0.0961         0.2346 
-Cramer-von Mises          9.7447         0.0000 
-Anderson-Darling          1.4713          8e-04 
------------------------------------------------</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_qq</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for influential outliers</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_lev</span>(FullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="in_S462_Lab5_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid" width="672"></p>
-</div>
-</div></li>
+<ol start="4" type="1">
 <li><p>Which predictor has the large <u>effect</u> on Profitability (not taking into account significance). Reflect on how that corresponds to your assessment from correlation matrix.<br>
 </p></li>
 <li><p>Using the model summary and a T-Test at a 10% level (otherwise called “partial slopes), identify which variables you would like to drop from the full model. Provide reasons for your choices. You do not have to write down hypothesis testing steps here.</p></li>
@@ -555,10 +496,10 @@ Anderson-Darling          1.4713          8e-04
 <li>Now, copy/paste your code from the full model and modify so that you only predict profitability given RottenTomatoes andDomesticGross. MAKE SURE TO SAVE YOUR LM TO A NEW MODEL NAME e.g.&nbsp;Model2.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same lm as before, and I'm just adding in Column names to the model</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Profitability <span class="sc">~</span> RottenTomatoes <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies) </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_regress</span>(Model2) <span class="co"># or summary(Model2), whichever you prefer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same lm as before, and I'm just adding in Column names to the model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Profitability <span class="sc">~</span> RottenTomatoes <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_regress</span>(Model2) <span class="co"># or summary(Model2), whichever you prefer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li><p>Write down the mathematical equation for the estimated regression line.<br>
@@ -578,12 +519,7 @@ Anderson-Darling          1.4713          8e-04
 <li>Another way of comparing models is the Aikeke Information Criterion (AIC). Using <a href="https://online.stat.psu.edu/stat462/node/199/" class="uri">https://online.stat.psu.edu/stat462/node/199/</a>and the many great google tutorials out there, explain what AIC is and why it’s useful in comparing models. Using this method, which model would you choose?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(FullModel,Model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          df      AIC
-FullModel  7 452.5041
-Model2     4 450.1354</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(FullModel,Model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="finding-the-optimal-model" class="level2">
@@ -592,6 +528,10 @@ Model2     4 450.1354</code></pre>
 <p>So far, we manually compared two models. In fact there is a way to compare all the combinations of predictors. This is using the <code>ols_step_best_subset()</code> command.</p>
 <p>Describe what the "best subset" method is doing. Hint, we will go over this in lectures, but also <a href="https://online.stat.psu.edu/stat501/lesson/10/10.3" class="uri">https://online.stat.psu.edu/stat501/lesson/10/10.3</a></p>
 <p>Run this on your FULL linear model fit, FullModel. to assess the optimal fit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BestSubsets <span class="ot">&lt;-</span> <span class="fu">ols_step_best_subset</span>(FullModel)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>BestSubsets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Using at least 3 goodness of fit measures, comment on which model is your final favourite.</p>
 <p>Using the code from 2.3 and 2.4, fit your favourite model and take a quick look at LINE assumptions. As before, you don't need to find a new model if it's not valid (just talk about what you find)</p>
 <p>Why are there suddenly variables in your "best" model that you likely dropped from your Full model at the end of 2.3.</p>
@@ -620,7 +560,9 @@ Model2     4 450.1354</code></pre>
 <p>If you have not made any mistakes in the code then R should create a html file in your lab 7 folder which includes your answers. If you look at your lab 7 folder, you should see this there - complete with a very recent time-stamp. In that folder, double click on the html file. This will open it in your browser. CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.</p>
 <p>If you are on R studio cloud, see Tutorial 1 for how to download your files Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 7.</p>
 <div class="cell">
-
+<div class="cell-output-display">
+<p><img src="./Figures/Lab1_Basics_2022_fig1.png" class="img-fluid" width="1673"></p>
+</div>
 </div>
 </section>
 <section id="part-5.-grading-rubricchecklist" class="level1">

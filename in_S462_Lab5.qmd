@@ -96,7 +96,7 @@ You can access their training data file, *Lab5_HollywoodMovies2011.csv* from Can
 | *DomesticGross*     | Gross revenue in the US by the end of 2011, in millions of dollars                                                             |
 | *Profitability*     | Percent of the budget recovered in profits. So 300 means 300% of the budget spent on making the movie was recovered as profit. |
 
-Download the two files from Canvas which contain the data. Use the read_csv command to read it into R and save it as a variable called movies.
+Download the file from Canvas which contain the data. Use the read_csv command to read it into R and save it as a variable called movies.
 
 ```{r,include=FALSE}
 
@@ -118,7 +118,7 @@ ggcorrmat(movies)
 
 If you saved your data as a variable called movies, this code should let you fit a full 'first-order' multiple regression model to assess profitability. By full, I mean we're including all predictors
 
-```{r}
+```{r, eval=FALSE}
 # This is the same lm as before, and I'm just adding in Column names to the model
 FullModel <- lm(Profitability ~ RottenTomatoes + AudienceScore + 
                                TheatersOpenWeek + BOAverageOpenWeek +
@@ -138,7 +138,7 @@ Using the results above, write out the answers to these questions in FULL SENTEN
     -   Assessing the average profitability?
     -   Predicting the profitability of a new movie?
 
-    ```{r}
+```{r,eval=FALSE}
     # Check linearity and equal variance
     # plot the residuals
     ols_plot_resid_fit(FullModel)
@@ -152,7 +152,7 @@ Using the results above, write out the answers to these questions in FULL SENTEN
     #Check for influential outliers
     ols_plot_resid_lev(FullModel)
 
-    ```
+```
 
 4.  Which predictor has the large [effect]{.underline} on Profitability (not taking into account significance). Reflect on how that corresponds to your assessment from correlation matrix.\
 
@@ -201,7 +201,7 @@ ols_plot_resid_lev(Model2)
 1.  What percentage of variability in profitability is explained by each model? Given just this statistic, which model would you choose? Why is the variability so low?\
 2.  Another way of comparing models is the Aikeke Information Criterion (AIC). Using <https://online.stat.psu.edu/stat462/node/199/>and the many great google tutorials out there, explain what AIC is and why it's useful in comparing models. Using this method, which model would you choose?
 
-```{r}
+```{r,eval=FALSE}
 AIC(FullModel,Model2)
 ```
 
@@ -215,7 +215,7 @@ Describe what the \"best subset\" method is doing. Hint, we will go over this in
 
 Run this on your FULL linear model fit, FullModel. to assess the optimal fit.
 
-```{r, include=FALSE}
+```{r,eval=FALSE}
 
 BestSubsets <- ols_step_best_subset(FullModel)
 BestSubsets
@@ -258,7 +258,7 @@ If you have not made any mistakes in the code then R should create a html file i
 
 If you are on R studio cloud, see Tutorial 1 for how to download your files Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 7.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE}
 knitr::include_graphics("./Figures/Lab1_Basics_2022_fig1.png")
 ```
 
