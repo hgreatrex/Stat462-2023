@@ -32,8 +32,6 @@ library("kableExtra")
 library("terra")
 ```
 
-
-
 In this page there is:
 
 -   About the report
@@ -45,12 +43,6 @@ In this page there is:
 -   The grading rubric/checklist
 
 -   The final dataset, useful code and things we have learned this semester
-
-```{r, include=FALSE}
-
-ProjectDir <- "./ProjectData"
-
-```
 
 # 1. About
 
@@ -90,7 +82,7 @@ Remember you can use text/figures/analysis from throughout the semester and from
 
 # 4. Grading Rubric/checklist
 
-See the table below for what this means - 100% is hard to get! \
+See the table below for what this means - 100% is hard to get!\
 The text below shows what I would expect from such a report.
 
 ### **HTML/RMD FILE SUBMISSION - 5 marks**
@@ -184,7 +176,7 @@ library("kableExtra") # if you want to make fancy tables
 
 ### B. Final Calibration Dataset
 
-[You can download the final calibration dataset here. \
+[You can download the final calibration dataset here.\
 This is the SAME as last week and is in Project Assignment 7 MLR,](https://psu.instructure.com/courses/2243429/assignments/14999103)
 
 Put the data into your project library. If I update the dataset, I will update exactly with the same filenames so you can overwrite
@@ -193,10 +185,9 @@ Put the data into your project library. If I update the dataset, I will update e
 
 Here is how I read in the calibration and prediction data
 
-If you wish to understand the map projection part and why the location is X and Y in metres rather than Long/Lat, [see this tutorial. ](https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11ab_proj) You can read more about the specific projection I chose here, https://epsg.io/32617 (it's UTM).
+I f you wish to understand the map projection part and why the location is X and Y in metres rather than Long/Lat, [see this tutorial.](https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11ab_proj) You can read more about the specific projection I chose here, https://epsg.io/32617 (it's UTM).
 
 NOTE - MY UPDATES WILL BE TO PUT IN A FIELD FOR DISTANCE TO ROAD.
-
 
 ```{r, echo=FALSE,warning=FALSE,message=FALSE}
 # Read in the data
@@ -239,13 +230,13 @@ predictBorder  <- st_read("PredictionBorder.shp",crs=crs(PredictionData))
 
 ```
 
-### D.  Making static plots
+### D. Making static plots
 
-See this  - https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html, menu on the right
+See this - https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html, menu on the right
 
-### E.  Making maps
+### E. Making maps
 
-There are many ways to make maps using T-Map.  For example, for our calibration data, you have a list of raster (gridded) fields
+There are many ways to make maps using T-Map. For example, for our calibration data, you have a list of raster (gridded) fields
 
 ```{r}
 names(PredictionData)
@@ -256,11 +247,9 @@ plot(PredictionData[[1]])
 plot(PredictionData)
 ```
 
-
 ### F. Making your model
 
 Some useful code that I hope you already know
-
 
 ```{r}
 
@@ -302,11 +291,9 @@ ols_step_best_subset(Model1)
 
 ```
 
-
 ### G. To make your prediction
 
 This will make a basic map of your prediction and the residuals
-
 
 ```{r, eval=FALSE}
 # Make some maps as you like
@@ -328,6 +315,5 @@ qtm(df.Predict.sf,dots.col = "Prediction")
 qtm(TrainingData.sf,dots.col = "Residuals")
 
 ```
-
 
 I WANT TO MAKE A BETTER LOOKING VERSION OF THIS

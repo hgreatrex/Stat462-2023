@@ -321,7 +321,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#data-and-useful-code" id="toc-data-and-useful-code" class="nav-link" data-scroll-target="#data-and-useful-code">5. Data and useful code</a>
   <ul class="collapse">
-  <li><a href="#final-dataset" id="toc-final-dataset" class="nav-link" data-scroll-target="#final-dataset">Final dataset</a></li>
+  <li><a href="#a.-set-up" id="toc-a.-set-up" class="nav-link" data-scroll-target="#a.-set-up">A. Set-up</a></li>
+  <li><a href="#b.-final-calibration-dataset" id="toc-b.-final-calibration-dataset" class="nav-link" data-scroll-target="#b.-final-calibration-dataset">B. Final Calibration Dataset</a></li>
+  <li><a href="#c.-reading-in-the-data" id="toc-c.-reading-in-the-data" class="nav-link" data-scroll-target="#c.-reading-in-the-data">C. Reading in the data</a></li>
+  <li><a href="#d.-making-static-plots" id="toc-d.-making-static-plots" class="nav-link" data-scroll-target="#d.-making-static-plots">D. Making static plots</a></li>
+  <li><a href="#e.-making-maps" id="toc-e.-making-maps" class="nav-link" data-scroll-target="#e.-making-maps">E. Making maps</a></li>
+  <li><a href="#f.-making-your-model" id="toc-f.-making-your-model" class="nav-link" data-scroll-target="#f.-making-your-model">F. Making your model</a></li>
+  <li><a href="#g.-to-make-your-prediction" id="toc-g.-to-make-your-prediction" class="nav-link" data-scroll-target="#g.-to-make-your-prediction">G. To make your prediction</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -356,6 +362,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <section id="about" class="level1">
 <h1>1. About</h1>
+<p>CANVAS PAGE HERE: <a href="https://psu.instructure.com/courses/2243429/assignments/15012915" class="uri">https://psu.instructure.com/courses/2243429/assignments/15012915</a></p>
 <p>Congratulations! You made it to the end of the semester. Thanks for being awesome</p>
 <p>Over the last few weeks, we have been working on analyzing and modelling the temperature data. Your job is now to put it all together using the code we have used.</p>
 <p>You can EITHER</p>
@@ -369,28 +376,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>2. What to submit, report format</h1>
 <p>A .Rmd and a .html file containing your report</p>
 <p>To get an A grade, I expect professional formatting, tables of contents, templates, extraneous “welcome” text removed from package loading using code chunk options. Use the templates from previous labs/reports!</p>
-<p>These libraries might be useful.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>) <span class="co"># Lots of data processing commands</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"knitr"</span>)     <span class="co"># Helps make good output files</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)   <span class="co"># Output plots</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rmarkdown"</span>) <span class="co"># Helps make good output files</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lattice"</span>)   <span class="co"># Makes nice plots</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"RColorBrewer"</span>) <span class="co"># Makes nice color-scales</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"skimr"</span>)     <span class="co"># Summary statistics</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"Stat2Data"</span>) <span class="co"># Regression specific commands</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"corrplot"</span>)  <span class="co"># correlation plots</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"GGally"</span>)    <span class="co"># correlation plots</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggpubr"</span>)    <span class="co"># QQplots</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"olsrr"</span>)     <span class="co"># Regression specific commands</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"plotly"</span>)    <span class="co"># Interactive plots</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"readxl"</span>)    <span class="co"># Read from excel files</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"equatiomatic"</span>) <span class="co"># extract equations</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggstatsplot"</span>) <span class="co"># Make nice plots</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"visreg"</span>) <span class="co">#visualise regression outputs</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"MASS"</span>) <span class="co"># Studentised residuals</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="content-to-include" class="level1">
 <h1>3. Content to include</h1>
@@ -402,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>To talk about what might cause temperature differences, using your causal flowcharts.<br>
 </li>
-<li>To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it’s OK to talk more generally about the Quality Control rather than every specific sensor removed etc).<br>
+<li>To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it’s OK to talk more generally about the Quality Control rather than every specific sensor removed etc). Remember units! All described with sources here - <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Project03InitialEDA.html" class="uri">https://psu-spatial.github.io/Stat462-2023/in_S462_Project03InitialEDA.html</a><br>
 </li>
 <li>To create a series of models, check their validity (LINE), discuss the goodness of fit and describe your favorite. Useful code below.<br>
 </li>
@@ -531,9 +516,284 @@ The text below shows what I would expect from such a report.</p>
 </section>
 <section id="data-and-useful-code" class="level1">
 <h1>5. Data and useful code</h1>
-<section id="final-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="final-dataset">Final dataset</h2>
-<p>You can download the final calibration dataset here. This is the SAME as last week,</p>
+<section id="a.-set-up" class="level3">
+<h3 class="anchored" data-anchor-id="a.-set-up">A. Set-up</h3>
+<p>1st, I <strong>strongly</strong> suggest using a theme and using an R project. See the earlier tutorials for more.</p>
+<p>Also a code chunk at the top, where you can put “include=FALSE” in the code chunk options to hide it. This will remove spurious messages. More info here if you don’t know what I mean: <a href="https://rmarkdown.rstudio.com/lesson-3.html" class="uri">https://rmarkdown.rstudio.com/lesson-3.html</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Global options</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">cache =</span> <span class="cn">TRUE</span>,<span class="at">message=</span><span class="cn">FALSE</span>,<span class="at">warning=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These libraries might be useful.</p>
+<div class="cell" data-hash="in_S462_Project04Final_cache/html/unnamed-chunk-4_c766b52939831ccdfa0d93ed1acf3075">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>) <span class="co"># Lots of data processing commands</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"knitr"</span>)     <span class="co"># Helps make good output files</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)   <span class="co"># Output plots</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rmarkdown"</span>) <span class="co"># Helps make good output files</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lattice"</span>)   <span class="co"># Makes nice plots</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"RColorBrewer"</span>) <span class="co"># Makes nice color-scales</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"skimr"</span>)     <span class="co"># Summary statistics</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"Stat2Data"</span>) <span class="co"># Regression specific commands</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"corrplot"</span>)  <span class="co"># correlation plots</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"GGally"</span>)    <span class="co"># correlation plots</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggpubr"</span>)    <span class="co"># QQplots</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"olsrr"</span>)     <span class="co"># Regression specific commands</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"plotly"</span>)    <span class="co"># Interactive plots</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"readxl"</span>)    <span class="co"># Read from excel files</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"equatiomatic"</span>) <span class="co"># extract equations</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggstatsplot"</span>) <span class="co"># Make nice plots</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"visreg"</span>) <span class="co">#visualise regression outputs</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"MASS"</span>) <span class="co"># Studentised residuals</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"terra"</span>) <span class="co"># Spatial</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"sf"</span>) <span class="co"># Spatial</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"sp"</span>)  <span class="co"># Spatial</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tmap"</span>) <span class="co"># Spatial</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"raster"</span>) <span class="co"># Spatial</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"kableExtra"</span>) <span class="co"># if you want to make fancy tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b.-final-calibration-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="b.-final-calibration-dataset">B. Final Calibration Dataset</h3>
+<p><a href="https://psu.instructure.com/courses/2243429/assignments/14999103">You can download the final calibration dataset here.<br>
+This is the SAME as last week and is in Project Assignment 7 MLR,</a></p>
+<p>Put the data into your project library. If I update the dataset, I will update exactly with the same filenames so you can overwrite</p>
+</section>
+<section id="c.-reading-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="c.-reading-in-the-data">C. Reading in the data</h3>
+<p>Here is how I read in the calibration and prediction data</p>
+<p>I f you wish to understand the map projection part and why the location is X and Y in metres rather than Long/Lat, <a href="https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11ab_proj">see this tutorial.</a> You can read more about the specific projection I chose here, https://epsg.io/32617 (it’s UTM).</p>
+<p>NOTE - MY UPDATES WILL BE TO PUT IN A FIELD FOR DISTANCE TO ROAD.</p>
+<div class="cell" data-hash="in_S462_Project04Final_cache/html/unnamed-chunk-5_05859d1007469b30e96e410d350155b9">
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `TrainingArea' from data source 
+  `/Users/hgreatrex/Documents/GitHub/Teaching/Stat462-2023/TrainingArea.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 6 features and 1 field
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 746144 ymin: 4509009 xmax: 778755.1 ymax: 4534655
+Projected CRS: WGS 84 / UTM zone 17N</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `PredictionBorder' from data source 
+  `/Users/hgreatrex/Documents/GitHub/Teaching/Stat462-2023/PredictionBorder.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 1 feature and 1 field
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 762689.5 ymin: 4517794 xmax: 768392.2 ymax: 4522084
+Projected CRS: WGS 84 / UTM zone 17N</code></pre>
+</div>
+</div>
+</section>
+<section id="d.-making-static-plots" class="level3">
+<h3 class="anchored" data-anchor-id="d.-making-static-plots">D. Making static plots</h3>
+<p>See this - https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html, menu on the right</p>
+</section>
+<section id="e.-making-maps" class="level3">
+<h3 class="anchored" data-anchor-id="e.-making-maps">E. Making maps</h3>
+<p>There are many ways to make maps using T-Map. For example, for our calibration data, you have a list of raster (gridded) fields</p>
+<div class="cell" data-hash="in_S462_Project04Final_cache/html/unnamed-chunk-6_863971b68ba0456c7fb8624d5941c4ad">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(PredictionData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Elevation"               "Slope"                  
+ [3] "Roughness"               "Aspect"                 
+ [5] "LandCover_Code"          "NCLD_Percent_Tree_Cover"
+ [7] "NCLD_Percent_Concrete"   "TownshipName"           
+ [9] "AirportTemp"             "AirportPressure"        
+[11] "AirportWind"            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PredictionData[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PredictionData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="f.-making-your-model" class="level3">
+<h3 class="anchored" data-anchor-id="f.-making-your-model">F. Making your model</h3>
+<p>Some useful code that I hope you already know</p>
+<div class="cell" data-hash="in_S462_Project04Final_cache/html/unnamed-chunk-7_e2c63b0ee7eef973ebe05be9a1995863">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Temp_F <span class="sc">~</span> X <span class="sc">+</span> Y <span class="sc">+</span> Elevation, <span class="at">data=</span>TrainingData)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_regress</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         Model Summary                          
+---------------------------------------------------------------
+R                       0.245       RMSE                10.657 
+R-Squared               0.060       Coef. Var           28.483 
+Adj. R-Squared          0.050       MSE                113.577 
+Pred R-Squared          0.034       MAE                  8.971 
+---------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                                ANOVA                                 
+---------------------------------------------------------------------
+                 Sum of                                              
+                Squares         DF    Mean Square      F        Sig. 
+---------------------------------------------------------------------
+Regression     2153.474          3        717.825     6.32     4e-04 
+Residual      33845.835        298        113.577                    
+Total         35999.309        301                                   
+---------------------------------------------------------------------
+
+                                     Parameter Estimates                                       
+----------------------------------------------------------------------------------------------
+      model       Beta    Std. Error    Std. Beta      t        Sig         lower       upper 
+----------------------------------------------------------------------------------------------
+(Intercept)    921.756      3209.494                  0.287    0.774    -5394.389    7237.900 
+          X      0.002         0.001        0.200     3.352    0.001        0.001       0.003 
+          Y      0.000         0.001       -0.045    -0.709    0.479       -0.002       0.001 
+  Elevation      0.103         0.036        0.195     2.909    0.004        0.033       0.173 
+----------------------------------------------------------------------------------------------</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check linearity and equal variance</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the residuals</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_fit</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_stud</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_stand</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check normality</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_hist</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_test_normality</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-----------------------------------------------
+       Test             Statistic       pvalue  
+-----------------------------------------------
+Shapiro-Wilk              0.9595         0.0000 
+Kolmogorov-Smirnov        0.1028         0.0034 
+Cramer-von Mises         23.8202         0.0000 
+Anderson-Darling          4.0818         0.0000 
+-----------------------------------------------</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_qq</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for influential outliers</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_lev</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="in_S462_Project04Final_files/figure-html/unnamed-chunk-7-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also spatially look at the residuals</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>TrainingData<span class="sc">$</span>Model1Prediction <span class="ot">&lt;-</span>  <span class="fu">predict</span>(Model1)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>TrainingData<span class="sc">$</span>Residuals <span class="ot">&lt;-</span>  <span class="fu">residuals</span>(Model1)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now predict on the full map</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>df.Predict<span class="sc">$</span>Prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(Model1, <span class="at">newdata=</span>df.Predict,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>Model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Temp_F <span class="sc">~</span> Elevation, <span class="at">data=</span>TrainingData)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_regress</span>(Model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         Model Summary                          
+---------------------------------------------------------------
+R                       0.151       RMSE                10.829 
+R-Squared               0.023       Coef. Var           28.943 
+Adj. R-Squared          0.019       MSE                117.277 
+Pred R-Squared          0.010       MAE                  9.148 
+---------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                                ANOVA                                 
+---------------------------------------------------------------------
+                 Sum of                                              
+                Squares         DF    Mean Square      F        Sig. 
+---------------------------------------------------------------------
+Regression      816.080          1        816.080    6.959    0.0088 
+Residual      35183.229        300        117.277                    
+Total         35999.309        301                                   
+---------------------------------------------------------------------
+
+                                  Parameter Estimates                                   
+---------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t       Sig       lower     upper 
+---------------------------------------------------------------------------------------
+(Intercept)    9.017        10.784                 0.836    0.404    -12.205    30.239 
+  Elevation    0.080         0.030        0.151    2.638    0.009      0.020     0.139 
+---------------------------------------------------------------------------------------</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To compare models, or use the model summaries.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(Model1,Model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       df      AIC
+Model1  5 2292.220
+Model2  3 2299.924</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To look at many models</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_best_subset</span>(Model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Best Subsets Regression   
+----------------------------
+Model Index    Predictors
+----------------------------
+     1         Elevation     
+     2         X Elevation   
+     3         X Y Elevation 
+----------------------------
+
+                                                       Subsets Regression Summary                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------
+                       Adj.        Pred                                                                                                   
+Model    R-Square    R-Square    R-Square     C(p)         AIC         SBIC          SBC          MSEP         FPE        HSP       APC  
+-----------------------------------------------------------------------------------------------------------------------------------------
+  1        0.0227      0.0194        0.01    11.7753    2299.9240    1442.7835    2311.0553    35417.7890    118.0541    0.3922    0.9904 
+  2        0.0582      0.0519      0.0392     2.5034    2290.7301    1433.7612    2305.5718    34243.5565    114.5143    0.3805    0.9607 
+  3        0.0598      0.0504      0.0343     4.0000    2292.2204    1435.2886    2310.7726    34300.9169    115.0810    0.3824    0.9654 
+-----------------------------------------------------------------------------------------------------------------------------------------
+AIC: Akaike Information Criteria 
+ SBIC: Sawa's Bayesian Information Criteria 
+ SBC: Schwarz Bayesian Criteria 
+ MSEP: Estimated error of prediction, assuming multivariate normality 
+ FPE: Final Prediction Error 
+ HSP: Hocking's Sp 
+ APC: Amemiya Prediction Criteria </code></pre>
+</div>
+</div>
+</section>
+<section id="g.-to-make-your-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="g.-to-make-your-prediction">G. To make your prediction</h3>
+<p>This will make a basic map of your prediction and the residuals</p>
+<div class="cell" data-hash="in_S462_Project04Final_cache/html/unnamed-chunk-8_20ab0038beea2ef439135d10398a3198">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make some maps as you like</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>df.Predict.sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(df.Predict,<span class="at">coords=</span><span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>),</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">crs=</span><span class="fu">crs</span>(PredictionData))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>TrainingData.sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(TrainingData,<span class="at">coords=</span><span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>),</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">crs=</span><span class="fu">crs</span>(PredictionData))</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember you can change this to plot</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"view"</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># remember you can change the palette</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(df.Predict.sf,<span class="at">dots.col =</span> <span class="st">"Prediction"</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># remember you can change the palette</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(TrainingData.sf,<span class="at">dots.col =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I WANT TO MAKE A BETTER LOOKING VERSION OF THIS</p>
 
 
 </section>
