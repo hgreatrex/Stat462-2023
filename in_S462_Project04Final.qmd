@@ -1,5 +1,5 @@
 ---
-title: "Final Project Report"
+title: "4. Final Project Report"
 ---
 
 ```{r, warning=FALSE, include=FALSE, message=FALSE}
@@ -91,38 +91,47 @@ Remember you can use text/figures/analysis from throughout the semester and from
 1.  A introduction about the climate of State College (esp the temperature) - remember [Weather Spark!](www.weatherspark.com)\
 2.  To clearly state the aim of the project, which is to predict the coldest location in State College TOWNSHIP, given the calibration data which was placed over the entire area.\
 3.  To talk about what might cause temperature differences, using your causal flowcharts.\
-4.  To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it's OK to talk more generally about the Quality Control rather than every specific sensor removed etc). \
+4.  To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it's OK to talk more generally about the Quality Control rather than every specific sensor removed etc).\
 5.  To create a series of models, check their validity (LINE), discuss the goodness of fit and describe your favorite. Useful code below.\
 6.  To decide on your final object of analysis, response variable and predictors, then use that model to predict the location of the coldest temperature on Monday 1st May. Remember you can use the forecast temperature for the future airport temperature! If you can't make a complex model work for prediction, tell me and then choose an easier one\
-7.  *For 10 bonus points, to collect a temp sensor from me in Walker 201 in office hours tomorrow, or in Friday's lecture. Then put it out in your predicted location, recording the Lat/Long and taking some photos & filling in the google form, then bringing back the sensor by the exam. We will see who is correct! \
+7.  *For 10 bonus points, to collect a temp sensor from me in Walker 201 in office hours tomorrow, or in Friday's lecture. Then put it out in your predicted location, recording the Lat/Long and taking some photos & filling in the google form, then bringing back the sensor by the exam. We will see who is correct!\
     \
     This is not part of the main report & you do not have to talk about the results as it will take me a week to find out the results.*
 
 # 4. Grading Rubric/checklist
 
-See the table below for what this means - 100% is hard to get!
+See the table below for what this means - 100% is hard to get! \
+The text below shows what I would expect from such a report.
 
-**HTML/RMD FILE SUBMISSION - 5 marks**
+### **HTML/RMD FILE SUBMISSION - 5 marks**
 
-**FORMAT/PROFESSIONAL REPORT - 10 MARKS**
+### **FORMAT/PROFESSIONAL REPORT - 10 MARKS**
 
-Full marks for a report that *I* would take into a job interview. You have done things like fully labeled plots using words, tried more sophisticated plots than just the basics (remember ggstatplot!), written full paragraphs/sentences, used equation formats, sub-headings, used spell check, explained results in clear language, included units, used a theme and table of contents. You lose marks for each thing that makes it look non-professional.
+-   Full marks for a report that *I* would take into a job interview. You lose marks for each thing that makes it look non-professional.
 
-GRAPHICS - 5 MARKS
+-   I AM NOT GRADING GRAMMAR ETC. I know some people speak English as a second language. This is not a writing class.
 
-You have included maps, summary statistics and scatterplots as appropriate. Your plots look great with professional axes labels and colors.
+-   You have done things like fully labeled plots, used mathematical equation formats, sub-headings, used spell check, a theme and as relevant things like tables of contents. You have used photos/pictures as appropriate. You included units and used code chunk options to hide any spurious code output.
 
-**INTRODUCTION/DESCRIPTION/QUALITY CONTROL - 10 MARKS.**
+-   In the text, you have written full paragraphs/sentences, explained results in clear language ON THE TOPIC OF TEMPERATURE (e.g.. beyond "reject H0" you have described what this means)
 
-You have thoughtfully described the problem, correctly identifying the object/variables AND units! You have explored the causal chain & quality control and it's clear why you're choosing your final models.
+### GRAPHICS - 5 MARKS
 
-**MODELLING - 10 MARKS**
+-   You have included maps, summary statistics and scatterplots as appropriate. Your plots look great with professional axes labels and colors. You have tried more sophisticated plots than just the basics (remember ggstatplot!),
 
-You created the model correctly. In your write up you have summarised the model equation (including the coefficients as numbers) & summarising units afterwards. You have produced a model summary, assessed LINE/outliers and answered all questions as appropriate.
+### **INTRODUCTION/DESCRIPTION/QUALITY CONTROL - 10 MARKS.**
 
-**PREDICTION - 10 MARKS**
+-   You have thoughtfully described the problem, correctly identifying the object/variables AND units! You have explored the causal chain & quality control and it's clear why you're choosing your final models.
 
-You have decided on your final model, checked its validity and used the output map to decide where to put your sensor. Note, the final prediction is gridded! So you should also describe where inside your chosen grid square you will place your sensor (e.g. not in the middle of the I80 or a private house...)
+### **MODELLING - 10 MARKS**
+
+-   You created your model correctly and explained why you chose them. In your write up you have summarised the model equation (including the coefficients as numbers) & summarising units afterwards. You have produced a model summary, assessed LINE/outliers and answered all questions as appropriate. It is likely that you used some sort of model selection tool such as Best SubSets.
+
+### **PREDICTION - 10 MARKS**
+
+-   You have decided on your final model, explained why, checked its validity and used the output map to decide where to put your sensor.
+
+-   Note, the final prediction is a grid cell! So you should also describe where inside your chosen grid square you will place your sensor (e.g. not in the middle of the I80 or a private house...)
 
 \[50 marks total\]
 
@@ -139,4 +148,6 @@ knitr::kable(rubric) %>%
 
 # 5. Data and useful code
 
-## 
+## Final dataset
+
+You can download the final calibration dataset here. This is the SAME as last week,
