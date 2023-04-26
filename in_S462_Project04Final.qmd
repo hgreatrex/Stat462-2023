@@ -189,7 +189,7 @@ I f you wish to understand the map projection part and why the location is X and
 
 NOTE - MY UPDATES WILL BE TO PUT IN A FIELD FOR DISTANCE TO ROAD.
 
-```{r, echo=FALSE,warning=FALSE,message=FALSE}
+```{r, eval=FALSE,warning=FALSE,message=FALSE}
 # Read in the data
 PredictionData <- rast("PredictionRaster.tif")
 
@@ -238,7 +238,7 @@ See this - https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.ht
 
 There are many ways to make maps using T-Map. For example, for our calibration data, you have a list of raster (gridded) fields
 
-```{r}
+```{r, eval=FALSE}
 names(PredictionData)
 
 # Try 
@@ -251,7 +251,7 @@ plot(PredictionData)
 
 Some useful code that I hope you already know
 
-```{r}
+```{r, eval=FALSE}
 
 Model1 <- lm(Temp_F ~ X + Y + Elevation, data=TrainingData)
 ols_regress(Model1)
