@@ -19,12 +19,20 @@ library("plotly")    # Interactive plots
 library("readxl")    # Read from excel files
 library("equatiomatic") # extract equations
 library("ggstatsplot") # Make nice plots
-library("ggcorrplot")
 library("visreg") #visualise regression outputs
+library("MASS") # Studentised residuals
+library("terra") # Spatial
+library("sf") # Spatial
+library("sp")  # Spatial
+library("tmap") # Spatial
+library("raster") # Spatial
 library("GGally")
 library("MASS")
 library("kableExtra")
+library("terra")
 ```
+
+
 
 In this page there is:
 
@@ -38,7 +46,15 @@ In this page there is:
 
 -   The final dataset, useful code and things we have learned this semester
 
+```{r, include=FALSE}
+
+ProjectDir <- "./ProjectData"
+
+```
+
 # 1. About
+
+CANVAS PAGE HERE: <https://psu.instructure.com/courses/2243429/assignments/15012915>
 
 Congratulations! You made it to the end of the semester. Thanks for being awesome
 
@@ -58,32 +74,6 @@ A .Rmd and a .html file containing your report
 
 To get an A grade, I expect professional formatting, tables of contents, templates, extraneous "welcome" text removed from package loading using code chunk options. Use the templates from previous labs/reports!
 
-These libraries might be useful.
-
-```{r,message=FALSE,warning=FALSE}
-# Load libraries
-library("tidyverse") # Lots of data processing commands
-library("knitr")     # Helps make good output files
-library("ggplot2")   # Output plots
-library("rmarkdown") # Helps make good output files
-library("lattice")   # Makes nice plots
-library("RColorBrewer") # Makes nice color-scales
-library("skimr")     # Summary statistics
-library("Stat2Data") # Regression specific commands
-library("corrplot")  # correlation plots
-library("GGally")    # correlation plots
-library("ggpubr")    # QQplots
-library("olsrr")     # Regression specific commands
-library("plotly")    # Interactive plots
-library("readxl")    # Read from excel files
-library("equatiomatic") # extract equations
-library("ggstatsplot") # Make nice plots
-library("visreg") #visualise regression outputs
-library("MASS") # Studentised residuals
-
-
-```
-
 # 3. Content to include
 
 Remember you can use text/figures/analysis from throughout the semester and from all the project discussion boards.
@@ -91,7 +81,7 @@ Remember you can use text/figures/analysis from throughout the semester and from
 1.  A introduction about the climate of State College (esp the temperature) - remember [Weather Spark!](www.weatherspark.com)\
 2.  To clearly state the aim of the project, which is to predict the coldest location in State College TOWNSHIP, given the calibration data which was placed over the entire area.\
 3.  To talk about what might cause temperature differences, using your causal flowcharts.\
-4.  To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it's OK to talk more generally about the Quality Control rather than every specific sensor removed etc).\
+4.  To clearly state the object of analysis of the calibration data, and the predictor variables, along with any quality control and data wrangling we have done (it's OK to talk more generally about the Quality Control rather than every specific sensor removed etc). Remember units! All described with sources here - <https://psu-spatial.github.io/Stat462-2023/in_S462_Project03InitialEDA.html>\
 5.  To create a series of models, check their validity (LINE), discuss the goodness of fit and describe your favorite. Useful code below.\
 6.  To decide on your final object of analysis, response variable and predictors, then use that model to predict the location of the coldest temperature on Monday 1st May. Remember you can use the forecast temperature for the future airport temperature! If you can't make a complex model work for prediction, tell me and then choose an easier one\
 7.  *For 10 bonus points, to collect a temp sensor from me in Walker 201 in office hours tomorrow, or in Friday's lecture. Then put it out in your predicted location, recording the Lat/Long and taking some photos & filling in the google form, then bringing back the sensor by the exam. We will see who is correct!\
@@ -148,6 +138,196 @@ knitr::kable(rubric) %>%
 
 # 5. Data and useful code
 
-## Final dataset
+### A. Set-up
 
-You can download the final calibration dataset here. This is the SAME as last week,
+1st, I **strongly** suggest using a theme and using an R project. See the earlier tutorials for more.
+
+Also a code chunk at the top, where you can put "include=FALSE" in the code chunk options to hide it. This will remove spurious messages. More info here if you don't know what I mean: <https://rmarkdown.rstudio.com/lesson-3.html>
+
+```{r}
+## Global options
+rm(list=ls())
+knitr::opts_chunk$set(cache = TRUE,message=FALSE,warning=FALSE)
+```
+
+These libraries might be useful.
+
+```{r,message=FALSE,warning=FALSE}
+# Load libraries
+library("tidyverse") # Lots of data processing commands
+library("knitr")     # Helps make good output files
+library("ggplot2")   # Output plots
+library("rmarkdown") # Helps make good output files
+library("lattice")   # Makes nice plots
+library("RColorBrewer") # Makes nice color-scales
+library("skimr")     # Summary statistics
+library("Stat2Data") # Regression specific commands
+library("corrplot")  # correlation plots
+library("GGally")    # correlation plots
+library("ggpubr")    # QQplots
+library("olsrr")     # Regression specific commands
+library("plotly")    # Interactive plots
+library("readxl")    # Read from excel files
+library("equatiomatic") # extract equations
+library("ggstatsplot") # Make nice plots
+library("visreg") #visualise regression outputs
+library("MASS") # Studentised residuals
+library("terra") # Spatial
+library("sf") # Spatial
+library("sp")  # Spatial
+library("tmap") # Spatial
+library("raster") # Spatial
+library("kableExtra") # if you want to make fancy tables
+
+
+```
+
+### B. Final Calibration Dataset
+
+[You can download the final calibration dataset here. \
+This is the SAME as last week and is in Project Assignment 7 MLR,](https://psu.instructure.com/courses/2243429/assignments/14999103)
+
+Put the data into your project library. If I update the dataset, I will update exactly with the same filenames so you can overwrite
+
+### C. Reading in the data
+
+Here is how I read in the calibration and prediction data
+
+If you wish to understand the map projection part and why the location is X and Y in metres rather than Long/Lat, [see this tutorial. ](https://psu-spatial.github.io/Geog364-2021/pg_Tut11_spatial101.html#Tut11ab_proj) You can read more about the specific projection I chose here, https://epsg.io/32617 (it's UTM).
+
+NOTE - MY UPDATES WILL BE TO PUT IN A FIELD FOR DISTANCE TO ROAD.
+
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+# Read in the data
+PredictionData <- rast("PredictionRaster.tif")
+
+# Set the map projection.
+crs(PredictionData) <- "EPSG:32617"
+
+# Rename so it exactly matches the model.
+names(PredictionData) <- c("Elevation","Slope","Roughness",
+                           "Aspect","LandCover_Code",
+                           "NCLD_Percent_Tree_Cover",
+                           "NCLD_Percent_Concrete" )
+
+PredictionData$TownshipName <- "State College"
+
+# YOU CAN CHANGE THESE TO THE FORECAST  ON MAY-1 AT THE AIRPORT
+PredictionData$AirportTemp <- NA
+PredictionData$AirportPressure <- NA
+PredictionData$AirportWind <- NA
+
+
+# And the training data
+df.Predict <- read_excel("df.Predict.xlsx")
+df.Predict$TownshipName <- "State College"
+df.Predict$TownshipName <- as.factor(df.Predict$TownshipName)
+
+# YOU CAN CHANGE THESE TO THE FORECAST ON MAY-1 AT THE AIRPORT
+df.Predict$AirportTemp <- NA
+df.Predict$AirportPressure <- NA
+df.Predict$AirportWind <- NA
+
+# And the training Data
+TrainingData <- read_excel("FinalMidnightData.xlsx")
+TrainingData$TownshipName <- as.factor(TrainingData$TownshipName)
+
+# makes spatial versions
+TrainingBorder <- st_read("TrainingArea.shp",crs=crs(PredictionData))
+predictBorder  <- st_read("PredictionBorder.shp",crs=crs(PredictionData))
+
+```
+
+### D.  Making static plots
+
+See this  - https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html, menu on the right
+
+### E.  Making maps
+
+There are many ways to make maps using T-Map.  For example, for our calibration data, you have a list of raster (gridded) fields
+
+```{r}
+names(PredictionData)
+
+# Try 
+plot(PredictionData[[1]])
+
+plot(PredictionData)
+```
+
+
+### F. Making your model
+
+Some useful code that I hope you already know
+
+
+```{r}
+
+Model1 <- lm(Temp_F ~ X + Y + Elevation, data=TrainingData)
+ols_regress(Model1)
+
+# Check linearity and equal variance
+# plot the residuals
+ols_plot_resid_fit(Model1)
+ols_plot_resid_stud(Model1)
+ols_plot_resid_stand(Model1)
+
+#Check normality
+ols_plot_resid_hist(Model1)
+ols_test_normality(Model1)
+ols_plot_resid_qq(Model1)
+
+#Check for influential outliers
+ols_plot_resid_lev(Model1)
+
+# You can also spatially look at the residuals
+TrainingData$Model1Prediction <-  predict(Model1)
+TrainingData$Residuals <-  residuals(Model1)
+
+# Now predict on the full map
+df.Predict$Prediction <- predict(Model1, newdata=df.Predict,na.rm=TRUE)
+
+
+Model2 <- lm(Temp_F ~ Elevation, data=TrainingData)
+ols_regress(Model2)
+
+# To compare models, or use the model summaries.
+AIC(Model1,Model2)
+
+
+# To look at many models
+ols_step_best_subset(Model1)
+
+
+```
+
+
+### G. To make your prediction
+
+This will make a basic map of your prediction and the residuals
+
+
+```{r, eval=FALSE}
+# Make some maps as you like
+
+
+df.Predict.sf <- st_as_sf(df.Predict,coords=c("X","Y"),
+                          crs=crs(PredictionData))
+
+TrainingData.sf <- st_as_sf(TrainingData,coords=c("X","Y"),
+                            crs=crs(PredictionData))
+
+# Remember you can change this to plot
+tmap_mode("view")
+
+# remember you can change the palette
+qtm(df.Predict.sf,dots.col = "Prediction")
+
+# remember you can change the palette
+qtm(TrainingData.sf,dots.col = "Residuals")
+
+```
+
+
+I WANT TO MAKE A BETTER LOOKING VERSION OF THIS
