@@ -23,6 +23,7 @@ website:
           - in_S462_Project02Setup.qmd
           - in_S462_Project03InitialEDA.qmd
           - in_S462_Project04Final.qmd
+          - in_S462_Project04FinalUPDATED.qmd
       - section: "Tutorials"
         contents:
           - in_S462_Tutorial01WhatisR.qmd

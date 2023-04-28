@@ -189,7 +189,7 @@ I f you wish to understand the map projection part and why the location is X and
 
 NOTE - MY UPDATES WILL BE TO PUT IN A FIELD FOR DISTANCE TO ROAD.
 
-```{r, eval=FALSE,warning=FALSE,message=FALSE}
+```{r, results='hide',warning=FALSE,message=FALSE}
 # Read in the data
 PredictionData <- rast("PredictionRaster.tif")
 
@@ -251,7 +251,7 @@ plot(PredictionData)
 
 Some useful code that I hope you already know
 
-```{r, eval=FALSE}
+```{r, results='hide'}
 
 Model1 <- lm(Temp_F ~ X + Y + Elevation, data=TrainingData)
 ols_regress(Model1)
