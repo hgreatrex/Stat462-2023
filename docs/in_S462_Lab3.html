@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STAT-462 Lab Book - Lab 3: Simple Linear Regression (THIS WEEK)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lab 3: Simple Linear Regression (THIS WEEK)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">STAT-462 Lab Book</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Labs</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab0Index.html" class="sidebar-item-text sidebar-link">Lab Q&amp;A</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab1.html" class="sidebar-item-text sidebar-link">Lab 1: R intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab2.html" class="sidebar-item-text sidebar-link">Lab 2: Scatterplots</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab3.html" class="sidebar-item-text sidebar-link active">Lab 3: Simple Linear Regression (THIS WEEK)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab4.html" class="sidebar-item-text sidebar-link">Lab 4: LINE and transformations</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Lab5.html" class="sidebar-item-text sidebar-link">Lab 5: MLR</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Project</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project00Index.html" class="sidebar-item-text sidebar-link">Project Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project01MakingGroups.html" class="sidebar-item-text sidebar-link">1. Making teams</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project02Setup.html" class="sidebar-item-text sidebar-link">2. Causal Chains</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project03InitialEDA.html" class="sidebar-item-text sidebar-link">3. Initial EDA (this week)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project04Final.html" class="sidebar-item-text sidebar-link">4. Final Project Report</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Project04FinalUPDATED.html" class="sidebar-item-text sidebar-link">4. Final Project Report UPDATED CODE</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial01WhatisR.html" class="sidebar-item-text sidebar-link">T1: R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial02BeforeEachLab.html" class="sidebar-item-text sidebar-link">T2. Before Each Lab</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial03RBasics.html" class="sidebar-item-text sidebar-link">T3: Console-Basics and help</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial04AdvancedMarkdown.html" class="sidebar-item-text sidebar-link">T4: Advanced Markdown</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial05LoadingData.html" class="sidebar-item-text sidebar-link">T5: Loading Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial06Wrangling.html" class="sidebar-item-text sidebar-link">T6: Summaries filtering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial07Distributions.html" class="sidebar-item-text sidebar-link">T7: Normal, T Distributions and tests</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial08Plots.html" class="sidebar-item-text sidebar-link">T8: Making plots</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial09Correlation.html" class="sidebar-item-text sidebar-link">T9: Correlation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./in_S462_Tutorial10Regression.html" class="sidebar-item-text sidebar-link">T10: Regression</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welcome-to-lab-3" id="toc-welcome-to-lab-3" class="nav-link active" data-scroll-target="#welcome-to-lab-3">Welcome to Lab 3</a>
+  <ul class="collapse">
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <ul class="collapse">
+  <li><a href="#review-the-lab-qa" id="toc-review-the-lab-qa" class="nav-link" data-scroll-target="#review-the-lab-qa">1. Review the Lab Q&amp;A</a></li>
+  <li><a href="#make-a-new-project-and-markdown-file" id="toc-make-a-new-project-and-markdown-file" class="nav-link" data-scroll-target="#make-a-new-project-and-markdown-file">2. Make a new project and markdown file</a></li>
+  </ul></li>
+  <li><a href="#code-showcase" id="toc-code-showcase" class="nav-link" data-scroll-target="#code-showcase">3. Code showcase</a></li>
+  <li><a href="#houseplant-sales-fake-data" id="toc-houseplant-sales-fake-data" class="nav-link" data-scroll-target="#houseplant-sales-fake-data">4. Houseplant sales [FAKE DATA]</a></li>
+  <li><a href="#submitting-your-lab" id="toc-submitting-your-lab" class="nav-link" data-scroll-target="#submitting-your-lab">5. Submitting your Lab</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lab 3: Simple Linear Regression (THIS WEEK)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="welcome-to-lab-3" class="level1">
+<h1>Welcome to Lab 3</h1>
+<p>The aim of this lab is to continue to get used to simple linear regression in R.</p>
+<p>The Canvas page for this lab is: <a href="https://psu.instructure.com/courses/2243429/assignments/14748231" class="uri">https://psu.instructure.com/courses/2243429/assignments/14748231</a></p>
+<p><strong>If the labs are causing major problems with your computer or your computer hardware is struggling (or you have any other software issue), Talk to Dr Greatrex and REMEMBER YOU CAN ALWAYS USE RSTUDIO CLOUD</strong>.<br>
+</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<section id="review-the-lab-qa" class="level3">
+<h3 class="anchored" data-anchor-id="review-the-lab-qa">1. Review the Lab Q&amp;A</h3>
+<p>First, please review the lab Q&amp;A: <a href="./in_S462_Lab0Index.html"><strong>CLICK HERE</strong></a>. It explains</p>
+<ul>
+<li>What you need to submit, how you are graded and where the rubric is</li>
+<li>The late policy and what counts as cheating</li>
+</ul>
+</section>
+<section id="make-a-new-project-and-markdown-file" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="make-a-new-project-and-markdown-file">2. Make a new project and markdown file</h3>
+<p>Follow <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial02BeforeEachLab.html">Tutorial 2 (link working)</a> to create a new project and a new RMarkdown file that knits.</p>
+<p>You should now have a new project and a new RMarkdown file that knits.</p>
+<p>Create a code chunk near the top and load these packages. You may need to install them first using <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial02BeforeEachLab.html#add-the-r-packages-you-need">Tutorial 2.3 (Link working)</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(equatiomatic)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Stat2Data)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="code-showcase" class="level2">
+<h2 class="anchored" data-anchor-id="code-showcase">3. Code showcase</h2>
+<p>IF YOU IGNORED STEPS 1 AND 2 ABOVE GO BACK AND DO THEM!<br>
+You lose marks for things like no theme, poor headings etc.</p>
+<section id="bonus-marks" class="level4">
+<h4 class="anchored" data-anchor-id="bonus-marks">3.0 Bonus marks</h4>
+<ul>
+<li>This lab is graded out of 70, BUT, there are some bonus marks available (I will cap the lab at 100%). Go to the canvas page here, look at the rubric <a href="https://psu.instructure.com/courses/2243429/assignments/14842785#" class="uri">https://psu.instructure.com/courses/2243429/assignments/14842785#</a> and explain what you would have to do in order to get them.</li>
+</ul>
+</section>
+<section id="line-assumptions" class="level4">
+<h4 class="anchored" data-anchor-id="line-assumptions">3.1 LINE Assumptions</h4>
+<ul>
+<li>Create a new section called Code Showcase. In your own words, explain the four LINE assumptions (hint See <a href="https://psu.instructure.com/courses/2243429/pages/4-dot-1-simple-linear-regression-what-is-it?module_item_id=38073189">Module 4.1</a> in Canvas)</li>
+</ul>
+</section>
+<section id="create-your-data" class="level4">
+<h4 class="anchored" data-anchor-id="create-your-data">3.2 Create your data</h4>
+<ul>
+<li><p>Go here: <a href="http://robertgrantstats.co.uk/drawmydata.html" class="uri">http://robertgrantstats.co.uk/drawmydata.html</a>.</p></li>
+<li><p>Click on the map to create your own dataset which does not break any of the LINE assumptions (you hope!). It should have AT LEAST 30 data points.</p></li>
+<li><p>Save it to your computer and place it into your Project 3 folder.</p></li>
+</ul>
+</section>
+<section id="read-the-data-into-r" class="level4">
+<h4 class="anchored" data-anchor-id="read-the-data-into-r">3.3 Read the data into R</h4>
+<ul>
+<li><p>Read your csv file into R (hint,<a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial05LoadingData.html#Tut6b_csv">Tutorial 5, link working</a>)</p></li>
+<li><p>Use the <code>nrow()</code> command to prove that your dataset has more than 30 observations/points.</p></li>
+</ul>
+</section>
+<section id="read-the-data-into-r-1" class="level4">
+<h4 class="anchored" data-anchor-id="read-the-data-into-r-1">3.3 Read the data into R</h4>
+<ul>
+<li><p>Create a quick scatterplot between X and Y, making sure that the response variable is on the vertical axis (hint, <a href="https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/ggscatterstats.html">GGScatterStats</a> or <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#scatterplots">Tutorial 8</a>, or <a href="https://r-graph-gallery.com/scatterplot.html">R-Graph-Gallery</a>).</p></li>
+<li><p>Create a linear model between X and Y using the lm command (see <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial10Regression.html">Tutorial 10, link working</a>, or this <a href="https://towardsdatascience.com/back-to-basics-linear-regression-in-r-3ffe4900482b">tutorial</a>) and save it to a variable called model1</p></li>
+<li><p>Look at the model summary using <code>summary(model1)</code>, and <code>ols_regress(model1)</code>.</p></li>
+<li><p>In the text below your summaries, copy in this list and fill in the answers for your particular model.</p>
+<ul>
+<li><p>The Intercept is:</p></li>
+<li><p>The Gradient/Slope is:</p></li>
+<li><p>Assume you are looking at the full population. The model equation in symbols is:</p>
+<ul>
+<li>(hint, bonus marks for writing this in equation form)</li>
+</ul></li>
+<li><p>Assume you are looking at the full population. The model equation, filling in the numbers is</p>
+<ul>
+<li>(hint, bonus marks for writing this in equation form)</li>
+</ul></li>
+<li><p>The mean squared error is:</p></li>
+<li><p>The total sum of squares is:</p></li>
+<li><p>The percentage of variability “explained” by the model is:</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="houseplant-sales-fake-data" class="level2">
+<h2 class="anchored" data-anchor-id="houseplant-sales-fake-data">4. Houseplant sales [FAKE DATA]</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/pg_Lab3_influencers.png" class="img-fluid figure-img" width="953"></p>
+<p></p><figcaption class="figure-caption">Social media influencers like WelcomeToTheJungleHome and PlantKween are changing plant sales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Houseplants are a big deal, especially with the rise of influencers like <a href="https://www.instagram.com/welcometothejunglehome/">Phoebe Cheong</a> and <a href="https://www.instagram.com/p/Cn9WTlJASxf/">PlantKween, Christopher Griffin</a>. But.. unusually, “old fashioned” methods of sales such as mailing leaflets still appear to be popular with many demographics.</p>
+<p>You have been hired by a NYC house-plant company, “<a href="https://www.thesill.com/pages/plants-for-delivery-nyc">The Sill</a>” to understand how different marketing campaigns impact sales.</p>
+<p><strong>Note, I am only using a real company name so that you can get a better sense of interpreting results.</strong> <strong>This is all artificial/simulated/fake data from an unrelated maths problem!</strong></p>
+<p>Let’s <u><strong><em>pretend</em></strong></u> that The Sill has run 200 marketing campaigns over the last few years from 2015-2022, each for a specific plant. For each campaign, they recorded</p>
+<ol type="1">
+<li><p>How much they spent (in units of thousands of dollars) on TV adverts, Social media campaigns and physical mail/leaflets,</p></li>
+<li><p>How many houseplants were sold (in thousands of plants).</p></li>
+<li><p>The “X-Factor” of how popular that plant was at the time (percentage popularity)</p></li>
+<li><p>Typically how tall that type plant was in inches.</p></li>
+</ol>
+<section id="step-4.1" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.1">Step 4.1</h4>
+<p>Download the dataset and put it in your Lab 3 folder. There are two ways you can get the dataset:</p>
+<ol type="1">
+<li>Download it directly. Copy/paste this code into R. Note, if you get a weird error, DELETE AND RETYPE EVERY ” QUOTE MARK. Sometimes they copy across wrong.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://github.com/psu-spatial/Stat462.data-2021/blob/main/AdvertisingPlant2023.xlsx?raw=true"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile=</span><span class="st">"AdvertisingPlant2023.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Click on this link: <a href="AdvertisingPlant2023.xlsx">AdvertisingPlant2023.xlsx</a></li>
+</ol>
+<p>Read in the data and explore it. You will find that you have to remove some poor-quality data. There are a few ways to do this:</p>
+<ol type="a">
+<li>Go and remove it from the excel file, make a note of what it was and re-ru</li>
+</ol>
+<p>Use the filter command to exclude it. For example, lets say there was a value of -999 in the temperature column of <code>testtable</code>, you could use this command to exclude it</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>newtable <span class="ot">&lt;-</span> testtable[<span class="fu">which</span>(testtable<span class="sc">$</span>temperature) <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">90</span> , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(or see <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial06Wrangling.html#filtering-rows-and-columns">Tutorial 6 Filter, link checked</a>)</p>
+<p>Double check you didn’t just accidentally delete the whole dataset!</p>
+</section>
+<section id="step-4.2" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.2">Step 4.2</h4>
+<p>Create a new heading in your report called Houseplant Sales Analysis.</p>
+<p>You are writing up your analysis for the CEO of The Sill, <a href="https://www.thesill.com/blog/reflections-from-our-founder">Eliza Blank</a>. Using sub-headings, bullet points etc, write a short introductory section which includes:</p>
+<ul>
+<li><p>The object of analysis</p></li>
+<li><p>A reasonable population this sample dataset is representative of. Could she use this for say 2023 sales? 2040 sales in a new country?</p></li>
+<li><p>Your response variable.</p></li>
+<li><p>The variables available for analysis along with their units.</p></li>
+<li><p>One or two things from your summary analysis, for example, maybe you could talk about the average sales, mention the data you removed or show a histogram / <a href="https://psu-spatial.github.io/Stat462-2023/in_S462_Tutorial08Plots.html#violin-plots">violin plot</a> etc and explain your findings in a few sentences<br>
+Essentially, summarise/explain what the dataset shows to The Sill. You are allowed to move any code from section 4.1 to here to make your report flow.</p></li>
+</ul>
+<p><em><strong>Want an A/A*?</strong> Make sure to explain any results in clear English about the actual topic after any statistical output or plots, and to explain any jargon.</em></p>
+<ul>
+<li><em>For example, after a statement like “reject the null hypothesis”, you could write a sentence like “In terms of whether you should reject TV advertising, this means…”. Or for your introductory plots, you could write a few sentences comparing the average sales or pointing out features. THESE SECTIONS DON’T HAVE TO BE LONG, but they do have to show me you understand what is going on. <a href="https://www.youtube.com/watch?v=suipiqewpzc">Commit to the Bit</a>, pretend you really are delivering the report to The Sill and I promise it will be easier to get through..</em></li>
+</ul>
+</section>
+<section id="step-4.3-model-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.3-model-analysis">Step 4.3 Model analysis</h4>
+<p>Your client wishes to know which advertising campaign is the most effective out of.</p>
+<ul>
+<li><p>Model1 - Plant Sales vs Mail</p></li>
+<li><p>Model2 - Plant Sales vs Instagram</p></li>
+</ul>
+<p>For EACH model,</p>
+<ul>
+<li><p>Create a sub-heading</p></li>
+<li><p>Make a professional scatterplot (see the many tutorials above)</p></li>
+<li><p>Describe each scatterplot in words (e.g.&nbsp;strength, association, outliers etc).</p></li>
+<li><p>Create a linear model and show the model summary</p></li>
+<li><p>Use equatiomatic or any other method to formally write out the equation and coefficients.</p></li>
+</ul>
+</section>
+<section id="step-4.4-questions" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.4-questions">Step 4.4 Questions</h4>
+<ol type="1">
+<li><p>Explain if you see evidence that the plot might break any of the LINE assumptions</p>
+<ul>
+<li><em>You can’t just say yes/no, you need to explain your reasons</em></li>
+</ul></li>
+<li><p>Out of model 1 and model 2, where do you see the greatest increase in sales if you increase the advertising budget?</p>
+<ul>
+<li><em>Provide evidence to justify your answer (thinking about uncertainties on your estimate), including the relevant statistics/numbers for each model.</em></li>
+</ul></li>
+<li><p>Which model explains the most variability in the sales data?</p>
+<ul>
+<li><em>Provide evidence to justify your answer, including the relevant statistic/numbers for each model.</em></li>
+</ul></li>
+<li><p>In your own words, use the model output and your answers to the questions above to explain to Ms Blank, the pros and cons of using Mail vs Instagram for plant sales.</p></li>
+<li><p>If instagram-spending doubles, what is your best guess of what would happen to average plant sales?</p></li>
+<li><p>What is the model estimate of plant-sales when no money is spent on instagram? From what we have learned so far, how could you guess the uncertainty on this estimate (e.g.&nbsp;the range of values).</p></li>
+</ol>
+</section>
+</section>
+<section id="submitting-your-lab" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-your-lab">5. Submitting your Lab</h2>
+<p>Remember to save your work throughout and to spell check your writing (next to the save button). Now, press the knit button again. If you have not made any mistakes in the code then R should create a html file in your lab 1 folder which includes your answers. If you look at your lab 1 folder, you should see this there - complete with a very recent time-stamp.</p>
+<p>In that folder, double click on the html file. This will open it in your web-browser.<br>
+CHECK THAT THIS IS WHAT YOU WANT TO SUBMIT.</p>
+<p>If you are on R studio cloud, see Tutorial 1 for how to download your files</p>
+<p>Now go to Canvas and submit BOTH your html and your .Rmd file in Lab 1.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="./Figures/Lab1_Basics_2022_fig1.png" class="img-fluid" width="1673"></p>
+</div>
+</div>
+<p><br></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
