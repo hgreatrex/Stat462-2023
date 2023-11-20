@@ -154,7 +154,6 @@ test <- data.frame(A=c(1,3,4),
 print(test)
 ```
 
-
 ```{r}
 # Take the mean of column B
 mean(test$B)
@@ -181,7 +180,6 @@ cor(test$A,test$B,use = "complete.obs")
 ```
 
 To simply remove all rows with missing data, try the `na.omit()` command e g.
-
 
 ```{r}
 test2 <- na.omit(test)
@@ -222,7 +220,6 @@ my_ztable =ztable(mytable)
 print(my_ztable,caption="Table 1. Basic Table")
 ```
 
-
 # Filtering and selecting data
 
 ```{r,include=FALSE,echo=FALSE}
@@ -233,7 +230,6 @@ library(sf)
 library(readxl)
 library(skimr)
 library(tmap)
-library(USAboundaries)
 library(viridis)
 ```
 
@@ -469,4 +465,3 @@ arrange(frost, desc(Avg_DOY_SpringFrost))
 ```
 
 <br> <br>
-
